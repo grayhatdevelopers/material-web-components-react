@@ -2,6 +2,15 @@
 
 This demo shows how native Material Web Components can be used in NextJS/React, TypeScript and Tailwind, with minimal configuration.
 
+## Roadmap 🚀
+- [] Make sure all native Web Components are properly working
+- [] Resolve SSR issues, make compatible with NextJS
+- [] Separate the demo from the actual UI code
+- [] Make installable as a package. Preferably keep the code in-project, like shadcn/ui, so developers have more control
+- [] Sync with upstream (i.e. https://github.com/material-components/material-web/blob/main/docs/intro.md) through webhooks and automations
+- [] Mix this library with Tailwind and BaseUI in order to complete missing Components which may prove useful for building production applications
+
+# NextJS Boilerplate
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
