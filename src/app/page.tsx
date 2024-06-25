@@ -61,7 +61,7 @@ export default function Home() {
           >
             <ListItem
               type="link"
-              href="https://google.com/search?q=buy+kiwis&tbm=shop"
+              href="https://github.com/grayhatdevelopers/material-web-react"
               target="_blank"
             >
               <div slot="headline">⭐️ on GitHub</div>
@@ -72,7 +72,7 @@ export default function Home() {
             </ListItem>
             <ListItem
               type="link"
-              href="https://google.com/search?q=buy+kiwis&tbm=shop"
+              href="https://github.com/grayhatdevelopers/material-web-react/edit/main/src/app/page.tsx"
               target="_blank"
             >
               <div slot="headline">Edit this page</div>
@@ -173,22 +173,22 @@ export default function Home() {
 
       <ChipSet>
         {comics[0].tags.map((tag) => (
-          <Chip label={tag} variant="md-filter-chip" />
+          <Chip key={tag} label={tag} variant="md-filter-chip" />
         ))}
       </ChipSet>
       <ChipSet>
         {comics[0].tags.map((tag) => (
-          <Chip label={tag} variant="md-input-chip" />
+          <Chip key={tag} label={tag} variant="md-input-chip" />
         ))}
       </ChipSet>
       <ChipSet>
         {comics[0].tags.map((tag) => (
-          <Chip label={tag} variant="md-suggestion-chip" />
+          <Chip key={tag} label={tag} variant="md-suggestion-chip" />
         ))}
       </ChipSet>
       <ChipSet>
         {comics[0].tags.map((tag) => (
-          <Chip label={tag} variant="md-assist-chip" />
+          <Chip key={tag} label={tag} variant="md-assist-chip" />
         ))}
       </ChipSet>
      
