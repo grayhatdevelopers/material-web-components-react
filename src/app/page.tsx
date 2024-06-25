@@ -22,6 +22,9 @@ import GitHubButton from 'react-github-btn'
 
 import React, { useState } from "react";
 
+// @TODO: Fix this. Right now, static generation doesn't seem to work with Material Web Components.
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   const [showDialog, setShowDialog] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
