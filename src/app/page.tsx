@@ -3,30 +3,30 @@
 // @TODO: Fix this. Right now, static generation doesn't seem to work with Material Web Components.
 import dynamic from 'next/dynamic';
 
-const Button = dynamic(() => import("@/components/ui/button"));
-const Checkbox = dynamic(() => import("@/components/ui/checkbox"));
-const Chip = dynamic(() => import("@/components/ui/chip"));
-const ChipSet = dynamic(() => import("@/components/ui/chip").then(mod => mod.ChipSet));
-const Dialog = dynamic(() => import("@/components/ui/dialog"));
-const Divider = dynamic(() => import("@/components/ui/divider"));
-const FAB = dynamic(() => import("@/components/ui/floating-action-button"));
-const Icon = dynamic(() => import("@/components/ui/icon"));
-const IconButton = dynamic(() => import("@/components/ui/icon-button"));
-const List = dynamic(() => import("@/components/ui/list"));
-const ListItem = dynamic(() => import("@/components/ui/list").then(mod => mod.ListItem));
-const Menu = dynamic(() => import("@/components/ui/menu"));
-const MenuItem = dynamic(() => import("@/components/ui/menu").then(mod => mod.MenuItem));
-const CircularProgress = dynamic(() => import("@/components/ui/progress").then(mod => mod.CircularProgress));
-const LinearProgress = dynamic(() => import("@/components/ui/progress").then(mod => mod.LinearProgress));
-const Radio = dynamic(() => import("@/components/ui/radio"));
-const Select = dynamic(() => import("@/components/ui/select"));
-const SelectOption = dynamic(() => import("@/components/ui/select").then(mod => mod.SelectOption));
-const Slider = dynamic(() => import("@/components/ui/slider"));
-const Switch = dynamic(() => import("@/components/ui/switch"));
-const Tabs = dynamic(() => import("@/components/ui/tabs"));
-const PrimaryTab = dynamic(() => import("@/components/ui/tabs").then(mod => mod.PrimaryTab));
-const SecondaryTab = dynamic(() => import("@/components/ui/tabs").then(mod => mod.SecondaryTab));
-const TextField = dynamic(() => import("@/components/ui/textfield"));
+const Button = dynamic(() => import("@/components/ui/button"), { ssr: false });
+const Checkbox = dynamic(() => import("@/components/ui/checkbox"), { ssr: false });
+const Chip = dynamic(() => import("@/components/ui/chip"), { ssr: false });
+const ChipSet = dynamic(() => import("@/components/ui/chip").then(mod => mod.ChipSet), { ssr: false });
+const Dialog = dynamic(() => import("@/components/ui/dialog"), { ssr: false });
+const Divider = dynamic(() => import("@/components/ui/divider"), { ssr: false });
+const FAB = dynamic(() => import("@/components/ui/floating-action-button"), { ssr: false });
+const Icon = dynamic(() => import("@/components/ui/icon"), { ssr: false });
+const IconButton = dynamic(() => import("@/components/ui/icon-button"), { ssr: false });
+const List = dynamic(() => import("@/components/ui/list"), { ssr: false });
+const ListItem = dynamic(() => import("@/components/ui/list").then(mod => mod.ListItem), { ssr: false });
+const Menu = dynamic(() => import("@/components/ui/menu"), { ssr: false });
+const MenuItem = dynamic(() => import("@/components/ui/menu").then(mod => mod.MenuItem), { ssr: false });
+const CircularProgress = dynamic(() => import("@/components/ui/progress").then(mod => mod.CircularProgress), { ssr: false });
+const LinearProgress = dynamic(() => import("@/components/ui/progress").then(mod => mod.LinearProgress), { ssr: false });
+const Radio = dynamic(() => import("@/components/ui/radio"), { ssr: false });
+const Select = dynamic(() => import("@/components/ui/select"), { ssr: false });
+const SelectOption = dynamic(() => import("@/components/ui/select").then(mod => mod.SelectOption), { ssr: false });
+const Slider = dynamic(() => import("@/components/ui/slider"), { ssr: false });
+const Switch = dynamic(() => import("@/components/ui/switch"), { ssr: false });
+const Tabs = dynamic(() => import("@/components/ui/tabs"), { ssr: false });
+const PrimaryTab = dynamic(() => import("@/components/ui/tabs").then(mod => mod.PrimaryTab), { ssr: false });
+const SecondaryTab = dynamic(() => import("@/components/ui/tabs").then(mod => mod.SecondaryTab), { ssr: false });
+const TextField = dynamic(() => import("@/components/ui/textfield"), { ssr: false });
 
 import GitHubButton from 'react-github-btn'
 
