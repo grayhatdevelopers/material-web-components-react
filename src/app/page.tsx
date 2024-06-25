@@ -1,29 +1,36 @@
 "use client";
 
-import Button from "@/components/ui/button";
-import Checkbox from "@/components/ui/checkbox";
-import Chip, { ChipSet } from "@/components/ui/chip";
-import Dialog from "@/components/ui/dialog";
-import Divider from "@/components/ui/divider";
-import FAB from "@/components/ui/floating-action-button";
-import Icon from "@/components/ui/icon";
-import IconButton from "@/components/ui/icon-button";
-import List, { ListItem } from "@/components/ui/list";
-import Menu, { MenuItem } from "@/components/ui/menu";
-import { CircularProgress, LinearProgress } from "@/components/ui/progress";
-import Radio from "@/components/ui/radio";
-import Select, { SelectOption } from "@/components/ui/select";
-import Slider from "@/components/ui/slider";
-import Switch from "@/components/ui/switch";
-import Tabs, { PrimaryTab, SecondaryTab } from "@/components/ui/tabs";
-import TextField from "@/components/ui/textfield";
+// @TODO: Fix this. Right now, static generation doesn't seem to work with Material Web Components.
+import dynamic from 'next/dynamic';
+
+const Button = dynamic(() => import("@/components/ui/button"));
+const Checkbox = dynamic(() => import("@/components/ui/checkbox"));
+const Chip = dynamic(() => import("@/components/ui/chip"));
+const ChipSet = dynamic(() => import("@/components/ui/chip").then(mod => mod.ChipSet));
+const Dialog = dynamic(() => import("@/components/ui/dialog"));
+const Divider = dynamic(() => import("@/components/ui/divider"));
+const FAB = dynamic(() => import("@/components/ui/floating-action-button"));
+const Icon = dynamic(() => import("@/components/ui/icon"));
+const IconButton = dynamic(() => import("@/components/ui/icon-button"));
+const List = dynamic(() => import("@/components/ui/list"));
+const ListItem = dynamic(() => import("@/components/ui/list").then(mod => mod.ListItem));
+const Menu = dynamic(() => import("@/components/ui/menu"));
+const MenuItem = dynamic(() => import("@/components/ui/menu").then(mod => mod.MenuItem));
+const CircularProgress = dynamic(() => import("@/components/ui/progress").then(mod => mod.CircularProgress));
+const LinearProgress = dynamic(() => import("@/components/ui/progress").then(mod => mod.LinearProgress));
+const Radio = dynamic(() => import("@/components/ui/radio"));
+const Select = dynamic(() => import("@/components/ui/select"));
+const SelectOption = dynamic(() => import("@/components/ui/select").then(mod => mod.SelectOption));
+const Slider = dynamic(() => import("@/components/ui/slider"));
+const Switch = dynamic(() => import("@/components/ui/switch"));
+const Tabs = dynamic(() => import("@/components/ui/tabs"));
+const PrimaryTab = dynamic(() => import("@/components/ui/tabs").then(mod => mod.PrimaryTab));
+const SecondaryTab = dynamic(() => import("@/components/ui/tabs").then(mod => mod.SecondaryTab));
+const TextField = dynamic(() => import("@/components/ui/textfield"));
 
 import GitHubButton from 'react-github-btn'
 
 import React, { useState } from "react";
-
-// @TODO: Fix this. Right now, static generation doesn't seem to work with Material Web Components.
-export const dynamic = "force-dynamic";
 
 export default function Home() {
   const [showDialog, setShowDialog] = useState(false);
