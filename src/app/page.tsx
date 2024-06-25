@@ -54,9 +54,9 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 gap-4">
 
-      <h1 className="text-4xl font-bold mb-8">Material Web Components for React</h1>
+      <h1 className="text-4xl font-bold mb-4">Material Web Components for React</h1>
       <h2 className="text-md text-center w-1/2">This demo shows how native Material Web Components can be used in NextJS/React, TypeScript and Tailwind, with minimal configuration.</h2>
-      <GitHubButton href="https://github.com/grayhatdevelopers">Star us on GitHub</GitHubButton>
+      <GitHubButton href="https://github.com/grayhatdevelopers/material-web-react">Star us on GitHub</GitHubButton>
 
       <br />
 
