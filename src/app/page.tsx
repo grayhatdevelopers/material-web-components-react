@@ -52,223 +52,168 @@ export default function Home() {
     // ... other comics
   ];
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 gap-4">
-
-      <h1 className="text-4xl font-bold mb-4">Material Web Components for React</h1>
-      <h2 className="text-md text-center w-1/2">This demo shows how native Material Web Components can be used in NextJS/React, TypeScript and Tailwind, with minimal configuration.</h2>
-      <GitHubButton href="https://github.com/grayhatdevelopers/material-web-react">Star us on GitHub</GitHubButton>
-
-      <br />
-
-      <Dialog open={showDialog}>
-        <div slot="headline">Dialog Demo and Actions</div>
-        <form slot="content" id="form-id" method="dialog">
-          <List
-            style={{
-              maxWidth: "300px",
-              background: "transparent",
-            }}
-          >
-            <ListItem
-              type="link"
-              href="https://github.com/grayhatdevelopers/material-web-react"
-              target="_blank"
-            >
-              <div slot="headline">⭐️ on GitHub</div>
-              <div slot="supporting-text">
-                This will link you out in a new tab
-              </div>
-              <Icon slot="end">open_in_new</Icon>
-            </ListItem>
-            <ListItem
-              type="link"
-              href="https://github.com/grayhatdevelopers/material-web-react/edit/main/src/app/page.tsx"
-              target="_blank"
-            >
-              <div slot="headline">Edit this page</div>
-              <div slot="supporting-text">
-                Want to make changes?
-              </div>
-              <Icon slot="end">open_in_new</Icon>
-            </ListItem>
-          </List>
-        </form>
-        <div slot="actions">
-          <Button onClick={() => setShowDialog(false)}>Ok</Button>
+    <main className='bg-#FDF7FF' >
+      <h1 className="font-bold pt-5 text-xl pl-3" >Material 3</h1>
+      <div className="grid grid-cols-[5rem_1fr_1fr] gap-4" >
+        {/* column 1 */}
+        <div className="bg-#F6F0F8 border rounded-md overflow-auto max-h-full" >
+          <h1>Actions</h1>
         </div>
-      </Dialog>
 
-      <TextField variant="md-filled-text-field" placeholder="Hello world">
-        <Icon slot="leading-icon">search</Icon>
-      </TextField>
+        {/* column 2 */}
+        <div>
+          <div className="bg-#F6F0F8 border border-black rounded-md overflow-auto max-h-full" >
+            <h2 className="flex justify-center pt-4" >Action</h2>
+            <h3 className="flex justify-center pt-4" >Common Buttons</h3>
+            <div className="h-fit w-96 bg-purple-50 rounded-md border border-black p-6 ml-24 grid grid-cols-3 " >
+              <div>
+                <Button variant="md-elevated-button" >Elevated</Button>
+                <Button variant="md-filled-button">Filled</Button>
+                <Button variant="md-filled-tonal-button">Filled Tonal</Button>
+                <Button variant="md-outlined-button">Outlined</Button>
+                <Button variant="md-text-button">Text</Button>
+              </div>
+              <div>
+                <Button variant="md-elevated-button" >Icon</Button>
+                <Button variant="md-filled-button">Icon</Button>
+                <Button variant="md-filled-tonal-button">Icon</Button>
+                <Button variant="md-outlined-button">Icon</Button>
+                <Button variant="md-text-button">Icon</Button>
+              </div>
+              <div>
+                <Button variant="md-elevated-button" >Elevated</Button>
+                <Button variant="md-filled-button">Filled</Button>
+                <Button variant="md-filled-tonal-button">Filled Tonal</Button>
+                <Button variant="md-outlined-button">Outlined</Button>
+                <Button variant="md-text-button">Text</Button>
+              </div>
+            </div>
+            <h3 className="flex justify-center pt-4" >Floating Action Button</h3>
+            <div className="h-fit w-96 bg-purple-50 rounded-md border border-black p-6 ml-24 flex flex-row gap-5" >
+              <FAB size='small'></FAB>
+              <FAB size='extended' >Create</FAB>
+              <FAB size='standard'></FAB>
+              <FAB size='large'></FAB>
+            </div>
 
-      <Switch />
-      <div className="flex flex-row gap-2 items-center">
-        <label className="flex flex-row gap-1 items-center">
-          <Checkbox />
-          Hello checkbox
-        </label>
-        <label className="flex flex-row gap-1 items-center">
-          <Checkbox checked />
-          Hello checkbox
-        </label>
-        <label className="flex flex-row gap-1 items-center">
-          <Checkbox indeterminate />
-          Hello checkbox
-        </label>
-      </div>
+            <h3 className="flex justify-center pt-4">Icon Buttons</h3>
+            <div className="h-fit w-96 bg-purple-50 rounded-md border border-black p-6 ml-24 grid grid-cols-4 gap-6 ">
+              <div className="">
+                <IconButton variant="md-filled-icon-button" >
+                  <Icon>Settings</Icon>
+                </IconButton>
 
-      <LinearProgress indeterminate></LinearProgress>
-      <CircularProgress indeterminate></CircularProgress>
+                <IconButton variant="md-filled-tonal-icon-button" >
+                  <Icon>Settings</Icon>
+                </IconButton>
+              </div>
 
-      <form className="flex flex-col justify-start gap-2">
-        <span className="flex flex-row gap-2 items-center">
-          <Radio id="cats-radio" name="animals" value="cats"></Radio>
-          <label htmlFor="cats-radio">Cats</label>
-        </span>
-        <span className="flex flex-row gap-2 items-center">
-          <Radio id="dogs-radio" name="animals" value="dogs"></Radio>
-          <label htmlFor="dogs-radio">Dogs</label>
-        </span>
-        <span className="flex flex-row gap-2 items-center">
-          <Radio id="birds-radio" name="animals" value="birds" checked></Radio>
-          <label htmlFor="birds-radio">Birds</label>
-        </span>
-      </form>
+              <div>
+                <IconButton variant="md-filled-tonal-icon-button" >
+                  <Icon>Settings</Icon>
+                </IconButton>
 
-      <Select>
-        <SelectOption aria-label="blank"></SelectOption>
-        <SelectOption selected value="apple">
-          <div slot="headline">Apple</div>
-        </SelectOption>
-        <SelectOption value="apricot">
-          <div slot="headline">Apricot</div>
-        </SelectOption>
-      </Select>
+                <IconButton variant="md-filled-icon-button" >
+                  <Icon>Settings</Icon>
+                </IconButton>
+              </div>
 
-      <Slider></Slider>
-      <Slider ticks value={50}></Slider>
-      <Slider range value-start="25" value-end="75"></Slider>
+              <div>
+                <IconButton variant="md-icon-button" >
+                  <Icon>Settings</Icon>
+                </IconButton>
 
-      <Divider className="my-4" />
+                <IconButton variant="md-icon-button" >
+                  <Icon>Settings</Icon>
+                </IconButton>
+              </div>
 
-      <List
-        style={{
-          maxWidth: "300px",
-        }}
-      >
-        <ListItem>Fruits</ListItem>
-        <Divider></Divider>
-        <ListItem>Apple</ListItem>
-        <ListItem>Banana</ListItem>
-        <ListItem>
-          <div slot="headline">Cucumber</div>
-          <div slot="supporting-text">
-            Cucumbers are long green fruits that are just as long as this
-            multi-line description
+              <div>
+                <IconButton variant="md-outlined-icon-button" >
+                  <Icon>Settings</Icon>
+                </IconButton>
+
+                <IconButton variant="md-outlined-icon-button" >
+                  <Icon>Settings</Icon>
+                </IconButton>
+              </div>
+
+
+            </div>
           </div>
-        </ListItem>
-        <ListItem
-          type="link"
-          href="https://google.com/search?q=buy+kiwis&tbm=shop"
-          target="_blank"
-        >
-          <div slot="headline">Shop for Kiwis</div>
-          <div slot="supporting-text">This will link you out in a new tab</div>
-          <Icon slot="end">open_in_new</Icon>
-        </ListItem>
-      </List>
 
-      <Divider className="my-4" />
+          {/* Communication part */}
+          <div className="bg-#F6F0F8 border border-black rounded-md overflow-auto max-h-full mt-4">
+            <h1 className="flex justify-center pt-4">Communication</h1>
+            <h3 className="flex justify-center pt-4" >Progress Indicator</h3>
+            <div className="h-fit w-96 bg-purple-50 rounded-md border border-black p-6 ml-24 flex flex-row gap-10" >
+              <CircularProgress indeterminate></CircularProgress>
+              <LinearProgress indeterminate></LinearProgress>
+            </div>
+          </div>
 
-      <ChipSet>
-        {comics[0].tags.map((tag) => (
-          <Chip key={tag} label={tag} variant="md-filter-chip" />
-        ))}
-      </ChipSet>
-      <ChipSet>
-        {comics[0].tags.map((tag) => (
-          <Chip key={tag} label={tag} variant="md-input-chip" />
-        ))}
-      </ChipSet>
-      <ChipSet>
-        {comics[0].tags.map((tag) => (
-          <Chip key={tag} label={tag} variant="md-suggestion-chip" />
-        ))}
-      </ChipSet>
-      <ChipSet>
-        {comics[0].tags.map((tag) => (
-          <Chip key={tag} label={tag} variant="md-assist-chip" />
-        ))}
-      </ChipSet>
-     
+          {/* Containment Part */}
 
-      <div className="flex flex-row gap-2">
-        <Button variant="md-filled-button">Hello button!</Button>
-        <Button variant="md-filled-tonal-button">Hello button!</Button>
-        <Button variant="md-filled-elevated-button">Hello button!</Button>
-        <Button variant="md-outlined-button">Hello button!</Button>
-      </div>
+          <div className="bg-#F6F0F8 border border-black rounded-md overflow-auto max-h-full mt-4" >
+            <h1 className="flex justify-center pt-4">Containment</h1>
+            <h3 className="flex justify-center pt-4" >Divider</h3>
+            <div className="h-fit w-96 bg-purple-50 rounded-md border border-black p-6 ml-24">
+              <Divider variant="md-horizontal-divider" ></Divider>
+            </div>
+          </div>
+        </div>
 
-      <div className="flex flex-row gap-2">
-        <IconButton>
-          {" "}
-          <Icon>delete</Icon>
-        </IconButton>
-        <IconButton variant="md-filled-icon-button">
-          {" "}
-          <Icon>favorite</Icon>
-        </IconButton>
-        <IconButton variant="md-filled-tonal-icon-button">
-          {" "}
-          <Icon>comment</Icon>
-        </IconButton>
 
-        <span style={{ position: "relative" }}>
-          <IconButton
-            id="usage-anchor"
-            variant="md-outlined-icon-button"
-            onClick={() => {
-              setShowMenu(true);
-            }}
-          >
-            {" "}
-            <Icon>share</Icon>
-          </IconButton>
-          <Menu
-            id="usage-menu"
-            anchor="usage-anchor"
-            open={showMenu}
-            onClick={() => {
-              setShowMenu(false);
-            }}
-          >
-            <MenuItem>
-              <div slot="headline">Apple</div>
-            </MenuItem>
-            <MenuItem>
-              <div slot="headline">Banana</div>
-            </MenuItem>
-            <MenuItem>
-              <div slot="headline">Cucumber</div>
-            </MenuItem>
-          </Menu>
-        </span>
-      </div>
+        {/* column 3 */}
+        <div>
+          <div className="bg-#F6F0F8 border border-black rounded-md overflow-auto max-h-full " >
+            <h1 className="flex justify-center pt-4" >Selection</h1>
+            <h3 className="flex justify-center pt-4">CheckBoxes</h3>
+            <div className="h-fit w-96 bg-purple-50 rounded-md border border-black p-6 ml-24 grid grid-cols-2" >
+              <label className="flex flex-row gap-2 ">
+                <Checkbox />
+                Hello checkbox
+              </label>
+              <label className="flex flex-row gap-2 ">
+                <Checkbox checked />
+                Hello checkbox
+              </label>
+              <label className="flex flex-row gap-2">
+                <Checkbox indeterminate />
+                Hello checkbox
+              </label>
+              <label className="flex flex-row gap-2">
+                <Checkbox indeterminate />
+                Hello checkbox
+              </label>
+            </div>
 
-      <Tabs>
-        <PrimaryTab>Hello Tabs!</PrimaryTab>
-        <SecondaryTab>Hello Tabs!</SecondaryTab>
-      </Tabs>
-
-      <div className="fixed bottom-4 right-4">
-        <FAB
-          onClick={() => {
-            setShowDialog((oldState) => !oldState);
-          }}
-        >
-          <Icon slot="icon">edit</Icon>
-        </FAB>
+            {/* Chips */}
+            <h3 className="flex justify-center pt-4">Chips</h3>
+            <div className="h-fit w-96 bg-purple-50 rounded-md border border-black p-6 ml-24 grid grid-cols-4 ">
+              <div>
+                <ChipSet><Chip variant="md-assist-chip" label="Assist">Assist</Chip></ChipSet>
+                <ChipSet><Chip variant="md-assist-chip" label="Assist" >Assist</Chip></ChipSet>
+                
+              </div>
+              <div>
+                <ChipSet><Chip variant="md-filter-chip" label="Filter">Filter</Chip></ChipSet>
+                <ChipSet><Chip variant="md-filter-chip" label="Filter">Filter</Chip></ChipSet>
+                
+              </div>
+              <div>
+                <ChipSet><Chip variant="md-input-chip" label="Input">Input</Chip></ChipSet>
+                <ChipSet><Chip variant="md-input-chip" label="Input">Input</Chip></ChipSet>
+                
+              </div>
+              <div>
+                <ChipSet><Chip variant="md-suggestion-chip" label="Suggestion">Suggestion</Chip></ChipSet>
+                <ChipSet><Chip variant="md-suggestionr-chip" label="Suggestion">Suggestion</Chip></ChipSet>
+                
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
