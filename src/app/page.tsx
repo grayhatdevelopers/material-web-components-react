@@ -1,5 +1,5 @@
 "use client";
-
+import { useRef } from "react";
 // @TODO: Fix this. Right now, static generation doesn't seem to work with Material Web Components.
 import dynamic from "next/dynamic";
 
@@ -66,6 +66,7 @@ const ComponentDemo = ({ title, children }: { title: any; children: any }) => {
 export default function Home() {
   const [showDialog, setShowDialog] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+
   const comics = [
     {
       title: "Ossimu Quasi Alum",
@@ -82,202 +83,311 @@ export default function Home() {
     },
     // ... other comics
   ];
-  return (
-    <main className="bg-[#FDF7FF] max-h-screen w-full">
-      <div
-        id="titlebar"
-        className="fixed top-0 left-0 backdrop-blur-md z-10 w-full h-16 flex items-center justify-center"
-      >
-        <h1 className="font-bold text-xl">Material 3</h1>
-      </div>
-      <div className="grid grid-cols-[5rem_1fr_1fr] gap-4">
-        <div id="sidebar"></div>
 
-        <Column id="column-a">
-          <DemoSection title={"Actions"}>
-            <ComponentDemo title={"Common buttons"}>
-              <div className="flex flex-row items-center justify-center gap-3">
-                <Button variant="md-elevated-button">Elevated</Button>
-                <Button variant="md-filled-button">Filled</Button>
-                <Button variant="md-filled-tonal-button">Filled Tonal</Button>
-                <Button variant="md-outlined-button">Outlined</Button>
-                <Button variant="md-text-button">Text</Button>
-              </div>
-              <div className="flex flex-row items-center justify-center gap-3">
-                <Button variant="md-elevated-button">Icon</Button>
-                <Button variant="md-filled-button">Icon</Button>
-                <Button variant="md-filled-tonal-button">Icon</Button>
-                <Button variant="md-outlined-button">Icon</Button>
-                <Button variant="md-text-button">Icon</Button>
-              </div>
-              <div className="flex flex-row items-center justify-center gap-3">
-                <Button variant="md-elevated-button">Elevated</Button>
-                <Button variant="md-filled-button">Filled</Button>
-                <Button variant="md-filled-tonal-button">Filled Tonal</Button>
-                <Button variant="md-outlined-button">Outlined</Button>
-                <Button variant="md-text-button">Text</Button>
-              </div>
-            </ComponentDemo>
+    
+  
+    return (
+      <main className="bg-[#FDF7FF] max-h-screen w-full">
+        <div
+          id="titlebar"
+          className="fixed top-0 left-0 backdrop-blur-md z-10 w-full h-16 flex items-center justify-center"
+        >
+          <h1 className="font-bold text-xl">Material 3</h1>
+        </div>
+        <div className="grid grid-cols-[5rem_1fr_1fr] gap-4">
+          <div id="sidebar"></div>
 
-            <ComponentDemo title={"Floating action buttons"}>
-              <div className="flex flex-row w-fit items-center justify-center gap-3">
-                <FAB size="small">
-                  <Icon slot="icon">add</Icon>
-                </FAB>
-                <FAB label="Create">
-                  <Icon slot="icon">add</Icon>
-                </FAB>
-                <FAB>
-                  <Icon slot="icon">add</Icon>
-                </FAB>
-                <FAB size="large">
-                  <Icon slot="icon">add</Icon>
-                </FAB>
-              </div>
-            </ComponentDemo>
+          <Column id="column-a">
+            <DemoSection title={"Actions"}>
+              <ComponentDemo title={"Common buttons"}>
+                <div className="flex flex-row items-center justify-center gap-3">
+                  <Button variant="md-elevated-button">Elevated</Button>
+                  <Button variant="md-filled-button">Filled</Button>
+                  <Button variant="md-filled-tonal-button">Filled Tonal</Button>
+                  <Button variant="md-outlined-button">Outlined</Button>
+                  <Button variant="md-text-button">Text</Button>
+                </div>
+                <div className="flex flex-row gap-3 items-center justify-center">
+                  <Button variant="md-elevated-button">Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                  <Button variant="md-filled-button">Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                  <Button variant="md-filled-tonal-button">Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                  <Button variant="md-outlined-button">Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                  <Button variant="md-text-button">Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                </div>
+                <div className="flex flex-row items-center justify-center gap-3">
+                  <Button disabled variant="md-elevated-button">Elevated</Button>
+                  <Button disabled variant="md-filled-button">Filled</Button>
+                  <Button disabled variant="md-filled-tonal-button">Filled Tonal</Button>
+                  <Button disabled variant="md-outlined-button">Outlined</Button>
+                  <Button disabled variant="md-text-button">Text</Button>
+                </div>
+              </ComponentDemo>
 
-            <ComponentDemo title={"Icon buttons"}>
-              <div className="">
-                <IconButton variant="md-filled-icon-button">
-                  <Icon>Settings</Icon>
-                </IconButton>
+              <ComponentDemo title={"Floating action buttons"}>
+                <div className="flex flex-row w-fit items-center justify-center gap-3">
+                  <FAB size="small">
+                    <Icon slot="icon">add</Icon>
+                  </FAB>
+                  <FAB label="Create">
+                    <Icon slot="icon">add</Icon>
+                  </FAB>
+                  <FAB>
+                    <Icon slot="icon">add</Icon>
+                  </FAB>
+                  <FAB size="large">
+                    <Icon slot="icon">add</Icon>
+                  </FAB>
+                </div>
+              </ComponentDemo>
 
-                <IconButton variant="md-filled-tonal-icon-button">
-                  <Icon>Settings</Icon>
-                </IconButton>
-              </div>
+              <ComponentDemo title={"Icon buttons"}>
+                <div className="flex flex-row gap-4 ">
+                  <IconButton variant="md-filled-icon-button">
+                    <Icon  >Settings</Icon>
+                  </IconButton>
 
-              <div>
-                <IconButton variant="md-filled-tonal-icon-button">
-                  <Icon>Settings</Icon>
-                </IconButton>
+                  <IconButton variant="md-filled-tonal-icon-button">
+                    <Icon  >Settings</Icon>
+                  </IconButton>
+                </div>
 
-                <IconButton variant="md-filled-icon-button">
-                  <Icon>Settings</Icon>
-                </IconButton>
-              </div>
+                <div className="flex flex-row gap-4 " >
+                  <IconButton variant="md-filled-tonal-icon-button">
+                    <Icon  >Settings</Icon>
+                  </IconButton>
 
-              <div>
-                <IconButton variant="md-icon-button">
-                  <Icon>Settings</Icon>
-                </IconButton>
+                  <IconButton variant="md-filled-icon-button">
+                    <Icon  >Settings</Icon>
+                  </IconButton>
+                </div  >
 
-                <IconButton variant="md-icon-button">
-                  <Icon>Settings</Icon>
-                </IconButton>
-              </div>
+                <div className="flex flex-row gap-4 " >
+                  <IconButton variant="md-icon-button">
+                    <Icon  >Settings</Icon>
+                  </IconButton>
 
-              <div>
-                <IconButton variant="md-outlined-icon-button">
-                  <Icon>Settings</Icon>
-                </IconButton>
+                  <IconButton variant="md-icon-button">
+                    <Icon  >Settings</Icon>
+                  </IconButton>
+                </div>
 
-                <IconButton variant="md-outlined-icon-button">
-                  <Icon>Settings</Icon>
-                </IconButton>
-              </div>
-            </ComponentDemo>
-          </DemoSection>
+                <div className="flex flex-row gap-4 " >
+                  <IconButton variant="md-outlined-icon-button">
+                    <Icon  >Settings</Icon>
+                  </IconButton>
 
-          <DemoSection title="Communication">
-            <ComponentDemo title={"Progress indicators"}>
-              <div className="flex flex-row gap-10 justify-center items-center">
-                <CircularProgress indeterminate></CircularProgress>
-                <LinearProgress indeterminate></LinearProgress>
-              </div>
-            </ComponentDemo>
-          </DemoSection>
+                  <IconButton variant="md-outlined-icon-button">
+                    <Icon  >Settings</Icon>
+                  </IconButton>
+                </div>
+              </ComponentDemo>
+            </DemoSection>
 
-          <DemoSection title="Containment">
-            <ComponentDemo title={"Divider"}>
-              <section className="w-full">
-                <Divider></Divider>
-              </section>
-            </ComponentDemo>
+            <DemoSection title="Communication">
+              <ComponentDemo title={"Progress indicators"}>
+                <div className="flex flex-row gap-10 justify-center items-center">
+                  <CircularProgress indeterminate></CircularProgress>
+                  <LinearProgress indeterminate></LinearProgress>
+                </div>
+              </ComponentDemo>
+            </DemoSection>
 
-            <ComponentDemo title={"Dialog"}>
-              <div className="w-full">
-                <Button
-                  variant="md-text-button"
-                  onClick={() => setShowDialog((oldState) => !oldState)}
-                >
-                  {showDialog ? "Hide dialog" : "Show dialog"}
-                </Button>
-                <Dialog open={showDialog}>
-                  <div slot="headline">Dialog title</div>
-                  <form slot="content" id="form-id" method="dialog">
-                    A simple dialog with free-form content.
-                  </form>
-                  <div slot="actions">
-                    <Button
-                      variant="md-text-button"
-                      onClick={() => setShowDialog(false)}
-                    >
-                      Ok
-                    </Button>
+            <DemoSection title="Containment">
+              <ComponentDemo title={"Divider"}>
+                <section className="max-w-full" >
+                  <Divider color="black" ></Divider>
+                </section>
+              </ComponentDemo>
+
+              <ComponentDemo title={"Dialog"}>
+                <div className="w-full">
+                  <Button
+                    variant="md-text-button"
+                    onClick={() => setShowDialog((oldState) => !oldState)}
+                  >
+                    {showDialog ? "Hide dialog" : "Show dialog"}
+                  </Button>
+                  <Dialog open={showDialog}>
+                    <div slot="headline">Dialog title</div>
+                    <form slot="content" id="form-id" method="dialog">
+                      A simple dialog with free-form content.
+                    </form>
+                    <div slot="actions">
+                      <Button
+                        variant="md-text-button"
+                        onClick={() => setShowDialog(false)}
+                      >
+                        Ok
+                      </Button>
+                    </div>
+                  </Dialog>
+                </div>
+              </ComponentDemo>
+            </DemoSection>
+          </Column>
+
+          <Column id="column-b">
+            <DemoSection title={"Selection"}>
+              <ComponentDemo title={"Checkboxes"}>
+                <div className="grid grid-cols-2 w-full gap-3">
+                  <label className="flex flex-row gap-2  items-center justify-center">
+                    <Checkbox />
+                    Hello checkbox
+                  </label>
+                  <label className="flex flex-row gap-2  items-center justify-center">
+                    <Checkbox checked />
+                    Hello checkbox
+                  </label>
+                  <label className="flex flex-row gap-2 items-center justify-center">
+                    <Checkbox indeterminate />
+                    Hello checkbox
+                  </label>
+                  <label className="flex flex-row gap-2 items-center justify-center">
+                    <Checkbox indeterminate />
+                    Hello checkbox
+                  </label>
+                </div>
+              </ComponentDemo>
+
+              <ComponentDemo title={"Chips"}>
+                <ChipSet>
+                  <Chip variant="md-assist-chip" label="Assist" checked >
+                    <Icon slot="icon" >event</Icon>
+                    Assist
+                  </Chip>
+                  <Chip variant="md-filter-chip" label="Filter" checked>
+                    Filter
+                  </Chip>
+                  <Chip variant="md-input-chip" label="Input">
+                    Input
+                  </Chip>
+                  <Chip variant="md-suggestion-chip" label="Suggestion">
+                    Suggestion
+                  </Chip>
+                </ChipSet>
+                <ChipSet>
+                  <Chip disabled variant="md-assist-chip" label="Assist">
+                    <Icon slot="icon" >event</Icon>
+                    Assist
+                  </Chip>
+                  <Chip disabled variant="md-filter-chip" label="Filter">
+                    Filter
+                  </Chip>
+                  <Chip disabled variant="md-input-chip" label="Input">
+                    Input
+                  </Chip>
+                  <Chip disabled variant="md-suggestion-chip" label="Suggestion">
+                    Suggestion
+                  </Chip>
+                </ChipSet>
+              </ComponentDemo>
+
+              <ComponentDemo title={"RadioButtons"} >
+                <div className="flex flex-col gap-3" >
+                  <label className="flex flex-row gap-3">
+                    <Radio></Radio>
+                    Option1
+                  </label>
+
+                  <label className="flex flex-row gap-3">
+                    <Radio></Radio>
+                    Option1
+                  </label>
+
+                  <label className="flex flex-row gap-3">
+                    <Radio></Radio>
+                    Option1
+                  </label>
+                </div>
+              </ComponentDemo>
+
+              <ComponentDemo title={"Switches"}>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col">
+                    <Switch selected ></Switch>
+                    <Switch disabled ></Switch>
                   </div>
-                </Dialog>
-              </div>
-            </ComponentDemo>
-          </DemoSection>
-        </Column>
+                  <div className="flex flex-col">
+                    <Switch selected></Switch>
+                    <Switch  ></Switch>
+                  </div>
+                </div>
+              </ComponentDemo>
 
-        <Column id="column-b">
-          <DemoSection title={"Selection"}>
-            <ComponentDemo title={"Checkboxes"}>
-              <div className="grid grid-cols-2 w-full gap-3">
-                <label className="flex flex-row gap-2  items-center justify-center">
-                  <Checkbox />
-                  Hello checkbox
-                </label>
-                <label className="flex flex-row gap-2  items-center justify-center">
-                  <Checkbox checked />
-                  Hello checkbox
-                </label>
-                <label className="flex flex-row gap-2 items-center justify-center">
-                  <Checkbox indeterminate />
-                  Hello checkbox
-                </label>
-                <label className="flex flex-row gap-2 items-center justify-center">
-                  <Checkbox indeterminate />
-                  Hello checkbox
-                </label>
-              </div>
-            </ComponentDemo>
+              <ComponentDemo title={"Sliders"} >
+                <div className="flex flex-col gap-4" >
+                  <Slider valueStart={0} valueEnd={90} ></Slider>
+                  <Slider></Slider>
+                </div>
+              </ComponentDemo>
 
-            <ComponentDemo title={"Chips"}>
-              <ChipSet>
-                <Chip variant="md-assist-chip" label="Assist">
-                  Assist
-                </Chip>
-                <Chip variant="md-filter-chip" label="Filter">
-                  Filter
-                </Chip>
-                <Chip variant="md-input-chip" label="Input">
-                  Input
-                </Chip>
-                <Chip variant="md-suggestion-chip" label="Suggestion">
-                  Suggestion
-                </Chip>
-              </ChipSet>
-              <ChipSet>
-                <Chip disabled variant="md-assist-chip" label="Assist">
-                  Assist
-                </Chip>
-                <Chip disabled variant="md-filter-chip" label="Filter">
-                  Filter
-                </Chip>
-                <Chip disabled variant="md-input-chip" label="Input">
-                  Input
-                </Chip>
-                <Chip disabled variant="md-suggestion-chip" label="Suggestion">
-                  Suggestion
-                </Chip>
-              </ChipSet>
-            </ComponentDemo>
-          </DemoSection>
-        </Column>
-      </div>
-    </main>
-  );
-}
+              <ComponentDemo title="Menus">
+                <Button 
+                 variant="md-text-button"
+                 onClick={() => setShowMenu((oldState) => !oldState)}
+                >{showMenu ? "Hide menu" : "Show menu"}</Button>
+                <Menu onClick={showMenu} >
+                  <MenuItem>Menu Item 1</MenuItem>
+                </Menu>
+              </ComponentDemo>
+
+              <ComponentDemo title={"Select"} >
+                <Select label="Choose an option" >
+                  <SelectOption value="1" >Option 1</SelectOption>
+                  <SelectOption value="2">Option 2</SelectOption>
+                </Select>
+              </ComponentDemo>
+            </DemoSection>
+
+            <DemoSection title={"Navigation"}  >
+              <ComponentDemo title={"Tabs"}    >
+                <PrimaryTab active >
+                  <Tabs>Settings
+                    <Icon>Settings</Icon>
+                  </Tabs>
+                </PrimaryTab>
+
+                <SecondaryTab>
+                  <Tabs>Picture
+                    <Icon>Image</Icon>
+                  </Tabs>
+                </SecondaryTab>
+              </ComponentDemo>
+
+              <ComponentDemo title={"List"} >
+                <List>
+                  <ListItem>Item 1</ListItem>
+                  <ListItem>Item 2</ListItem>
+                  <ListItem>Item 3</ListItem>
+                </List>
+              </ComponentDemo>
+            </DemoSection>
+
+            <DemoSection title={"Text Inputs"} >
+              <ComponentDemo title={"Text Fields"} >
+
+                <h3>Filled Text Field</h3>
+                <TextField Filled placeholder="filled" ></TextField>
+
+
+                <h3>Outlined Text Field</h3>
+                <TextField disabled variant="outlined" placeholder="outlined" ></TextField>
+
+              </ComponentDemo>
+
+            </DemoSection>
+          </Column>
+        </div>
+      </main>
+    );
+  }
