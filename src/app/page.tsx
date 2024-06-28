@@ -95,7 +95,7 @@ export default function Home() {
 
         <Column id="column-a">
           <DemoSection title={"Actions"}>
-            <ComponentDemo title={"Common Buttons"}>
+            <ComponentDemo title={"Common buttons"}>
               <div className="flex flex-row items-center justify-center gap-3">
                 <Button variant="md-elevated-button">Elevated</Button>
                 <Button variant="md-filled-button">Filled</Button>
@@ -119,7 +119,7 @@ export default function Home() {
               </div>
             </ComponentDemo>
 
-            <ComponentDemo title={"Floating Action Button"}>
+            <ComponentDemo title={"Floating action buttons"}>
               <div className="flex flex-row w-fit items-center justify-center gap-3">
                 <FAB size="small">
                   <Icon slot="icon">add</Icon>
@@ -136,7 +136,7 @@ export default function Home() {
               </div>
             </ComponentDemo>
 
-            <ComponentDemo title={"Icon Buttons"}>
+            <ComponentDemo title={"Icon buttons"}>
               <div className="">
                 <IconButton variant="md-filled-icon-button">
                   <Icon>Settings</Icon>
@@ -180,7 +180,7 @@ export default function Home() {
           </DemoSection>
 
           <DemoSection title="Communication">
-            <ComponentDemo title={"Progress Indicator"}>
+            <ComponentDemo title={"Progress indicators"}>
               <div className="flex flex-row gap-10 justify-center items-center">
                 <CircularProgress indeterminate></CircularProgress>
                 <LinearProgress indeterminate></LinearProgress>
