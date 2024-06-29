@@ -38,7 +38,7 @@ import GitHubButton from "react-github-btn";
 const Column = ({ children, ...props }: { children: any; id: string }) => {
   return (
     <div
-      className="w-full h-fit md:h-screen overflow-y-scroll flex-col gap-4 pt-20"
+      className="w-full h-fit md:h-screen overflow-y-scroll flex-col gap-4 pt-4"
       {...props}
     >
       {children}
@@ -55,7 +55,7 @@ const DemoSection = ({ title, children }: { title: any; children: any }) => {
   );
 };
 
-const ComponentDemo = ({ title, docsLink, children }: { title: any; docsLink?: any; children: any }) => {
+const ComponentDemo = ({ title, docsLink, children, codeContainerProps }: { title: any; docsLink?: any; children: any; codeContainerProps?: any }) => {
   const [showCode, setShowCode] = useState(false);
   
   return (
@@ -72,7 +72,7 @@ const ComponentDemo = ({ title, docsLink, children }: { title: any; docsLink?: a
         </a>}
         </div> */}
       </div>
-      <div className="h-fit w-fit rounded-lg border border-[#CAC4CF] p-6 flex flex-col flex-wrap items-center justify-center gap-2">
+      <div className="h-fit w-fit rounded-lg border border-[#CAC4CF] p-6 flex flex-col flex-wrap items-center justify-center gap-2" {...codeContainerProps}>
         {showCode ? renderToString(children).replaceAll('<!--$-->', '\n').replaceAll('<!--/$-->', '\n') : children}
       </div>
     </div>
@@ -103,7 +103,7 @@ export default function Home() {
     <main className="bg-[#FDF7FF] max-h-screen w-full">
       <div
         id="titlebar"
-        className="fixed top-0 left-0 backdrop-blur-md z-10 w-full h-16 flex flex-row gap-3 items-center justify-center"
+        className="backdrop-blur-md z-10 w-full h-16 flex flex-row gap-3 items-center justify-center"
       >
         <h1 className="font-bold text-xl">Material 3 for React</h1>
         <GitHubButton href="https://github.com/grayhatdevelopers/material-web-react">Star us on GitHub</GitHubButton>
@@ -238,11 +238,13 @@ export default function Home() {
             </DemoSection>
 
             <DemoSection title="Containment">
-              {/* <ComponentDemo title={"Divider"}>
-                <section className="max-w-full" >
-                  <Divider color="black" ></Divider>
-                </section>
-              </ComponentDemo> */}
+              <ComponentDemo title={"Divider"} codeContainerProps={
+               {style:{
+                width: '200px'
+              }} 
+              }>
+                  <Divider className="my-4" />
+              </ComponentDemo>
 
               <ComponentDemo title={"Dialog"}>
                 <div className="w-full">
@@ -328,32 +330,35 @@ export default function Home() {
               </ComponentDemo>
 
               <ComponentDemo title={"Radio buttons"} >
-                <div className="flex flex-col gap-3" >
-                  <label className="flex flex-row gap-3">
-                    <Radio></Radio>
-                    Option1
+              <form>
+                <div role="radiogroup" aria-labelledby="group-title" className="flex flex-col gap-3">
+                  <label className="flex flex-row gap-3 items-center">
+                    <Radio id="first-radio" name="group" value="1"></Radio>
+                    Option 1
                   </label>
 
-                  <label className="flex flex-row gap-3">
-                    <Radio></Radio>
-                    Option1
+                  <label className="flex flex-row gap-3 items-center">
+                    <Radio id="second-radio" name="group" value="2"></Radio>
+                    Option 2
                   </label>
 
-                  <label className="flex flex-row gap-3">
-                    <Radio></Radio>
-                    Option1
+                  <label className="flex flex-row gap-3 items-center">
+                    <Radio id="third-radio" name="group" value="3"></Radio>
+                    Option 3
                   </label>
                 </div>
+                </form>
               </ComponentDemo>
 
               <ComponentDemo title={"Switches"}>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex flex-col">
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="flex flex-col gap-2">
                     <Switch selected></Switch>
-                    <Switch disabled></Switch>
+                    <Switch selected disabled></Switch>
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col gap-2">
                     <Switch></Switch>
+                    <Switch disabled></Switch>
                   </div>
                 </div>
               </ComponentDemo>
@@ -389,37 +394,61 @@ export default function Home() {
 
             <DemoSection title={"Navigation"}  >
               <ComponentDemo title={"Tabs"}    >
-                <PrimaryTab active >
-                  <Tabs>Settings
-                    <Icon>Settings</Icon>
-                  </Tabs>
-                </PrimaryTab>
-
-                <SecondaryTab>
-                  <Tabs>Picture
-                    <Icon>Image</Icon>
-                  </Tabs>
-                </SecondaryTab>
+              <Tabs>
+        <PrimaryTab>Hello Tabs!</PrimaryTab>
+        <SecondaryTab><Icon>image</Icon>Hello Tabs!</SecondaryTab>
+      </Tabs>
               </ComponentDemo>
 
               <ComponentDemo title={"List"} >
-                <List>
-                  <ListItem>Item 1</ListItem>
-                  <ListItem>Item 2</ListItem>
-                  <ListItem>Item 3</ListItem>
-                </List>
+              <List
+        style={{
+          maxWidth: "300px",
+        }}
+      >
+        <ListItem>Fruits</ListItem>
+        <Divider></Divider>
+        <ListItem>Apple</ListItem>
+        <ListItem>Banana</ListItem>
+        <ListItem>
+          <div slot="headline">Cucumber</div>
+          <div slot="supporting-text">
+            Cucumbers are long green fruits that are just as long as this
+            multi-line description
+          </div>
+        </ListItem>
+        <ListItem
+          type="link"
+          href="https://google.com/search?q=buy+kiwis&tbm=shop"
+          target="_blank"
+        >
+          <div slot="headline">Shop for Kiwis</div>
+          <div slot="supporting-text">This will link you out in a new tab</div>
+          <Icon slot="end">open_in_new</Icon>
+        </ListItem>
+      </List>
               </ComponentDemo>
             </DemoSection>
 
             <DemoSection title={"Text Inputs"} >
               <ComponentDemo title={"Text Fields"} >
+                <TextField variant="md-filled-text-field" placeholder="Filled">
+                  <Icon slot="leading-icon">search</Icon>
+                  <IconButton slot="trailing-icon"><Icon>close</Icon></IconButton>
+                </TextField>
+                <TextField disabled variant="md-filled-text-field" placeholder="Filled">
+                  <Icon slot="leading-icon">search</Icon>
+                  <IconButton slot="trailing-icon"><Icon>close</Icon></IconButton>
+                </TextField>
 
-                <h3>Filled Text Field</h3>
-                <TextField Filled placeholder="filled" ></TextField>
-
-
-                <h3>Outlined Text Field</h3>
-                <TextField disabled variant="outlined" placeholder="outlined" ></TextField>
+                <TextField variant="md-outlined-text-field" placeholder="Outlined">
+                  <Icon slot="leading-icon">search</Icon>
+                  <IconButton slot="trailing-icon"><Icon>close</Icon></IconButton>
+                </TextField>
+                <TextField disabled variant="md-outlined-text-field" placeholder="Outlined">
+                  <Icon slot="leading-icon">search</Icon>
+                  <IconButton slot="trailing-icon"><Icon>close</Icon></IconButton>
+                </TextField>
 
               </ComponentDemo>
 
