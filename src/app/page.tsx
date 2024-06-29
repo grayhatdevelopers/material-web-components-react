@@ -193,51 +193,53 @@ export default function Home() {
         <Column id="column-a">
           <DemoSection title={"Actions"}>
             <ComponentDemo title={"Common buttons"}>
-              <div className="flex flex-row items-center justify-center gap-3">
-                <Button variant="md-elevated-button">Elevated</Button>
-                <Button variant="md-filled-button">Filled</Button>
-                <Button variant="md-filled-tonal-button">Filled Tonal</Button>
-                <Button variant="md-outlined-button">Outlined</Button>
-                <Button variant="md-text-button">Text</Button>
+              <div className="flex flex-row items-center justify-center gap-2">
+              <div className="flex flex-col items-center justify-center gap-3">
+                <Button className="w-full" variant="md-elevated-button">Elevated</Button>
+                <Button className="w-full" variant="md-filled-button">Filled</Button>
+                <Button className="w-full" variant="md-filled-tonal-button">Filled Tonal</Button>
+                <Button className="w-full" variant="md-outlined-button">Outlined</Button>
+                <Button className="w-full" variant="md-text-button">Text</Button>
               </div>
-              <div className="flex flex-row gap-3 items-center justify-center">
-                <Button variant="md-elevated-button">
+              <div className="flex flex-col gap-3 items-center justify-center">
+                <Button className="w-full" variant="md-elevated-button">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
-                <Button variant="md-filled-button">
+                <Button className="w-full" variant="md-filled-button">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
-                <Button variant="md-filled-tonal-button">
+                <Button className="w-full" variant="md-filled-tonal-button">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
-                <Button variant="md-outlined-button">
+                <Button className="w-full" variant="md-outlined-button">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
-                <Button variant="md-text-button">
+                <Button className="w-full" variant="md-text-button">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
               </div>
-              <div className="flex flex-row items-center justify-center gap-3">
-                <Button disabled variant="md-elevated-button">
+              <div className="flex flex-col items-center justify-center gap-3">
+                <Button className="w-full" disabled variant="md-elevated-button">
                   Elevated
                 </Button>
-                <Button disabled variant="md-filled-button">
+                <Button className="w-full" disabled variant="md-filled-button">
                   Filled
                 </Button>
-                <Button disabled variant="md-filled-tonal-button">
+                <Button className="w-full" disabled variant="md-filled-tonal-button">
                   Filled Tonal
                 </Button>
-                <Button disabled variant="md-outlined-button">
+                <Button className="w-full" disabled variant="md-outlined-button">
                   Outlined
                 </Button>
-                <Button disabled variant="md-text-button">
+                <Button className="w-full" disabled variant="md-text-button">
                   Text
                 </Button>
+              </div>
               </div>
             </ComponentDemo>
 
