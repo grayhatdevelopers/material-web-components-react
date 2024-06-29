@@ -1,7 +1,7 @@
 "use client";
 
 // @TODO: Fix this. Right now, static generation doesn't seem to work with Material Web Components.
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
 const Button = dynamic(() => import("@/components/ui/button"), { ssr: false });
 const Checkbox = dynamic(() => import("@/components/ui/checkbox"), { ssr: false });
@@ -28,13 +28,60 @@ const PrimaryTab = dynamic(() => import("@/components/ui/tabs").then(mod => mod.
 const SecondaryTab = dynamic(() => import("@/components/ui/tabs").then(mod => mod.SecondaryTab), { ssr: false });
 const TextField = dynamic(() => import("@/components/ui/textfield"), { ssr: false });
 
-import GitHubButton from 'react-github-btn'
+// import GitHubButton from "react-github-btn";
+// import reactElementToJSXString from 'react-element-to-jsx-string';
+import { renderToString } from 'react-dom/server';
 
 import React, { useState } from "react";
+
+const Column = ({ children, ...props }: { children: any; id: string }) => {
+  return (
+    <div
+      className="w-full h-screen overflow-y-scroll flex-col gap-4 pt-20"
+      {...props}
+    >
+      {children}
+    </div>
+  );
+};
+
+const DemoSection = ({ title, children }: { title: any; children: any }) => {
+  return (
+    <div className="bg-[#F6F0F8] rounded-xl flex flex-col items-center justify-center mb-4 px-4 py-8">
+      <h2 className="flex justify-center text-xl">{title}</h2>
+      {children}
+    </div>
+  );
+};
+
+const ComponentDemo = ({ title, docsLink, children }: { title: any; docsLink?: any; children: any }) => {
+  const [showCode, setShowCode] = useState(false);
+  
+  return (
+    <div className="flex flex-col justify-center items-center gap-1 mb-4">
+      <div className="flex justify-center items-center gap-0 w-full pt-2 ">
+        <h3 className="flex items-center justify-center text-sm">{title}</h3>
+        
+      {/* <div className="flex justify-center items-center gap-2 w-fit">
+        <IconButton title={showCode ? "Show preview" : "Show code"} className="h-6 w-6" onClick={() => setShowCode(oldState => !oldState)}>
+          <Icon className="text-sm">code</Icon>
+        </IconButton>
+        {docsLink && <a className="h-6 w-6" target="_blank" href={docsLink}>
+          <Icon className="text-sm">open_in_new</Icon>
+        </a>}
+        </div> */}
+      </div>
+      <div className="h-fit w-fit rounded-lg border border-[#CAC4CF] p-6 flex flex-col flex-wrap items-center justify-center gap-2">
+        {showCode ? renderToString(children).replaceAll('<!--$-->', '\n').replaceAll('<!--/$-->', '\n') : children}
+      </div>
+    </div>
+  );
+};
 
 export default function Home() {
   const [showDialog, setShowDialog] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+
   const comics = [
     {
       title: "Ossimu Quasi Alum",
@@ -52,224 +99,331 @@ export default function Home() {
     // ... other comics
   ];
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 gap-4">
-
-      <h1 className="text-4xl font-bold mb-4">Material Web Components for React</h1>
-      <h2 className="text-md text-center w-1/2">This demo shows how native Material Web Components can be used in NextJS/React, TypeScript and Tailwind, with minimal configuration.</h2>
-      <GitHubButton href="https://github.com/grayhatdevelopers/material-web-react">Star us on GitHub</GitHubButton>
-
-      <br />
-
-      <Dialog open={showDialog}>
-        <div slot="headline">Dialog Demo and Actions</div>
-        <form slot="content" id="form-id" method="dialog">
-          <List
-            style={{
-              maxWidth: "300px",
-              background: "transparent",
-            }}
-          >
-            <ListItem
-              type="link"
-              href="https://github.com/grayhatdevelopers/material-web-react"
-              target="_blank"
-            >
-              <div slot="headline">⭐️ on GitHub</div>
-              <div slot="supporting-text">
-                This will link you out in a new tab
-              </div>
-              <Icon slot="end">open_in_new</Icon>
-            </ListItem>
-            <ListItem
-              type="link"
-              href="https://github.com/grayhatdevelopers/material-web-react/edit/main/src/app/page.tsx"
-              target="_blank"
-            >
-              <div slot="headline">Edit this page</div>
-              <div slot="supporting-text">
-                Want to make changes?
-              </div>
-              <Icon slot="end">open_in_new</Icon>
-            </ListItem>
-          </List>
-        </form>
-        <div slot="actions">
-          <Button onClick={() => setShowDialog(false)}>Ok</Button>
-        </div>
-      </Dialog>
-
-      <TextField variant="md-filled-text-field" placeholder="Hello world">
-        <Icon slot="leading-icon">search</Icon>
-      </TextField>
-
-      <Switch />
-      <div className="flex flex-row gap-2 items-center">
-        <label className="flex flex-row gap-1 items-center">
-          <Checkbox />
-          Hello checkbox
-        </label>
-        <label className="flex flex-row gap-1 items-center">
-          <Checkbox checked />
-          Hello checkbox
-        </label>
-        <label className="flex flex-row gap-1 items-center">
-          <Checkbox indeterminate />
-          Hello checkbox
-        </label>
-      </div>
-
-      <LinearProgress indeterminate></LinearProgress>
-      <CircularProgress indeterminate></CircularProgress>
-
-      <form className="flex flex-col justify-start gap-2">
-        <span className="flex flex-row gap-2 items-center">
-          <Radio id="cats-radio" name="animals" value="cats"></Radio>
-          <label htmlFor="cats-radio">Cats</label>
-        </span>
-        <span className="flex flex-row gap-2 items-center">
-          <Radio id="dogs-radio" name="animals" value="dogs"></Radio>
-          <label htmlFor="dogs-radio">Dogs</label>
-        </span>
-        <span className="flex flex-row gap-2 items-center">
-          <Radio id="birds-radio" name="animals" value="birds" checked></Radio>
-          <label htmlFor="birds-radio">Birds</label>
-        </span>
-      </form>
-
-      <Select>
-        <SelectOption aria-label="blank"></SelectOption>
-        <SelectOption selected value="apple">
-          <div slot="headline">Apple</div>
-        </SelectOption>
-        <SelectOption value="apricot">
-          <div slot="headline">Apricot</div>
-        </SelectOption>
-      </Select>
-
-      <Slider></Slider>
-      <Slider ticks value={50}></Slider>
-      <Slider range value-start="25" value-end="75"></Slider>
-
-      <Divider className="my-4" />
-
-      <List
-        style={{
-          maxWidth: "300px",
-        }}
+    <main className="bg-[#FDF7FF] max-h-screen w-full">
+      <div
+        id="titlebar"
+        className="fixed top-0 left-0 backdrop-blur-md z-10 w-full h-16 flex items-center justify-center"
       >
-        <ListItem>Fruits</ListItem>
-        <Divider></Divider>
-        <ListItem>Apple</ListItem>
-        <ListItem>Banana</ListItem>
-        <ListItem>
-          <div slot="headline">Cucumber</div>
-          <div slot="supporting-text">
-            Cucumbers are long green fruits that are just as long as this
-            multi-line description
-          </div>
-        </ListItem>
-        <ListItem
-          type="link"
-          href="https://google.com/search?q=buy+kiwis&tbm=shop"
-          target="_blank"
-        >
-          <div slot="headline">Shop for Kiwis</div>
-          <div slot="supporting-text">This will link you out in a new tab</div>
-          <Icon slot="end">open_in_new</Icon>
-        </ListItem>
-      </List>
-
-      <Divider className="my-4" />
-
-      <ChipSet>
-        {comics[0].tags.map((tag) => (
-          <Chip key={tag} label={tag} variant="md-filter-chip" />
-        ))}
-      </ChipSet>
-      <ChipSet>
-        {comics[0].tags.map((tag) => (
-          <Chip key={tag} label={tag} variant="md-input-chip" />
-        ))}
-      </ChipSet>
-      <ChipSet>
-        {comics[0].tags.map((tag) => (
-          <Chip key={tag} label={tag} variant="md-suggestion-chip" />
-        ))}
-      </ChipSet>
-      <ChipSet>
-        {comics[0].tags.map((tag) => (
-          <Chip key={tag} label={tag} variant="md-assist-chip" />
-        ))}
-      </ChipSet>
-     
-
-      <div className="flex flex-row gap-2">
-        <Button variant="md-filled-button">Hello button!</Button>
-        <Button variant="md-filled-tonal-button">Hello button!</Button>
-        <Button variant="md-filled-elevated-button">Hello button!</Button>
-        <Button variant="md-outlined-button">Hello button!</Button>
+        <h1 className="font-bold text-xl">Material 3 for React</h1>
       </div>
+      <div className="grid grid-cols-[5rem_1fr_1fr] gap-4 h-screen">
+        <div id="sidebar"></div>
 
-      <div className="flex flex-row gap-2">
-        <IconButton>
-          {" "}
-          <Icon>delete</Icon>
-        </IconButton>
-        <IconButton variant="md-filled-icon-button">
-          {" "}
-          <Icon>favorite</Icon>
-        </IconButton>
-        <IconButton variant="md-filled-tonal-icon-button">
-          {" "}
-          <Icon>comment</Icon>
-        </IconButton>
+        {/* <Column id="column-a">
+          <DemoSection title={"Actions"}>
+            <ComponentDemo title={"Common buttons"} docsLink={`https://github.com/material-components/material-web/blob/main/docs/components/button.md`}>
+              <div className="flex flex-row items-center justify-center gap-3">
+                <Button variant="md-elevated-button">Elevated</Button>
+                <Button variant="md-filled-button">Filled</Button>
+                <Button variant="md-filled-tonal-button">Filled Tonal</Button>
+                <Button variant="md-outlined-button">Outlined</Button>
+                <Button variant="md-text-button">Text</Button>
+              </div>
+              <div className="flex flex-row items-center justify-center gap-3">
+                <Button variant="md-elevated-button">Icon</Button>
+                <Button variant="md-filled-button">Icon</Button>
+                <Button variant="md-filled-tonal-button">Icon</Button>
+                <Button variant="md-outlined-button">Icon</Button>
+                <Button variant="md-text-button">Icon</Button>
+              </div>
+              <div className="flex flex-row items-center justify-center gap-3">
+                <Button variant="md-elevated-button">Elevated</Button>
+                <Button variant="md-filled-button">Filled</Button>
+                <Button variant="md-filled-tonal-button">Filled Tonal</Button>
+                <Button variant="md-outlined-button">Outlined</Button>
+                <Button variant="md-text-button">Text</Button>
+              </div>
+            </ComponentDemo> */}
 
-        <span style={{ position: "relative" }}>
-          <IconButton
-            id="usage-anchor"
-            variant="md-outlined-icon-button"
-            onClick={() => {
-              setShowMenu(true);
-            }}
-          >
-            {" "}
-            <Icon>share</Icon>
-          </IconButton>
-          <Menu
-            id="usage-menu"
-            anchor="usage-anchor"
-            open={showMenu}
-            onClick={() => {
-              setShowMenu(false);
-            }}
-          >
-            <MenuItem>
-              <div slot="headline">Apple</div>
-            </MenuItem>
-            <MenuItem>
-              <div slot="headline">Banana</div>
-            </MenuItem>
-            <MenuItem>
-              <div slot="headline">Cucumber</div>
-            </MenuItem>
-          </Menu>
-        </span>
-      </div>
+          <Column id="column-a">
+            <DemoSection title={"Actions"}>
+              <ComponentDemo title={"Common buttons"}>
+                <div className="flex flex-row items-center justify-center gap-3">
+                  <Button variant="md-elevated-button">Elevated</Button>
+                  <Button variant="md-filled-button">Filled</Button>
+                  <Button variant="md-filled-tonal-button">Filled Tonal</Button>
+                  <Button variant="md-outlined-button">Outlined</Button>
+                  <Button variant="md-text-button">Text</Button>
+                </div>
+                <div className="flex flex-row gap-3 items-center justify-center">
+                  <Button variant="md-elevated-button">Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                  <Button variant="md-filled-button">Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                  <Button variant="md-filled-tonal-button">Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                  <Button variant="md-outlined-button">Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                  <Button variant="md-text-button">Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                </div>
+                <div className="flex flex-row items-center justify-center gap-3">
+                  <Button disabled variant="md-elevated-button">Elevated</Button>
+                  <Button disabled variant="md-filled-button">Filled</Button>
+                  <Button disabled variant="md-filled-tonal-button">Filled Tonal</Button>
+                  <Button disabled variant="md-outlined-button">Outlined</Button>
+                  <Button disabled variant="md-text-button">Text</Button>
+                </div>
+              </ComponentDemo>
 
-      <Tabs>
-        <PrimaryTab>Hello Tabs!</PrimaryTab>
-        <SecondaryTab>Hello Tabs!</SecondaryTab>
-      </Tabs>
+              <ComponentDemo title={"Floating action buttons"}>
+                <div className="flex flex-row w-fit items-center justify-center gap-3">
+                  <FAB size="small">
+                    <Icon slot="icon">add</Icon>
+                  </FAB>
+                  <FAB label="Create">
+                    <Icon slot="icon">add</Icon>
+                  </FAB>
+                  <FAB>
+                    <Icon slot="icon">add</Icon>
+                  </FAB>
+                  <FAB size="large">
+                    <Icon slot="icon">add</Icon>
+                  </FAB>
+                </div>
+              </ComponentDemo>
 
-      <div className="fixed bottom-4 right-4">
-        <FAB
-          onClick={() => {
-            setShowDialog((oldState) => !oldState);
-          }}
-        >
-          <Icon slot="icon">edit</Icon>
-        </FAB>
-      </div>
-    </main>
-  );
-}
+              <ComponentDemo title={"Icon buttons"}>
+                <div className="flex flex-row gap-4 ">
+                <IconButton variant="md-icon-button">
+                    <Icon>Settings</Icon>
+                  </IconButton>
+
+                  <IconButton variant="md-filled-icon-button">
+                    <Icon>Settings</Icon>
+                  </IconButton>
+
+                  <IconButton variant="md-filled-tonal-icon-button">
+                    <Icon>Settings</Icon>
+                  </IconButton>
+
+                  <IconButton variant="md-outlined-icon-button">
+                    <Icon>Settings</Icon>
+                  </IconButton>
+                </div>
+                <div className="flex flex-row gap-4 ">
+                <IconButton disabled variant="md-icon-button">
+                    <Icon>Settings</Icon>
+                  </IconButton>
+
+                  <IconButton disabled variant="md-filled-icon-button">
+                    <Icon>Settings</Icon>
+                  </IconButton>
+
+                  <IconButton disabled variant="md-filled-tonal-icon-button">
+                    <Icon>Settings</Icon>
+                  </IconButton>
+
+                  <IconButton disabled variant="md-outlined-icon-button">
+                    <Icon>Settings</Icon>
+                  </IconButton>
+                </div>
+              </ComponentDemo>
+            </DemoSection>
+
+            <DemoSection title="Communication">
+              <ComponentDemo title={"Progress indicators"}>
+                <div className="flex flex-row gap-10 justify-center items-center">
+                  <CircularProgress indeterminate></CircularProgress>
+                  <LinearProgress indeterminate></LinearProgress>
+                </div>
+              </ComponentDemo>
+            </DemoSection>
+
+            <DemoSection title="Containment">
+              {/* <ComponentDemo title={"Divider"}>
+                <section className="max-w-full" >
+                  <Divider color="black" ></Divider>
+                </section>
+              </ComponentDemo> */}
+
+              <ComponentDemo title={"Dialog"}>
+                <div className="w-full">
+                  <Button
+                    variant="md-text-button"
+                    onClick={() => setShowDialog((oldState) => !oldState)}
+                  >
+                    {showDialog ? "Hide dialog" : "Show dialog"}
+                  </Button>
+                  <Dialog open={showDialog}>
+                    <div slot="headline">Dialog title</div>
+                    <form slot="content" id="form-id" method="dialog">
+                      A simple dialog with free-form content.
+                    </form>
+                    <div slot="actions">
+                      <Button
+                        variant="md-text-button"
+                        onClick={() => setShowDialog(false)}
+                      >
+                        Ok
+                      </Button>
+                    </div>
+                  </Dialog>
+                </div>
+              </ComponentDemo>
+            </DemoSection>
+          </Column>
+
+          <Column id="column-b">
+            <DemoSection title={"Selection"}>
+              <ComponentDemo title={"Checkboxes"}>
+                <div className="grid grid-cols-2 w-full gap-3">
+                  <label className="flex flex-row gap-2  items-center justify-center">
+                    <Checkbox />
+                    Hello checkbox
+                  </label>
+                  <label className="flex flex-row gap-2  items-center justify-center">
+                    <Checkbox checked />
+                    Hello checkbox
+                  </label>
+                  <label className="flex flex-row gap-2 items-center justify-center">
+                    <Checkbox indeterminate />
+                    Hello checkbox
+                  </label>
+                  <label className="flex flex-row gap-2 items-center justify-center">
+                    <Checkbox disabled checked />
+                    Hello checkbox
+                  </label>
+                </div>
+              </ComponentDemo>
+
+              <ComponentDemo title={"Chips"}>
+                <ChipSet>
+                  <Chip variant="md-assist-chip" label="Assist" checked >
+                    <Icon slot="icon" >event</Icon>
+                    Assist
+                  </Chip>
+                  <Chip variant="md-filter-chip" label="Filter" checked>
+                    Filter
+                  </Chip>
+                  <Chip variant="md-input-chip" label="Input">
+                    Input
+                  </Chip>
+                  <Chip variant="md-suggestion-chip" label="Suggestion">
+                    Suggestion
+                  </Chip>
+                </ChipSet>
+                <ChipSet>
+                  <Chip disabled variant="md-assist-chip" label="Assist">
+                    <Icon slot="icon" >event</Icon>
+                    Assist
+                  </Chip>
+                  <Chip disabled variant="md-filter-chip" label="Filter">
+                    Filter
+                  </Chip>
+                  <Chip disabled variant="md-input-chip" label="Input">
+                    Input
+                  </Chip>
+                  <Chip disabled variant="md-suggestion-chip" label="Suggestion">
+                    Suggestion
+                  </Chip>
+                </ChipSet>
+              </ComponentDemo>
+
+              <ComponentDemo title={"Radio buttons"} >
+                <div className="flex flex-col gap-3" >
+                  <label className="flex flex-row gap-3">
+                    <Radio></Radio>
+                    Option1
+                  </label>
+
+                  <label className="flex flex-row gap-3">
+                    <Radio></Radio>
+                    Option1
+                  </label>
+
+                  <label className="flex flex-row gap-3">
+                    <Radio></Radio>
+                    Option1
+                  </label>
+                </div>
+              </ComponentDemo>
+
+              <ComponentDemo title={"Switches"}>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col">
+                    <Switch selected></Switch>
+                    <Switch disabled></Switch>
+                  </div>
+                  <div className="flex flex-col">
+                    <Switch></Switch>
+                  </div>
+                </div>
+              </ComponentDemo>
+
+              <ComponentDemo title={"Sliders"} >
+                <div className="flex flex-col gap-4" >
+                  <Slider valueStart={0} valueEnd={90} ></Slider>
+                  <Slider></Slider>
+                </div>
+              </ComponentDemo>
+
+              <ComponentDemo title="Menus">
+                <Button 
+                  id="usage-anchor"
+                 variant="md-text-button"
+                 onClick={() => setShowMenu((oldState) => !oldState)}
+                >{showMenu ? "Hide menu" : "Show menu"}</Button>
+                <Menu open={showMenu} 
+                id="usage-menu"
+                anchor="usage-anchor"
+                >
+                  <MenuItem>Menu Item 1</MenuItem>
+                </Menu>
+              </ComponentDemo>
+
+              <ComponentDemo title={"Select"} >
+                <Select label="Choose an option" >
+                  <SelectOption value="1" >Option 1</SelectOption>
+                  <SelectOption value="2">Option 2</SelectOption>
+                </Select>
+              </ComponentDemo>
+            </DemoSection>
+
+            <DemoSection title={"Navigation"}  >
+              <ComponentDemo title={"Tabs"}    >
+                <PrimaryTab active >
+                  <Tabs>Settings
+                    <Icon>Settings</Icon>
+                  </Tabs>
+                </PrimaryTab>
+
+                <SecondaryTab>
+                  <Tabs>Picture
+                    <Icon>Image</Icon>
+                  </Tabs>
+                </SecondaryTab>
+              </ComponentDemo>
+
+              <ComponentDemo title={"List"} >
+                <List>
+                  <ListItem>Item 1</ListItem>
+                  <ListItem>Item 2</ListItem>
+                  <ListItem>Item 3</ListItem>
+                </List>
+              </ComponentDemo>
+            </DemoSection>
+
+            <DemoSection title={"Text Inputs"} >
+              <ComponentDemo title={"Text Fields"} >
+
+                <h3>Filled Text Field</h3>
+                <TextField Filled placeholder="filled" ></TextField>
+
+
+                <h3>Outlined Text Field</h3>
+                <TextField disabled variant="outlined" placeholder="outlined" ></TextField>
+
+              </ComponentDemo>
+
+            </DemoSection>
+          </Column>
+        </div>
+      </main>
+    );
+  }

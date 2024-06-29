@@ -10,23 +10,28 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.4",
+    "@lit-labs/nextjs": "latest",
+    "@lit/react": "latest",
     "@material/web": "latest",
     "lit": "latest",
-    "@lit/react": "latest",
-    "@lit-labs/nextjs": "latest",
+    "next": "^14.2.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-element-to-jsx-string": "^15.0.0",
     "react-github-btn": "latest"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.4"
-  }
+    "typescript": "^5"
+  },
+  "description": "This demo shows how native Material Web Components can be used in NextJS/React, TypeScript and Tailwind, with minimal configuration.",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
