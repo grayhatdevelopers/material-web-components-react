@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+
 // @TODO: Fix this. Right now, static generation doesn't seem to work with Material Web Components.
 import dynamic from "next/dynamic";
 
@@ -71,7 +71,7 @@ const ComponentDemo = ({ title, docsLink, children }: { title: any; docsLink?: a
         </a>}
         </div> */}
       </div>
-      <div className="h-fit w-fit rounded-lg border border-[#CAC4CF] p-6 flex flex-col flex-wrap items-center justify-center gap-2 whitespace-pre-wrap">
+      <div className="h-fit w-fit rounded-lg border border-[#CAC4CF] p-6 flex flex-col flex-wrap items-center justify-center gap-2">
         {showCode ? renderToString(children).replaceAll('<!--$-->', '\n').replaceAll('<!--/$-->', '\n') : children}
       </div>
     </div>
@@ -190,6 +190,10 @@ export default function Home() {
 
               <ComponentDemo title={"Icon buttons"}>
                 <div className="flex flex-row gap-4 ">
+                <IconButton variant="md-icon-button">
+                    <Icon>Settings</Icon>
+                  </IconButton>
+
                   <IconButton variant="md-filled-icon-button">
                     <Icon>Settings</Icon>
                   </IconButton>
@@ -197,35 +201,26 @@ export default function Home() {
                   <IconButton variant="md-filled-tonal-icon-button">
                     <Icon>Settings</Icon>
                   </IconButton>
-                </div>
 
-                <div className="flex flex-row gap-4 " >
-                  <IconButton variant="md-filled-tonal-icon-button">
-                    <Icon>Settings</Icon>
-                  </IconButton>
-
-                  <IconButton variant="md-filled-icon-button">
-                    <Icon>Settings</Icon>
-                  </IconButton>
-                </div  >
-
-                <div className="flex flex-row gap-4 " >
-                  <IconButton variant="md-icon-button">
-                    <Icon>Settings</Icon>
-                  </IconButton>
-
-                  <IconButton variant="md-icon-button">
+                  <IconButton variant="md-outlined-icon-button">
                     <Icon>Settings</Icon>
                   </IconButton>
                 </div>
-
-                <div className="flex flex-row gap-4 " >
-                  <IconButton variant="md-outlined-icon-button">
+                <div className="flex flex-row gap-4 ">
+                <IconButton disabled variant="md-icon-button">
                     <Icon>Settings</Icon>
                   </IconButton>
 
-                  <IconButton variant="md-outlined-icon-button">
-                    <Icon  >Settings</Icon>
+                  <IconButton disabled variant="md-filled-icon-button">
+                    <Icon>Settings</Icon>
+                  </IconButton>
+
+                  <IconButton disabled variant="md-filled-tonal-icon-button">
+                    <Icon>Settings</Icon>
+                  </IconButton>
+
+                  <IconButton disabled variant="md-outlined-icon-button">
+                    <Icon>Settings</Icon>
                   </IconButton>
                 </div>
               </ComponentDemo>
@@ -291,7 +286,7 @@ export default function Home() {
                     Hello checkbox
                   </label>
                   <label className="flex flex-row gap-2 items-center justify-center">
-                    <Checkbox indeterminate />
+                    <Checkbox disabled checked />
                     Hello checkbox
                   </label>
                 </div>
@@ -330,7 +325,7 @@ export default function Home() {
                 </ChipSet>
               </ComponentDemo>
 
-              <ComponentDemo title={"RadioButtons"} >
+              <ComponentDemo title={"Radio buttons"} >
                 <div className="flex flex-col gap-3" >
                   <label className="flex flex-row gap-3">
                     <Radio></Radio>
@@ -352,12 +347,11 @@ export default function Home() {
               <ComponentDemo title={"Switches"}>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col">
-                    <Switch selected ></Switch>
-                    <Switch disabled ></Switch>
+                    <Switch selected></Switch>
+                    <Switch disabled></Switch>
                   </div>
                   <div className="flex flex-col">
-                    <Switch selected></Switch>
-                    <Switch  ></Switch>
+                    <Switch></Switch>
                   </div>
                 </div>
               </ComponentDemo>
@@ -371,10 +365,14 @@ export default function Home() {
 
               <ComponentDemo title="Menus">
                 <Button 
+                  id="usage-anchor"
                  variant="md-text-button"
                  onClick={() => setShowMenu((oldState) => !oldState)}
                 >{showMenu ? "Hide menu" : "Show menu"}</Button>
-                <Menu onClick={showMenu} >
+                <Menu open={showMenu} 
+                id="usage-menu"
+                anchor="usage-anchor"
+                >
                   <MenuItem>Menu Item 1</MenuItem>
                 </Menu>
               </ComponentDemo>
