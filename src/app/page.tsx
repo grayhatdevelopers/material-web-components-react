@@ -28,7 +28,9 @@ const PrimaryTab = dynamic(() => import("@/components/ui/tabs").then(mod => mod.
 const SecondaryTab = dynamic(() => import("@/components/ui/tabs").then(mod => mod.SecondaryTab), { ssr: false });
 const TextField = dynamic(() => import("@/components/ui/textfield"), { ssr: false });
 
-import GitHubButton from "react-github-btn";
+// import GitHubButton from "react-github-btn";
+// import reactElementToJSXString from 'react-element-to-jsx-string';
+import { renderToString } from 'react-dom/server';
 
 import React, { useState } from "react";
 
@@ -52,12 +54,25 @@ const DemoSection = ({ title, children }: { title: any; children: any }) => {
   );
 };
 
-const ComponentDemo = ({ title, children }: { title: any; children: any }) => {
+const ComponentDemo = ({ title, docsLink, children }: { title: any; docsLink?: any; children: any }) => {
+  const [showCode, setShowCode] = useState(false);
+  
   return (
-    <div className="flex flex-col justify-center items-center gap-1">
-      <h3 className="flex justify-center pt-4 text-sm">{title}</h3>
-      <div className="h-fit w-fit rounded-lg border border-[#CAC4CF] p-6 flex flex-col flex-wrap items-center justify-center gap-2">
-        {children}
+    <div className="flex flex-col justify-center items-center gap-1 mb-4">
+      <div className="flex justify-center items-center gap-0 w-full pt-2 ">
+        <h3 className="flex items-center justify-center text-sm">{title}</h3>
+        
+      {/* <div className="flex justify-center items-center gap-2 w-fit">
+        <IconButton title={showCode ? "Show preview" : "Show code"} className="h-6 w-6" onClick={() => setShowCode(oldState => !oldState)}>
+          <Icon className="text-sm">code</Icon>
+        </IconButton>
+        {docsLink && <a className="h-6 w-6" target="_blank" href={docsLink}>
+          <Icon className="text-sm">open_in_new</Icon>
+        </a>}
+        </div> */}
+      </div>
+      <div className="h-fit w-fit rounded-lg border border-[#CAC4CF] p-6 flex flex-col flex-wrap items-center justify-center gap-2 whitespace-pre-wrap">
+        {showCode ? renderToString(children).replaceAll('<!--$-->', '\n').replaceAll('<!--/$-->', '\n') : children}
       </div>
     </div>
   );
@@ -83,19 +98,42 @@ export default function Home() {
     },
     // ... other comics
   ];
+  return (
+    <main className="bg-[#FDF7FF] max-h-screen w-full">
+      <div
+        id="titlebar"
+        className="fixed top-0 left-0 backdrop-blur-md z-10 w-full h-16 flex items-center justify-center"
+      >
+        <h1 className="font-bold text-xl">Material 3 for React</h1>
+      </div>
+      <div className="grid grid-cols-[5rem_1fr_1fr] gap-4 h-screen">
+        <div id="sidebar"></div>
 
-    
-  
-    return (
-      <main className="bg-[#FDF7FF] max-h-screen w-full">
-        <div
-          id="titlebar"
-          className="fixed top-0 left-0 backdrop-blur-md z-10 w-full h-16 flex items-center justify-center"
-        >
-          <h1 className="font-bold text-xl">Material 3</h1>
-        </div>
-        <div className="grid grid-cols-[5rem_1fr_1fr] gap-4">
-          <div id="sidebar"></div>
+        {/* <Column id="column-a">
+          <DemoSection title={"Actions"}>
+            <ComponentDemo title={"Common buttons"} docsLink={`https://github.com/material-components/material-web/blob/main/docs/components/button.md`}>
+              <div className="flex flex-row items-center justify-center gap-3">
+                <Button variant="md-elevated-button">Elevated</Button>
+                <Button variant="md-filled-button">Filled</Button>
+                <Button variant="md-filled-tonal-button">Filled Tonal</Button>
+                <Button variant="md-outlined-button">Outlined</Button>
+                <Button variant="md-text-button">Text</Button>
+              </div>
+              <div className="flex flex-row items-center justify-center gap-3">
+                <Button variant="md-elevated-button">Icon</Button>
+                <Button variant="md-filled-button">Icon</Button>
+                <Button variant="md-filled-tonal-button">Icon</Button>
+                <Button variant="md-outlined-button">Icon</Button>
+                <Button variant="md-text-button">Icon</Button>
+              </div>
+              <div className="flex flex-row items-center justify-center gap-3">
+                <Button variant="md-elevated-button">Elevated</Button>
+                <Button variant="md-filled-button">Filled</Button>
+                <Button variant="md-filled-tonal-button">Filled Tonal</Button>
+                <Button variant="md-outlined-button">Outlined</Button>
+                <Button variant="md-text-button">Text</Button>
+              </div>
+            </ComponentDemo> */}
 
           <Column id="column-a">
             <DemoSection title={"Actions"}>
@@ -153,37 +191,37 @@ export default function Home() {
               <ComponentDemo title={"Icon buttons"}>
                 <div className="flex flex-row gap-4 ">
                   <IconButton variant="md-filled-icon-button">
-                    <Icon  >Settings</Icon>
+                    <Icon>Settings</Icon>
                   </IconButton>
 
                   <IconButton variant="md-filled-tonal-icon-button">
-                    <Icon  >Settings</Icon>
+                    <Icon>Settings</Icon>
                   </IconButton>
                 </div>
 
                 <div className="flex flex-row gap-4 " >
                   <IconButton variant="md-filled-tonal-icon-button">
-                    <Icon  >Settings</Icon>
+                    <Icon>Settings</Icon>
                   </IconButton>
 
                   <IconButton variant="md-filled-icon-button">
-                    <Icon  >Settings</Icon>
+                    <Icon>Settings</Icon>
                   </IconButton>
                 </div  >
 
                 <div className="flex flex-row gap-4 " >
                   <IconButton variant="md-icon-button">
-                    <Icon  >Settings</Icon>
+                    <Icon>Settings</Icon>
                   </IconButton>
 
                   <IconButton variant="md-icon-button">
-                    <Icon  >Settings</Icon>
+                    <Icon>Settings</Icon>
                   </IconButton>
                 </div>
 
                 <div className="flex flex-row gap-4 " >
                   <IconButton variant="md-outlined-icon-button">
-                    <Icon  >Settings</Icon>
+                    <Icon>Settings</Icon>
                   </IconButton>
 
                   <IconButton variant="md-outlined-icon-button">
@@ -203,11 +241,11 @@ export default function Home() {
             </DemoSection>
 
             <DemoSection title="Containment">
-              <ComponentDemo title={"Divider"}>
+              {/* <ComponentDemo title={"Divider"}>
                 <section className="max-w-full" >
                   <Divider color="black" ></Divider>
                 </section>
-              </ComponentDemo>
+              </ComponentDemo> */}
 
               <ComponentDemo title={"Dialog"}>
                 <div className="w-full">
