@@ -33,6 +33,7 @@ const TextField = dynamic(() => import("@/components/ui/textfield"), { ssr: fals
 import { renderToString } from 'react-dom/server';
 
 import React, { useState } from "react";
+import GitHubButton from "react-github-btn";
 
 const Column = ({ children, ...props }: { children: any; id: string }) => {
   return (
@@ -102,9 +103,10 @@ export default function Home() {
     <main className="bg-[#FDF7FF] max-h-screen w-full">
       <div
         id="titlebar"
-        className="fixed top-0 left-0 backdrop-blur-md z-10 w-full h-16 flex items-center justify-center"
+        className="fixed top-0 left-0 backdrop-blur-md z-10 w-full h-16 flex flex-row gap-3 items-center justify-center"
       >
         <h1 className="font-bold text-xl">Material 3 for React</h1>
+        <GitHubButton href="https://github.com/grayhatdevelopers/material-web-react">Star us on GitHub</GitHubButton>
       </div>
       <div className="grid grid-cols-[5rem_1fr_1fr] gap-4 h-screen">
         <div id="sidebar"></div>
