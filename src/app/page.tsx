@@ -38,7 +38,7 @@ import GitHubButton from "react-github-btn";
 const Column = ({ children, ...props }: { children: any; id: string }) => {
   return (
     <div
-      className="w-full h-screen overflow-y-scroll flex-col gap-4 pt-20"
+      className="w-full h-fit md:h-screen overflow-y-scroll flex-col gap-4 pt-20"
       {...props}
     >
       {children}
@@ -108,7 +108,7 @@ export default function Home() {
         <h1 className="font-bold text-xl">Material 3 for React</h1>
         <GitHubButton href="https://github.com/grayhatdevelopers/material-web-react">Star us on GitHub</GitHubButton>
       </div>
-      <div className="grid grid-cols-[5rem_1fr_1fr] gap-4 h-screen">
+      <div className="flex flex-col justify-center items-center md:grid md:grid-cols-[5rem_1fr_1fr] gap-4 md:h-screen">
         <div id="sidebar"></div>
 
         {/* <Column id="column-a">
