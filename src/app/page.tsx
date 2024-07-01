@@ -161,33 +161,6 @@ export default function Home() {
       </div>
       <div className="flex flex-col justify-center items-center md:grid md:grid-cols-[5rem_1fr_1fr] gap-4 md:h-screen">
         <div id="sidebar"></div>
-
-        {/* <Column id="column-a">
-          <DemoSection title={"Actions"}>
-            <ComponentDemo title={"Common buttons"} docsLink={`https://github.com/material-components/material-web/blob/main/docs/components/button.md`}>
-              <div className="flex flex-row items-center justify-center gap-3">
-                <Button variant="md-elevated-button">Elevated</Button>
-                <Button variant="md-filled-button">Filled</Button>
-                <Button variant="md-filled-tonal-button">Filled Tonal</Button>
-                <Button variant="md-outlined-button">Outlined</Button>
-                <Button variant="md-text-button">Text</Button>
-              </div>
-              <div className="flex flex-row items-center justify-center gap-3">
-                <Button variant="md-elevated-button">Icon</Button>
-                <Button variant="md-filled-button">Icon</Button>
-                <Button variant="md-filled-tonal-button">Icon</Button>
-                <Button variant="md-outlined-button">Icon</Button>
-                <Button variant="md-text-button">Icon</Button>
-              </div>
-              <div className="flex flex-row items-center justify-center gap-3">
-                <Button variant="md-elevated-button">Elevated</Button>
-                <Button variant="md-filled-button">Filled</Button>
-                <Button variant="md-filled-tonal-button">Filled Tonal</Button>
-                <Button variant="md-outlined-button">Outlined</Button>
-                <Button variant="md-text-button">Text</Button>
-              </div>
-            </ComponentDemo> */}
-
         <Column id="column-a">
           <DemoSection title={"Actions"}>
             <ComponentDemo title={"Common buttons"}>
