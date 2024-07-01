@@ -62,8 +62,6 @@ const TextField = dynamic(() => import("@/components/ui/textfield"), {
   ssr: false,
 });
 
-// import GitHubButton from "react-github-btn";
-// import reactElementToJSXString from 'react-element-to-jsx-string';
 import { renderToString } from "react-dom/server";
 
 import React, { useState } from "react";
@@ -117,7 +115,7 @@ const ComponentDemo = ({
         </div> */}
       </div>
       <div
-        className="h-fit w-fit rounded-lg border border-[#CAC4CF] p-6 flex flex-col flex-wrap items-center justify-center gap-2"
+        className="relative h-fit w-fit rounded-lg border border-[#CAC4CF] p-6 flex flex-col flex-wrap items-center justify-center gap-2"
         {...codeContainerProps}
       >
         {showCode
@@ -327,7 +325,7 @@ export default function Home() {
                 >
                   {showDialog ? "Hide dialog" : "Show dialog"}
                 </Button>
-                <Dialog open={showDialog}>
+                <Dialog onClosed={() => setShowDialog(false)} open={showDialog}>
                   <div slot="headline">Dialog title</div>
                   <form slot="content" id="form-id" method="dialog">
                     A simple dialog with free-form content.
@@ -456,7 +454,7 @@ export default function Home() {
               >
                 {showMenu ? "Hide menu" : "Show menu"}
               </Button>
-              <Menu open={showMenu} id="usage-menu" anchor="usage-anchor">
+              <Menu onClosed={() => setShowMenu(false)} open={showMenu} id="usage-menu" anchor="usage-anchor">
                 <MenuItem>Menu Item 1</MenuItem>
               </Menu>
             </ComponentDemo>
