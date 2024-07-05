@@ -66,6 +66,9 @@ import { renderToString } from "react-dom/server";
 
 import React, { useState } from "react";
 import GitHubButton from "react-github-btn";
+import Elevation from "@/components/ui/elevation";
+import Ripple from "@/components/ui/ripple";
+import FocusRing from "@/components/ui/focus-ring";
 
 const Column = ({ children, ...props }: { children: any; id: string }) => {
   return (
@@ -276,6 +279,41 @@ export default function Home() {
                 <LinearProgress indeterminate></LinearProgress>
               </div>
             </ComponentDemo>
+            <ComponentDemo title={"Elevation"}>
+              <div className="w-[320px] h-[120px] px-10 py-8 flex flex-row gap-3 items-center justify-center">
+                <div className="relative rounded-lg flex flex-row gap-10 justify-center items-center w-[200px] h-[100px]" style={{
+                  "--md-elevation-level": 1
+                }}>
+                  <Elevation></Elevation>
+                </div>
+                <div className="relative rounded-lg flex flex-row gap-10 justify-center items-center w-[200px] h-[100px]" style={{
+                  "--md-elevation-level": 2
+                }}>
+                  <Elevation></Elevation>
+                </div>
+                <div className="relative rounded-lg flex flex-row gap-10 justify-center items-center w-[200px] h-[100px]" style={{
+                  "--md-elevation-level": 3
+                }}>
+                  <Elevation></Elevation>
+                </div>
+              </div>
+            </ComponentDemo>
+            <ComponentDemo title={"Ripple"}>
+              <div className="w-[320px] h-[120px] px-10 py-8 flex flex-row gap-3 items-center justify-center">
+                <div className="relative rounded-lg flex flex-row gap-10 justify-center items-center w-[200px] h-[100px]">
+                  Tap me for effect
+                  <Ripple></Ripple>
+                </div>
+              </div>
+            </ComponentDemo>
+            <ComponentDemo title={"Focus ring"}>
+              <div className="w-[320px] h-[120px] px-10 py-8 flex flex-row gap-3 items-center justify-center">
+              <button className="relative px-4 py-2 rounded-full">
+                <FocusRing></FocusRing>
+                Use the keyboard to access me
+              </button>
+              </div>
+            </ComponentDemo>
           </DemoSection>
 
           <DemoSection title="Containment">
@@ -390,8 +428,8 @@ export default function Home() {
                     Option 2
                   </label>
 
-                  <label className="flex flex-row gap-3 items-center">
-                    <Radio id="third-radio" name="group" value="3"></Radio>
+                  <label aria-disabled className="flex flex-row gap-3 items-center">
+                    <Radio disabled id="third-radio" name="group" value="3"></Radio>
                     Option 3
                   </label>
                 </div>
