@@ -282,16 +282,19 @@ export default function Home() {
             <ComponentDemo title={"Elevation"}>
               <div className="w-[320px] h-[120px] px-10 py-8 flex flex-row gap-3 items-center justify-center">
                 <div className="relative rounded-lg flex flex-row gap-10 justify-center items-center w-[200px] h-[100px]" style={{
+                  // @ts-ignore
                   "--md-elevation-level": 1
                 }}>
                   <Elevation></Elevation>
                 </div>
                 <div className="relative rounded-lg flex flex-row gap-10 justify-center items-center w-[200px] h-[100px]" style={{
+                  // @ts-ignore
                   "--md-elevation-level": 2
                 }}>
                   <Elevation></Elevation>
                 </div>
                 <div className="relative rounded-lg flex flex-row gap-10 justify-center items-center w-[200px] h-[100px]" style={{
+                  // @ts-ignore
                   "--md-elevation-level": 3
                 }}>
                   <Elevation></Elevation>
