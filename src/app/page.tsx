@@ -134,6 +134,7 @@ const ComponentDemo = ({
 export default function Home() {
   const [showDialog, setShowDialog] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [isPlayingProgressIndicators, setIsPlayingProgressIndicators] = useState(false);
 
   const comics = [
     {
@@ -275,8 +276,17 @@ export default function Home() {
           <DemoSection title="Communication">
             <ComponentDemo title={"Progress indicators"}>
               <div className="flex flex-row gap-10 justify-center items-center">
-                <CircularProgress indeterminate></CircularProgress>
-                <LinearProgress indeterminate></LinearProgress>
+                <IconButton onClick={() => setIsPlayingProgressIndicators(oldState => !oldState)}>
+                  <Icon style={{
+                    // @TODO: Get filled icons to work
+                    // @ts-ignore
+                    'font-variation-settings': "'FILL' 1"
+                  }}>
+                    {isPlayingProgressIndicators ? 'pause' : 'play_arrow'}
+                  </Icon>
+                </IconButton>
+                <CircularProgress indeterminate={isPlayingProgressIndicators} value={isPlayingProgressIndicators ? undefined : 0.6}></CircularProgress>
+                <LinearProgress indeterminate={isPlayingProgressIndicators} value={isPlayingProgressIndicators ? undefined : 0.6}></LinearProgress>
               </div>
             </ComponentDemo>
             <ComponentDemo title={"Elevation"}>
