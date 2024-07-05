@@ -12,28 +12,37 @@ export type { MdFilledIconButton } from '@material/web/iconbutton/filled-icon-bu
 export type { MdFilledTonalIconButton } from '@material/web/iconbutton/filled-tonal-icon-button.js';
 export type { MdOutlinedIconButton } from '@material/web/iconbutton/outlined-icon-button.js';
 
+const events = {
+    'onInput': 'input',
+    'onChange': 'change',
+}
+
 export const DefaultIconButton = createComponent({
     tagName: 'md-icon-button',
     elementClass: MdIconButton,
     react: React,
+    events,
 });
 
 export const FilledIconButton = createComponent({
     tagName: 'md-filled-icon-button',
     elementClass: MdFilledIconButton,
     react: React,
+    events,
 });
 
 export const FilledTonalIconButton = createComponent({
     tagName: 'md-filled-tonal-icon-button',
     elementClass: MdFilledTonalIconButton,
     react: React,
+    events,
 });
 
 export const OutlinedIconButton = createComponent({
     tagName: 'md-outlined-icon-button',
     elementClass: MdOutlinedIconButton,
     react: React,
+    events,
 });
 
 const IconButton = (props: any) => {

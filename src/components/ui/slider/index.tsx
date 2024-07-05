@@ -11,9 +11,15 @@ export type {
     MdSlider
 } from '@material/web/slider/slider';
 
+const events = {
+    'onChange': 'change',
+    'onInput': 'input'
+}
+
 const Slider = createComponent({
     tagName: 'md-slider',
     elementClass: MdSlider,
     react: React,
+    events,
 });
 export default Slider;

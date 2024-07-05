@@ -8,16 +8,24 @@ import { createComponent } from '@lit/react';
 export type { MdFilledTextField } from '@material/web/textfield/filled-text-field.js';
 export type { MdOutlinedTextField } from '@material/web/textfield/outlined-text-field.js';
 
+const events = {
+  'onSelect': 'select',
+  'onChange': 'change',
+  'onInput': 'input',
+}
+
 export const FilledTextField = createComponent({
   tagName: 'md-filled-text-field',
   elementClass: MdFilledTextField,
   react: React,
+  events,
 });
 
 export const OutlinedTextField = createComponent({
   tagName: 'md-outlined-text-field',
   elementClass: MdOutlinedTextField,
   react: React,
+  events,
 });
 
 const TextField = (props: any) => {

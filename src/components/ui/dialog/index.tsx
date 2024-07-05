@@ -9,20 +9,19 @@ export type {FabSize, FabVariant} from '@material/web/fab/fab.js';
 import type { MdDialog as MdDialogType } from '@material/web/dialog/dialog';
 import type { ReactWebComponent } from '@lit/react';
 
-export const DialogInternal = createComponent({
+const events = {
+  'onOpen': 'open',
+  'onOpened': 'opened',
+  'onClose': 'close',
+  'onClosed': 'closed',
+  'onCancel': 'cancel',
+}
+
+export const Dialog = createComponent({
   tagName: 'md-dialog',
   elementClass: MdDialog,
   react: React,
-  events: {
-    onClosed: "closed"
-  }
+  events,
 });
-
-
-const Dialog = (props: any) => {
-  return (
-    <DialogInternal {...props}>{props.children}</DialogInternal>
-  )
-}
 
 export default Dialog;

@@ -23,16 +23,27 @@ export type {
     MdSelectOption
 } from '@material/web/select/select-option';
 
+const events = {
+    'onChange': 'change',
+    'onInput': 'input',
+    'onOpening': 'opening',
+    'onOpened': 'opened',
+    'onClosing': 'closing',
+    'onClosed': 'closed',
+  }
+
 export const FilledSelect = createComponent({
     tagName: 'md-filled-select',
     elementClass: MdFilledSelect,
     react: React,
+    events,
 });
 
 export const OutlinedSelect = createComponent({
     tagName: 'md-outlined-select',
     elementClass: MdOutlinedSelect,
     react: React,
+    events,
 });
 
 const Select = (props: any) => {
@@ -46,4 +57,9 @@ export const SelectOption = createComponent({
     tagName: 'md-select-option',
     elementClass: MdSelectOption,
     react: React,
+    events: {
+        'onCloseMenu': 'close-menu',
+        'onRequestSelection': 'request-selection',
+        'onRequestDeselection': 'request-deselection',
+    }
 });

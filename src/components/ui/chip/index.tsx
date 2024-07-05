@@ -11,6 +11,10 @@ import {createComponent} from '@lit/react';
 
 export type {FabSize, FabVariant} from '@material/web/fab/fab.js';
 
+const events = {
+    'onUpdateFocus': 'update-focus'
+}
+
 export const ChipSet = createComponent({
   tagName: 'md-chip-set',
   elementClass: MdChipSet,
@@ -21,21 +25,31 @@ export const AssistChip = createComponent({
     tagName: 'md-assist-chip',
     elementClass: MdAssistChip,
     react: React,
+    events,
 });
 export const FilterChip = createComponent({
     tagName: 'md-filter-chip',
     elementClass: MdFilterChip,
     react: React,
+    events: {
+        ...events,
+        'onRemove': 'remove'
+    }
 });
 export const InputChip = createComponent({
     tagName: 'md-input-chip',
     elementClass: MdInputChip,
     react: React,
+    events: {
+        ...events,
+        'onRemove': 'remove'
+    }
 });
 export const SuggestionChip = createComponent({
     tagName: 'md-suggestion-chip',
     elementClass: MdSuggestionChip,
     react: React,
+    events,
 });
 
 const Chip = (props: any) => {

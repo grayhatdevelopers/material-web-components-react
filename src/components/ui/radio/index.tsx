@@ -7,9 +7,14 @@ import { createComponent } from '@lit/react';
 
 export type { MdRadio } from '@material/web/radio/radio.js';
 
-// Create React component for Material Web radio button
+const events = {
+  'onInput': 'input',
+  'onChange': 'change'
+}
+
 export default createComponent({
   tagName: 'md-radio',
   elementClass: MdRadio,
   react: React,
+  events,
 });

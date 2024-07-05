@@ -12,7 +12,6 @@ import {
 
 import { createComponent } from '@lit/react';
 
-// Create React components for each Material Web progress component
 export const CircularProgress = createComponent({
   tagName: 'md-circular-progress',
   elementClass: MdCircularProgress,
@@ -25,7 +24,6 @@ export const LinearProgress = createComponent({
   react: React,
 });
 
-// Wrapper component that determines which progress indicator to render based on props
 const Progress = (props: {
   type: 'circular' | 'linear';
   variant?: 'default' | 'four-color';
@@ -40,9 +38,6 @@ const Progress = (props: {
     return (
       <CircularProgress
         {...rest}
-        indeterminate={props.indeterminate}
-        value={props.value}
-        aria-label={props.ariaLabel}
         className={variant === 'four-color' ? 'four-color' : ''}
       />
     );
@@ -58,7 +53,7 @@ const Progress = (props: {
       />
     );
   } else {
-    return null; // Handle unsupported types here if needed
+    return null;
   }
 };
 

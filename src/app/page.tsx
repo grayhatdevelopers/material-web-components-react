@@ -16,7 +16,7 @@ const Dialog = dynamic(() => import("@/components/ui/dialog"), { ssr: false });
 const Divider = dynamic(() => import("@/components/ui/divider"), {
   ssr: false,
 });
-const FAB = dynamic(() => import("@/components/ui/floating-action-button"), {
+const FAB = dynamic(() => import("@/components/ui/fab"), {
   ssr: false,
 });
 const Icon = dynamic(() => import("@/components/ui/icon"), { ssr: false });

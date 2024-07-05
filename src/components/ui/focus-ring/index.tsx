@@ -6,8 +6,12 @@ import { createComponent } from '@lit/react';
 
 export type { MdFocusRing } from '@material/web/focus/md-focus-ring.js';
 
+const events = {
+    'onVisibilityChanged': 'visibility-changed'
+}
 export default createComponent({
     tagName: 'md-focus-ring',
     elementClass: MdFocusRing,
     react: React,
+    events,
 });

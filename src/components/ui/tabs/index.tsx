@@ -27,10 +27,15 @@ export type {
     MdSecondaryTab,
 } from '@material/web/tabs/secondary-tab';
 
+const events = {
+    'onChange': 'change',
+  }
+
 export const Tabs = createComponent({
     tagName: 'md-tabs',
     elementClass: MdTabs,
     react: React,
+    events,
 });
 
 export const PrimaryTab = createComponent({
