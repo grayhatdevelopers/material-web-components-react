@@ -5,7 +5,7 @@ This demo shows how native Material Web Components can be used in NextJS/React, 
 ## Roadmap 🚀
 - [ ] Make sure all native Web Components are properly working
     - [x] Demo all components
-    - [ ] Add all missing events
+    - [x] Add all missing events
     - [ ] Add theming (design tokens) through Tailwind (i.e. remove all ts-ignores)
 - [ ] Resolve SSR issues, make compatible with NextJS (i.e. remove all dynamic imports)
 - [ ] Separate the demo from the actual UI code

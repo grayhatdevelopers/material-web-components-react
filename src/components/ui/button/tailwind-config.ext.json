@@ -1,0 +1,2 @@
+// maybe this file can serve as an "extension" to the Tailwind config which should later be merged.
+// This way, each component could define their own design tokens and extend the tailwind config
