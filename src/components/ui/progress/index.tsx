@@ -24,10 +24,7 @@ export const LinearProgress = createComponent({
   react: React,
 });
 
-const Progress = (props: {
-  variant?: 'md-circular-progress' | 'md-linear-progress';
-  children?: any;
-}) => {
+const Progress = (props: any) => {
   if (props.variant === 'md-linear-progress') return <LinearProgress {...props}>{props.children}</LinearProgress>;
   return <CircularProgress {...props}>{props.children}</CircularProgress>;
 };
