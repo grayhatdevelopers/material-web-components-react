@@ -69,6 +69,7 @@ import GitHubButton from "react-github-btn";
 import Elevation from "@/components/ui/elevation";
 import Ripple from "@/components/ui/ripple";
 import FocusRing from "@/components/ui/focus-ring";
+import Progress from "@/components/ui/progress";
 
 const Column = ({ children, ...props }: { children: any; id: string }) => {
   return (
@@ -285,8 +286,8 @@ export default function Home() {
                     {isPlayingProgressIndicators ? 'pause' : 'play_arrow'}
                   </Icon>
                 </IconButton>
-                <CircularProgress indeterminate={isPlayingProgressIndicators} value={isPlayingProgressIndicators ? undefined : 0.6}></CircularProgress>
-                <LinearProgress indeterminate={isPlayingProgressIndicators} value={isPlayingProgressIndicators ? undefined : 0.6}></LinearProgress>
+                <Progress indeterminate={isPlayingProgressIndicators} value={isPlayingProgressIndicators ? undefined : 0.6}></Progress>
+                <Progress variant="md-linear-progress" indeterminate={isPlayingProgressIndicators} value={isPlayingProgressIndicators ? undefined : 0.6}></Progress>
               </div>
             </ComponentDemo>
             <ComponentDemo title={"Elevation"}>

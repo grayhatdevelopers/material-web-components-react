@@ -24,37 +24,9 @@ export const LinearProgress = createComponent({
   react: React,
 });
 
-const Progress = (props: {
-  type: 'circular' | 'linear';
-  variant?: 'default' | 'four-color';
-  value?: number;
-  buffer?: number;
-  indeterminate?: boolean;
-  ariaLabel?: string;
-}) => {
-  const { type, variant = 'default', ...rest } = props;
-
-  if (type === 'circular') {
-    return (
-      <CircularProgress
-        {...rest}
-        className={variant === 'four-color' ? 'four-color' : ''}
-      />
-    );
-  } else if (type === 'linear') {
-    return (
-      <LinearProgress
-        {...rest}
-        indeterminate={props.indeterminate}
-        value={props.value}
-        buffer={props.buffer}
-        aria-label={props.ariaLabel}
-        className={variant === 'four-color' ? 'four-color' : ''}
-      />
-    );
-  } else {
-    return null;
-  }
+const Progress = (props: any) => {
+  if (props.variant === 'md-linear-progress') return <LinearProgress {...props}>{props.children}</LinearProgress>;
+  return <CircularProgress {...props}>{props.children}</CircularProgress>;
 };
 
 export default Progress;
