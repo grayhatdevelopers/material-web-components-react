@@ -3,62 +3,62 @@
 // @TODO: Fix this. Right now, static generation doesn't seem to work with Material Web Components.
 import dynamic from "next/dynamic";
 
-const Button = dynamic(() => import("@/components/ui/button"), { ssr: false });
-const Checkbox = dynamic(() => import("@/components/ui/checkbox"), {
+const Button = dynamic(() => import("@packages/ui/button/index"), { ssr: false });
+const Checkbox = dynamic(() => import("@packages/ui/checkbox/index"), {
   ssr: false,
 });
-const Chip = dynamic(() => import("@/components/ui/chip"), { ssr: false });
+const Chip = dynamic(() => import("@packages/ui/chip/index"), { ssr: false });
 const ChipSet = dynamic(
-  () => import("@/components/ui/chip").then((mod) => mod.ChipSet),
+  () => import("@packages/ui/chip/index").then((mod) => mod.ChipSet),
   { ssr: false }
 );
-const Dialog = dynamic(() => import("@/components/ui/dialog"), { ssr: false });
-const Divider = dynamic(() => import("@/components/ui/divider"), {
+const Dialog = dynamic(() => import("@packages/ui/dialog/index"), { ssr: false });
+const Divider = dynamic(() => import("@packages/ui/divider"), {
   ssr: false,
 });
-const FAB = dynamic(() => import("@/components/ui/fab"), {
+const FAB = dynamic(() => import("@packages/ui/fab/index"), {
   ssr: false,
 });
-const Icon = dynamic(() => import("@/components/ui/icon"), { ssr: false });
-const IconButton = dynamic(() => import("@/components/ui/icon-button"), {
+const Icon = dynamic(() => import("@packages/ui/icon"), { ssr: false });
+const IconButton = dynamic(() => import("@packages/ui/icon-button/index"), {
   ssr: false,
 });
-const List = dynamic(() => import("@/components/ui/list"), { ssr: false });
+const List = dynamic(() => import("@packages/ui/list/index"), { ssr: false });
 const ListItem = dynamic(
-  () => import("@/components/ui/list").then((mod) => mod.ListItem),
+  () => import("@packages/ui/list").then((mod) => mod.ListItem),
   { ssr: false }
 );
-const Menu = dynamic(() => import("@/components/ui/menu"), { ssr: false });
+const Menu = dynamic(() => import("@packages/ui/menu/index"), { ssr: false });
 const MenuItem = dynamic(
-  () => import("@/components/ui/menu").then((mod) => mod.MenuItem),
+  () => import("@packages/ui/menu/index").then((mod) => mod.MenuItem),
   { ssr: false }
 );
 const CircularProgress = dynamic(
-  () => import("@/components/ui/progress").then((mod) => mod.CircularProgress),
+  () => import("@packages/ui/progress/index").then((mod) => mod.CircularProgress),
   { ssr: false }
 );
 const LinearProgress = dynamic(
-  () => import("@/components/ui/progress").then((mod) => mod.LinearProgress),
+  () => import("@packages/ui/progress/index").then((mod) => mod.LinearProgress),
   { ssr: false }
 );
-const Radio = dynamic(() => import("@/components/ui/radio"), { ssr: false });
-const Select = dynamic(() => import("@/components/ui/select"), { ssr: false });
+const Radio = dynamic(() => import("@packages/ui/radio/index"), { ssr: false });
+const Select = dynamic(() => import("@packages/ui/select/index"), { ssr: false });
 const SelectOption = dynamic(
-  () => import("@/components/ui/select").then((mod) => mod.SelectOption),
+  () => import("@packages/ui/select/index").then((mod) => mod.SelectOption),
   { ssr: false }
 );
-const Slider = dynamic(() => import("@/components/ui/slider"), { ssr: false });
-const Switch = dynamic(() => import("@/components/ui/switch"), { ssr: false });
-const Tabs = dynamic(() => import("@/components/ui/tabs"), { ssr: false });
+const Slider = dynamic(() => import("@packages/ui/slider/index"), { ssr: false });
+const Switch = dynamic(() => import("@packages/ui/switch/index"), { ssr: false });
+const Tabs = dynamic(() => import("@packages/ui/tabs/index"), { ssr: false });
 const PrimaryTab = dynamic(
-  () => import("@/components/ui/tabs").then((mod) => mod.PrimaryTab),
+  () => import("@packages/ui/tabs/index").then((mod) => mod.PrimaryTab),
   { ssr: false }
 );
 const SecondaryTab = dynamic(
-  () => import("@/components/ui/tabs").then((mod) => mod.SecondaryTab),
+  () => import("@packages/ui/tabs/index").then((mod) => mod.SecondaryTab),
   { ssr: false }
 );
-const TextField = dynamic(() => import("@/components/ui/textfield"), {
+const TextField = dynamic(() => import("@packages/ui/textfield/index"), {
   ssr: false,
 });
 
@@ -66,9 +66,9 @@ import { renderToString } from "react-dom/server";
 
 import React, { useState } from "react";
 import GitHubButton from "react-github-btn";
-import Elevation from "@/components/ui/elevation";
-import Ripple from "@/components/ui/ripple";
-import FocusRing from "@/components/ui/focus-ring";
+import Elevation from "@packages/ui/elevation/index";
+import Ripple from "@packages/ui/ripple/index";
+import FocusRing from "@packages/ui/focus-ring/index";
 
 const Column = ({ children, ...props }: { children: any; id: string }) => {
   return (
