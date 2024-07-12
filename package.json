@@ -1,5 +1,5 @@
 {
-  "name": "TurboRepo",
+  "name": "material-web-react-monorepo",
   "private": true,
   "scripts": {
     "build": "turbo build",

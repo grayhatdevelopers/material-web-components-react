@@ -2,8 +2,6 @@
 
 import withLitSSR from '@lit-labs/nextjs';
 
-
-
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
