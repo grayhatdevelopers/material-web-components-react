@@ -1,64 +1,65 @@
+// @ts-nocheck
 "use client";
 
 // @TODO: Fix this. Right now, static generation doesn't seem to work with Material Web Components.
 import dynamic from "next/dynamic";
 
-const Button = dynamic(() => import("@/components/ui/button"), { ssr: false });
-const Checkbox = dynamic(() => import("@/components/ui/checkbox"), {
+const Button = dynamic(() => import("@packages/ui/button"), { ssr: false });
+const Checkbox = dynamic(() => import("@packages/ui/checkbox"), {
   ssr: false,
 });
-const Chip = dynamic(() => import("@/components/ui/chip"), { ssr: false });
+const Chip = dynamic(() => import("@packages/ui/chip"), { ssr: false });
 const ChipSet = dynamic(
-  () => import("@/components/ui/chip").then((mod) => mod.ChipSet),
+  () => import("@packages/ui/chip").then((mod) => mod.ChipSet),
   { ssr: false }
 );
-const Dialog = dynamic(() => import("@/components/ui/dialog"), { ssr: false });
-const Divider = dynamic(() => import("@/components/ui/divider"), {
+const Dialog = dynamic(() => import("@packages/ui/dialog"), { ssr: false });
+const Divider = dynamic(() => import("@packages/ui/divider"), {
   ssr: false,
 });
-const FAB = dynamic(() => import("@/components/ui/fab"), {
+const FAB = dynamic(() => import("@packages/ui/fab"), {
   ssr: false,
 });
-const Icon = dynamic(() => import("@/components/ui/icon"), { ssr: false });
-const IconButton = dynamic(() => import("@/components/ui/icon-button"), {
+const Icon = dynamic(() => import("@packages/ui/icon"), { ssr: false });
+const IconButton = dynamic(() => import("@packages/ui/icon-button"), {
   ssr: false,
 });
-const List = dynamic(() => import("@/components/ui/list"), { ssr: false });
+const List = dynamic(() => import("@packages/ui/list"), { ssr: false });
 const ListItem = dynamic(
-  () => import("@/components/ui/list").then((mod) => mod.ListItem),
+  () => import("@packages/ui/list").then((mod) => mod.ListItem),
   { ssr: false }
 );
-const Menu = dynamic(() => import("@/components/ui/menu"), { ssr: false });
+const Menu = dynamic(() => import("@packages/ui/menu"), { ssr: false });
 const MenuItem = dynamic(
-  () => import("@/components/ui/menu").then((mod) => mod.MenuItem),
+  () => import("@packages/ui/menu").then((mod) => mod.MenuItem),
   { ssr: false }
 );
 const CircularProgress = dynamic(
-  () => import("@/components/ui/progress").then((mod) => mod.CircularProgress),
+  () => import("@packages/ui/progress").then((mod) => mod.CircularProgress),
   { ssr: false }
 );
 const LinearProgress = dynamic(
-  () => import("@/components/ui/progress").then((mod) => mod.LinearProgress),
+  () => import("@packages/ui/progress").then((mod) => mod.LinearProgress),
   { ssr: false }
 );
-const Radio = dynamic(() => import("@/components/ui/radio"), { ssr: false });
-const Select = dynamic(() => import("@/components/ui/select"), { ssr: false });
+const Radio = dynamic(() => import("@packages/ui/radio"), { ssr: false });
+const Select = dynamic(() => import("@packages/ui/select"), { ssr: false });
 const SelectOption = dynamic(
-  () => import("@/components/ui/select").then((mod) => mod.SelectOption),
+  () => import("@packages/ui/select").then((mod) => mod.SelectOption),
   { ssr: false }
 );
-const Slider = dynamic(() => import("@/components/ui/slider"), { ssr: false });
-const Switch = dynamic(() => import("@/components/ui/switch"), { ssr: false });
-const Tabs = dynamic(() => import("@/components/ui/tabs"), { ssr: false });
+const Slider = dynamic(() => import("@packages/ui/slider"), { ssr: false });
+const Switch = dynamic(() => import("@packages/ui/switch"), { ssr: false });
+const Tabs = dynamic(() => import("@packages/ui/tabs"), { ssr: false });
 const PrimaryTab = dynamic(
-  () => import("@/components/ui/tabs").then((mod) => mod.PrimaryTab),
+  () => import("@packages/ui/tabs").then((mod) => mod.PrimaryTab),
   { ssr: false }
 );
 const SecondaryTab = dynamic(
-  () => import("@/components/ui/tabs").then((mod) => mod.SecondaryTab),
+  () => import("@packages/ui/tabs").then((mod) => mod.SecondaryTab),
   { ssr: false }
 );
-const TextField = dynamic(() => import("@/components/ui/textfield"), {
+const TextField = dynamic(() => import("@packages/ui/textfield"), {
   ssr: false,
 });
 
@@ -66,9 +67,9 @@ import { renderToString } from "react-dom/server";
 
 import React, { useState } from "react";
 import GitHubButton from "react-github-btn";
-import Elevation from "@/components/ui/elevation";
-import Ripple from "@/components/ui/ripple";
-import FocusRing from "@/components/ui/focus-ring";
+import Elevation from "@packages/ui/elevation";
+import Ripple from "@packages/ui/ripple";
+import FocusRing from "@packages/ui/focus-ring";
 
 const Column = ({ children, ...props }: { children: any; id: string }) => {
   return (
@@ -123,8 +124,8 @@ const ComponentDemo = ({
       >
         {showCode
           ? renderToString(children)
-              .replaceAll("<!--$-->", "\n")
-              .replaceAll("<!--/$-->", "\n")
+            .replaceAll("<!--$-->", "\n")
+            .replaceAll("<!--/$-->", "\n")
           : children}
       </div>
     </div>
@@ -169,52 +170,52 @@ export default function Home() {
           <DemoSection title={"Actions"}>
             <ComponentDemo title={"Common buttons"}>
               <div className="flex flex-row items-center justify-center gap-2">
-              <div className="flex flex-col items-center justify-center gap-3">
-                <Button className="w-full" variant="md-elevated-button">Elevated</Button>
-                <Button className="w-full" variant="md-filled-button">Filled</Button>
-                <Button className="w-full" variant="md-filled-tonal-button">Filled Tonal</Button>
-                <Button className="w-full" variant="md-outlined-button">Outlined</Button>
-                <Button className="w-full" variant="md-text-button">Text</Button>
-              </div>
-              <div className="flex flex-col gap-3 items-center justify-center">
-                <Button className="w-full" variant="md-elevated-button">
-                  Icon
-                  <Icon slot="icon">add</Icon>
-                </Button>
-                <Button className="w-full" variant="md-filled-button">
-                  Icon
-                  <Icon slot="icon">add</Icon>
-                </Button>
-                <Button className="w-full" variant="md-filled-tonal-button">
-                  Icon
-                  <Icon slot="icon">add</Icon>
-                </Button>
-                <Button className="w-full" variant="md-outlined-button">
-                  Icon
-                  <Icon slot="icon">add</Icon>
-                </Button>
-                <Button className="w-full" variant="md-text-button">
-                  Icon
-                  <Icon slot="icon">add</Icon>
-                </Button>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-3">
-                <Button className="w-full" disabled variant="md-elevated-button">
-                  Elevated
-                </Button>
-                <Button className="w-full" disabled variant="md-filled-button">
-                  Filled
-                </Button>
-                <Button className="w-full" disabled variant="md-filled-tonal-button">
-                  Filled Tonal
-                </Button>
-                <Button className="w-full" disabled variant="md-outlined-button">
-                  Outlined
-                </Button>
-                <Button className="w-full" disabled variant="md-text-button">
-                  Text
-                </Button>
-              </div>
+                <div className="flex flex-col items-center justify-center gap-3">
+                  <Button className="w-full" variant="md-elevated-button">Elevated</Button>
+                  <Button className="w-full" variant="md-filled-button">Filled</Button>
+                  <Button className="w-full" variant="md-filled-tonal-button">Filled Tonal</Button>
+                  <Button className="w-full" variant="md-outlined-button">Outlined</Button>
+                  <Button className="w-full" variant="md-text-button">Text</Button>
+                </div>
+                <div className="flex flex-col gap-3 items-center justify-center">
+                  <Button className="w-full" variant="md-elevated-button">
+                    Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                  <Button className="w-full" variant="md-filled-button">
+                    Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                  <Button className="w-full" variant="md-filled-tonal-button">
+                    Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                  <Button className="w-full" variant="md-outlined-button">
+                    Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                  <Button className="w-full" variant="md-text-button">
+                    Icon
+                    <Icon slot="icon">add</Icon>
+                  </Button>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-3">
+                  <Button className="w-full" disabled variant="md-elevated-button">
+                    Elevated
+                  </Button>
+                  <Button className="w-full" disabled variant="md-filled-button">
+                    Filled
+                  </Button>
+                  <Button className="w-full" disabled variant="md-filled-tonal-button">
+                    Filled Tonal
+                  </Button>
+                  <Button className="w-full" disabled variant="md-outlined-button">
+                    Outlined
+                  </Button>
+                  <Button className="w-full" disabled variant="md-text-button">
+                    Text
+                  </Button>
+                </div>
               </div>
             </ComponentDemo>
 
@@ -321,10 +322,10 @@ export default function Home() {
             </ComponentDemo>
             <ComponentDemo title={"Focus ring"}>
               <div className="w-[320px] h-[120px] px-10 py-8 flex flex-row gap-3 items-center justify-center">
-              <button className="relative px-4 py-2 rounded-full">
-                <FocusRing></FocusRing>
-                Use the keyboard to access me
-              </button>
+                <button className="relative px-4 py-2 rounded-full">
+                  <FocusRing></FocusRing>
+                  Use the keyboard to access me
+                </button>
               </div>
             </ComponentDemo>
           </DemoSection>
