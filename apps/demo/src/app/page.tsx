@@ -3,62 +3,62 @@
 // @TODO: Fix this. Right now, static generation doesn't seem to work with Material Web Components.
 import dynamic from "next/dynamic";
 
-const Button = dynamic(() => import("@packages/ui/button/index"), { ssr: false });
-const Checkbox = dynamic(() => import("@packages/ui/checkbox/index"), {
+const Button = dynamic(() => import("@packages/ui/button"), { ssr: false });
+const Checkbox = dynamic(() => import("@packages/ui/checkbox"), {
   ssr: false,
 });
-const Chip = dynamic(() => import("@packages/ui/chip/index"), { ssr: false });
+const Chip = dynamic(() => import("@packages/ui/chip"), { ssr: false });
 const ChipSet = dynamic(
-  () => import("@packages/ui/chip/index").then((mod) => mod.ChipSet),
+  () => import("@packages/ui/chip").then((mod) => mod.ChipSet),
   { ssr: false }
 );
-const Dialog = dynamic(() => import("@packages/ui/dialog/index"), { ssr: false });
+const Dialog = dynamic(() => import("@packages/ui/dialog"), { ssr: false });
 const Divider = dynamic(() => import("@packages/ui/divider"), {
   ssr: false,
 });
-const FAB = dynamic(() => import("@packages/ui/fab/index"), {
+const FAB = dynamic(() => import("@packages/ui/fab"), {
   ssr: false,
 });
 const Icon = dynamic(() => import("@packages/ui/icon"), { ssr: false });
-const IconButton = dynamic(() => import("@packages/ui/icon-button/index"), {
+const IconButton = dynamic(() => import("@packages/ui/icon-button"), {
   ssr: false,
 });
-const List = dynamic(() => import("@packages/ui/list/index"), { ssr: false });
+const List = dynamic(() => import("@packages/ui/list"), { ssr: false });
 const ListItem = dynamic(
   () => import("@packages/ui/list").then((mod) => mod.ListItem),
   { ssr: false }
 );
-const Menu = dynamic(() => import("@packages/ui/menu/index"), { ssr: false });
+const Menu = dynamic(() => import("@packages/ui/menu"), { ssr: false });
 const MenuItem = dynamic(
-  () => import("@packages/ui/menu/index").then((mod) => mod.MenuItem),
+  () => import("@packages/ui/menu").then((mod) => mod.MenuItem),
   { ssr: false }
 );
 const CircularProgress = dynamic(
-  () => import("@packages/ui/progress/index").then((mod) => mod.CircularProgress),
+  () => import("@packages/ui/progress").then((mod) => mod.CircularProgress),
   { ssr: false }
 );
 const LinearProgress = dynamic(
-  () => import("@packages/ui/progress/index").then((mod) => mod.LinearProgress),
+  () => import("@packages/ui/progress").then((mod) => mod.LinearProgress),
   { ssr: false }
 );
-const Radio = dynamic(() => import("@packages/ui/radio/index"), { ssr: false });
-const Select = dynamic(() => import("@packages/ui/select/index"), { ssr: false });
+const Radio = dynamic(() => import("@packages/ui/radio"), { ssr: false });
+const Select = dynamic(() => import("@packages/ui/select"), { ssr: false });
 const SelectOption = dynamic(
-  () => import("@packages/ui/select/index").then((mod) => mod.SelectOption),
+  () => import("@packages/ui/select").then((mod) => mod.SelectOption),
   { ssr: false }
 );
-const Slider = dynamic(() => import("@packages/ui/slider/index"), { ssr: false });
-const Switch = dynamic(() => import("@packages/ui/switch/index"), { ssr: false });
-const Tabs = dynamic(() => import("@packages/ui/tabs/index"), { ssr: false });
+const Slider = dynamic(() => import("@packages/ui/slider"), { ssr: false });
+const Switch = dynamic(() => import("@packages/ui/switch"), { ssr: false });
+const Tabs = dynamic(() => import("@packages/ui/tabs"), { ssr: false });
 const PrimaryTab = dynamic(
-  () => import("@packages/ui/tabs/index").then((mod) => mod.PrimaryTab),
+  () => import("@packages/ui/tabs").then((mod) => mod.PrimaryTab),
   { ssr: false }
 );
 const SecondaryTab = dynamic(
-  () => import("@packages/ui/tabs/index").then((mod) => mod.SecondaryTab),
+  () => import("@packages/ui/tabs").then((mod) => mod.SecondaryTab),
   { ssr: false }
 );
-const TextField = dynamic(() => import("@packages/ui/textfield/index"), {
+const TextField = dynamic(() => import("@packages/ui/textfield"), {
   ssr: false,
 });
 
@@ -66,9 +66,9 @@ import { renderToString } from "react-dom/server";
 
 import React, { useState } from "react";
 import GitHubButton from "react-github-btn";
-import Elevation from "@packages/ui/elevation/index";
-import Ripple from "@packages/ui/ripple/index";
-import FocusRing from "@packages/ui/focus-ring/index";
+import Elevation from "@packages/ui/elevation";
+import Ripple from "@packages/ui/ripple";
+import FocusRing from "@packages/ui/focus-ring";
 
 const Column = ({ children, ...props }: { children: any; id: string }) => {
   return (
