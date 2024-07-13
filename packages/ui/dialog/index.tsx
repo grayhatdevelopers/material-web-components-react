@@ -1,27 +1,25 @@
 "use client"
 // file: Icon.react.tsx
 import {MdDialog} from '@material/web/dialog/dialog.js';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import {createComponent} from '@lit/react';
 
-export type {FabSize, FabVariant} from '@material/web/fab/fab.js';
+// export type { ReactWebComponent } from '@lit/react';
+// export type { MdDialog as MdDialogType } from '@material/web/dialog/dialog';
 
-import type { MdDialog as MdDialogType } from '@material/web/dialog/dialog';
-import type { ReactWebComponent } from '@lit/react';
-
-const events = {
-  'onOpen': 'open',
-  'onOpened': 'opened',
-  'onClose': 'close',
-  'onClosed': 'closed',
-  'onCancel': 'cancel',
-}
+// const events = typeof window === "undefined" ? undefined : {
+//   'onOpen': 'open',
+//   'onOpened': 'opened',
+//   'onClose': 'close',
+//   'onClosed': 'closed',
+//   'onCancel': 'cancel',
+// }
 
 export const Dialog = createComponent({
   tagName: 'md-dialog',
   elementClass: MdDialog,
   react: React,
-  events,
+  // events: events,
 });
 
 export default Dialog;

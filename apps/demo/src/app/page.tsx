@@ -1,10 +1,13 @@
 // @ts-nocheck
 "use client";
 
-// @TODO: Fix this. Right now, static generation doesn't seem to work with Material Web Components.
+// @TODO: Fix this. Right now, static generation doesn't seem to work with some
+// Material Web Components.
+// From my observation, it seems like the MWCs with "events" don't work.
+// I presume it's because they add window.addEventListener and stuff like that.
 import dynamic from "next/dynamic";
 
-const Button = dynamic(() => import("@packages/ui/button"), { ssr: false });
+import Button from "@packages/ui/button";
 const Checkbox = dynamic(() => import("@packages/ui/checkbox"), {
   ssr: false,
 });
@@ -14,16 +17,13 @@ const ChipSet = dynamic(
   { ssr: false }
 );
 const Dialog = dynamic(() => import("@packages/ui/dialog"), { ssr: false });
-const Divider = dynamic(() => import("@packages/ui/divider"), {
-  ssr: false,
-});
-const FAB = dynamic(() => import("@packages/ui/fab"), {
-  ssr: false,
-});
-const Icon = dynamic(() => import("@packages/ui/icon"), { ssr: false });
-const IconButton = dynamic(() => import("@packages/ui/icon-button"), {
-  ssr: false,
-});
+import Divider from "@packages/ui/divider";
+
+import Elevation from "@packages/ui/elevation";
+import FAB from "@packages/ui/fab";
+import FocusRing from "@packages/ui/focus-ring";
+import Icon from "@packages/ui/icon";
+import IconButton from "@packages/ui/icon-button";
 const List = dynamic(() => import("@packages/ui/list"), { ssr: false });
 const ListItem = dynamic(
   () => import("@packages/ui/list").then((mod) => mod.ListItem),
@@ -34,15 +34,9 @@ const MenuItem = dynamic(
   () => import("@packages/ui/menu").then((mod) => mod.MenuItem),
   { ssr: false }
 );
-const CircularProgress = dynamic(
-  () => import("@packages/ui/progress").then((mod) => mod.CircularProgress),
-  { ssr: false }
-);
-const LinearProgress = dynamic(
-  () => import("@packages/ui/progress").then((mod) => mod.LinearProgress),
-  { ssr: false }
-);
+import Progress from "@packages/ui/progress";
 const Radio = dynamic(() => import("@packages/ui/radio"), { ssr: false });
+import Ripple from "@packages/ui/ripple";
 const Select = dynamic(() => import("@packages/ui/select"), { ssr: false });
 const SelectOption = dynamic(
   () => import("@packages/ui/select").then((mod) => mod.SelectOption),
@@ -67,9 +61,6 @@ import { renderToString } from "react-dom/server";
 
 import React, { useState } from "react";
 import GitHubButton from "react-github-btn";
-import Elevation from "@packages/ui/elevation";
-import Ripple from "@packages/ui/ripple";
-import FocusRing from "@packages/ui/focus-ring";
 
 const Column = ({ children, ...props }: { children: any; id: string }) => {
   return (
@@ -286,8 +277,8 @@ export default function Home() {
                     {isPlayingProgressIndicators ? 'pause' : 'play_arrow'}
                   </Icon>
                 </IconButton>
-                <CircularProgress indeterminate={isPlayingProgressIndicators} value={isPlayingProgressIndicators ? undefined : 0.6}></CircularProgress>
-                <LinearProgress indeterminate={isPlayingProgressIndicators} value={isPlayingProgressIndicators ? undefined : 0.6}></LinearProgress>
+                <Progress indeterminate={isPlayingProgressIndicators} value={isPlayingProgressIndicators ? undefined : 0.6}></Progress>
+                <Progress variant="md-linear-progress" indeterminate={isPlayingProgressIndicators} value={isPlayingProgressIndicators ? undefined : 0.6}></Progress>
               </div>
             </ComponentDemo>
             <ComponentDemo title={"Elevation"}>
