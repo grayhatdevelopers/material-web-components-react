@@ -3,64 +3,35 @@
 
 // @TODO: Fix this. Right now, static generation doesn't seem to work with some
 // Material Web Components.
-// From my observation, it seems like the MWCs with "events" don't work.
-// I presume it's because they add window.addEventListener and stuff like that.
+// From my observation, it seems like the Dialog component relies on `document` even at its initialization.
+// Specially the TreeWalker code.
+// We should abstract that to allow it to work in SSR.
 import dynamic from "next/dynamic";
 
 import Button from "@packages/ui/button";
-const Checkbox = dynamic(() => import("@packages/ui/checkbox"), {
-  ssr: false,
-});
-const Chip = dynamic(() => import("@packages/ui/chip"), { ssr: false });
-const ChipSet = dynamic(
-  () => import("@packages/ui/chip").then((mod) => mod.ChipSet),
-  { ssr: false }
-);
+import Checkbox from "@packages/ui/checkbox";
+import Chip, {ChipSet} from "@packages/ui/chip";
 const Dialog = dynamic(() => import("@packages/ui/dialog"), { ssr: false });
 import Divider from "@packages/ui/divider";
-
 import Elevation from "@packages/ui/elevation";
 import FAB from "@packages/ui/fab";
 import FocusRing from "@packages/ui/focus-ring";
 import Icon from "@packages/ui/icon";
 import IconButton from "@packages/ui/icon-button";
-const List = dynamic(() => import("@packages/ui/list"), { ssr: false });
-const ListItem = dynamic(
-  () => import("@packages/ui/list").then((mod) => mod.ListItem),
-  { ssr: false }
-);
-const Menu = dynamic(() => import("@packages/ui/menu"), { ssr: false });
-const MenuItem = dynamic(
-  () => import("@packages/ui/menu").then((mod) => mod.MenuItem),
-  { ssr: false }
-);
+import List, {ListItem} from "@packages/ui/list";
+import Menu, {MenuItem} from "@packages/ui/menu";
 import Progress from "@packages/ui/progress";
-const Radio = dynamic(() => import("@packages/ui/radio"), { ssr: false });
+import Radio from "@packages/ui/radio";
 import Ripple from "@packages/ui/ripple";
-const Select = dynamic(() => import("@packages/ui/select"), { ssr: false });
-const SelectOption = dynamic(
-  () => import("@packages/ui/select").then((mod) => mod.SelectOption),
-  { ssr: false }
-);
-const Slider = dynamic(() => import("@packages/ui/slider"), { ssr: false });
-const Switch = dynamic(() => import("@packages/ui/switch"), { ssr: false });
-const Tabs = dynamic(() => import("@packages/ui/tabs"), { ssr: false });
-const PrimaryTab = dynamic(
-  () => import("@packages/ui/tabs").then((mod) => mod.PrimaryTab),
-  { ssr: false }
-);
-const SecondaryTab = dynamic(
-  () => import("@packages/ui/tabs").then((mod) => mod.SecondaryTab),
-  { ssr: false }
-);
-const TextField = dynamic(() => import("@packages/ui/textfield"), {
-  ssr: false,
-});
-
-import { renderToString } from "react-dom/server";
+import Select, {SelectOption} from "@packages/ui/select";
+import Slider from "@packages/ui/slider";
+import Switch from "@packages/ui/switch";
+import Tabs, {PrimaryTab, SecondaryTab} from "@packages/ui/tabs";
+import TextField from "@packages/ui/textfield";
 
 import React, { useState } from "react";
 import GitHubButton from "react-github-btn";
+import { renderToString } from "react-dom/server";
 
 const Column = ({ children, ...props }: { children: any; id: string }) => {
   return (
