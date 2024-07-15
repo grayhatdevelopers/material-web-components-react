@@ -5,7 +5,7 @@
 // Material Web Components.
 // From my observation, it seems like the Dialog component relies on `document` even at its initialization.
 // Specially the TreeWalker code.
-// We should abstract that to allow it to work in SSR.
+// We should abstract that to allow it to work in SSG.
 import dynamic from "next/dynamic";
 
 import Button from "@packages/ui/button";
