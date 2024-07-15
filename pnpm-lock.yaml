@@ -23,6 +23,9 @@ importers:
       '@lit-labs/nextjs':
         specifier: ^0.2.0
         version: 0.2.0(@types/react@18.2.61)(next@14.2.5(react-dom@18.3.1(react@18.2.0))(react@18.2.0))(react@18.2.0)(webpack@5.93.0)
+      '@lit-labs/ssr-react':
+        specifier: ^0.3.0
+        version: 0.3.0(@types/react@18.2.61)(react@18.2.0)
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -95,6 +98,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@lit-labs/ssr-react':
+        specifier: latest
+        version: 0.3.0(@types/react@18.2.61)(react@18.2.0)
       '@lit/react':
         specifier: ^1.0.5
         version: 1.0.5(@types/react@18.2.61)
@@ -3368,7 +3374,7 @@ snapshots:
       '@lit/reactive-element': 2.0.4
       '@parse5/tools': 0.3.0
       '@types/node': 16.18.101
-      enhanced-resolve: 5.15.0
+      enhanced-resolve: 5.17.0
       lit: 3.1.4
       lit-element: 4.0.6
       lit-html: 3.1.4
