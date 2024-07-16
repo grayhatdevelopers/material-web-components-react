@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client";
 
 // @TODO: Fix this. Right now, static generation doesn't seem to work with some
@@ -30,7 +29,6 @@ import Tabs, {PrimaryTab, SecondaryTab} from "@packages/ui/tabs";
 import TextField from "@packages/ui/textfield";
 
 import React, { useState } from "react";
-import GitHubButton from "react-github-btn";
 import { renderToString } from "react-dom/server";
 
 const Column = ({ children, ...props }: { children: any; id: string }) => {
@@ -116,18 +114,7 @@ export default function Home() {
     // ... other comics
   ];
   return (
-    <main className="bg-[#FDF7FF] max-h-screen w-full">
-      <div
-        id="titlebar"
-        className="backdrop-blur-md z-10 w-full h-16 flex flex-row gap-3 items-center justify-center"
-      >
-        <h1 className="font-bold text-xl">Material 3 for React</h1>
-        <GitHubButton href="https://github.com/grayhatdevelopers/material-web-react">
-          Star us on GitHub
-        </GitHubButton>
-      </div>
-      <div className="flex flex-col justify-center items-center md:grid md:grid-cols-[5rem_1fr_1fr] gap-4 md:h-screen">
-        <div id="sidebar"></div>
+    <>
         <Column id="column-a">
           <DemoSection title={"Actions"}>
             <ComponentDemo title={"Common buttons"}>
@@ -537,7 +524,6 @@ export default function Home() {
             </ComponentDemo>
           </DemoSection>
         </Column>
-      </div>
-    </main>
+      </> 
   );
 }
