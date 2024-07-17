@@ -1,11 +1,20 @@
+import 'material-symbols';
 import '@lit-labs/ssr-react/enable-lit-ssr.js';
-import GitHubButton from "react-github-btn";
+// import GitHubButton from "react-github-btn";
+import NavigationDrawer from "@packages/ui/navigation-drawer"
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+// @TODO: Get static fonts to work somehow, to prevent FOUC
+const roboto = Roboto({ 
+  weight: ["400", "500", "700"],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto',
+});
 
 export const metadata: Metadata = {
   title: "Demo - Material Web Components for React",
@@ -18,13 +27,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-      
-      {/* From BaseUI: https://mui.com/base-ui/getting-started/usage/#responsive-meta-tag */}
-      <meta name="viewport" content="initial-scale=1, width=device-width" />
-      <body className={inter.className}>
+    <html lang="en" className={roboto.className}>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
+        {/* From BaseUI: https://mui.com/base-ui/getting-started/usage/#responsive-meta-tag */}
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </head>
+      <body>
       <main className="bg-[#FDF7FF] max-h-screen w-full">
       <div
         id="titlebar"
@@ -36,7 +48,11 @@ export default function RootLayout({
         </GitHubButton> */}
       </div>
       <div className="flex flex-col justify-center items-center md:grid md:grid-cols-[5rem_1fr_1fr] gap-4 md:h-screen">
-        <div id="sidebar"></div>
+        <div id="sidebar">
+          {/* <NavigationDrawer>
+            
+          </NavigationDrawer> */}
+        </div>
         {children}
         </div>
         </main>

@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@lit/react": "^1.0.5",
-    "@lit-labs/ssr-react": "latest",
+    "@lit-labs/ssr-react": "^0.3.0",
     "@material/web": "^1.5.1",
     "react": "^18.2.0"
   }
