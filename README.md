@@ -6,7 +6,7 @@ A thin React wrapper over [@material/web](https://github.com/material-components
 
 ## Documentation
 
-Visit [the official Material Web Components docs](https://github.com/material-components/material-web/blob/main/docs/intro.md) to learn more what options you have.
+Under the hood, this library simply uses the official [@material/web](https://github.com/material-components/material-web/) components. Visit [the official Material Web Components docs](https://github.com/material-components/material-web/blob/main/docs/intro.md) to learn how to use those components. The props remain the same!
 
 ## Contributing
 
