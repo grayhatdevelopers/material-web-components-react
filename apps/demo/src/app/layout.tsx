@@ -1,6 +1,6 @@
 import 'material-symbols';
 import '@lit-labs/ssr-react/enable-lit-ssr.js';
-// import GitHubButton from "react-github-btn";
+import GitHubButton from '../components/GitHubButton';
 import NavigationDrawer from "@packages/ui/navigation-drawer"
 
 import type { Metadata } from "next";
@@ -43,9 +43,9 @@ export default function RootLayout({
         className="backdrop-blur-md z-10 w-full h-16 flex flex-row gap-3 items-center justify-center"
       >
         <h1 className="font-bold text-xl">Material 3 for React</h1>
-        {/* <GitHubButton href="https://github.com/grayhatdevelopers/material-web-react">
+        <GitHubButton href="https://github.com/grayhatdevelopers/material-web-react">
           Star us on GitHub
-        </GitHubButton> */}
+        </GitHubButton>
       </div>
       <div className="flex flex-col justify-center items-center md:grid md:grid-cols-[5rem_1fr_1fr] gap-4 md:h-screen">
         <div id="sidebar">
