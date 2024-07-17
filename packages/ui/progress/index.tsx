@@ -11,6 +11,7 @@ import {
 
 
 import { createComponent } from '@lit/react';
+import { matchVariant } from '../utils';
 
 export const CircularProgress = createComponent({
   tagName: 'md-circular-progress',
@@ -25,7 +26,7 @@ export const LinearProgress = createComponent({
 });
 
 const Progress = (props: any) => {
-  if (props.variant === 'md-linear-progress') return <LinearProgress {...props}>{props.children}</LinearProgress>;
+  if (matchVariant(props.variant, 'md-linear-progress')) return <LinearProgress {...props}>{props.children}</LinearProgress>;
   return <CircularProgress {...props}>{props.children}</CircularProgress>;
 };
 

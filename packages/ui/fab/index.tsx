@@ -4,6 +4,7 @@ import {MdFab} from '@material/web/fab/fab.js';
 import {MdBrandedFab} from '@material/web/fab/branded-fab';
 import React from 'react';
 import {createComponent} from '@lit/react';
+import { matchVariant } from '../utils';
 
 export type {FabSize, FabVariant} from '@material/web/fab/fab.js';
 
@@ -19,7 +20,7 @@ export const BrandedFab = createComponent({
 });
 
 const Fab = (props: any) => {
-  if (props.variant === 'md-branded-fab') return <BrandedFab {...props}>{props.children}</BrandedFab>
+  if (matchVariant(props.variant, 'md-branded-fab')) return <BrandedFab {...props}>{props.children}</BrandedFab>
   return <DefaultFab {...props}>{props.children}</DefaultFab>
 }
 

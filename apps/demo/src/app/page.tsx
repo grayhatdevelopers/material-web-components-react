@@ -107,40 +107,40 @@ export default function Home() {
           <ComponentDemo title={"Common buttons"}>
             <div className="flex flex-row items-center justify-center gap-2">
               <div className="flex flex-col items-center justify-center gap-3">
-                <Button className="w-full" variant="md-elevated-button">
+                <Button className="w-full" variant="elevated">
                   Elevated
                 </Button>
-                <Button className="w-full" variant="md-filled-button">
+                <Button className="w-full" variant="filled">
                   Filled
                 </Button>
-                <Button className="w-full" variant="md-filled-tonal-button">
+                <Button className="w-full" variant="filled-tonal">
                   Filled Tonal
                 </Button>
-                <Button className="w-full" variant="md-outlined-button">
+                <Button className="w-full" variant="outlined">
                   Outlined
                 </Button>
-                <Button className="w-full" variant="md-text-button">
+                <Button className="w-full" variant="text">
                   Text
                 </Button>
               </div>
               <div className="flex flex-col gap-3 items-center justify-center">
-                <Button className="w-full" variant="md-elevated-button">
+                <Button className="w-full" variant="elevated">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
-                <Button className="w-full" variant="md-filled-button">
+                <Button className="w-full" variant="filled">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
-                <Button className="w-full" variant="md-filled-tonal-button">
+                <Button className="w-full" variant="filled-tonal">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
-                <Button className="w-full" variant="md-outlined-button">
+                <Button className="w-full" variant="outlined">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
-                <Button className="w-full" variant="md-text-button">
+                <Button className="w-full" variant="text">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
@@ -149,28 +149,28 @@ export default function Home() {
                 <Button
                   className="w-full"
                   disabled
-                  variant="md-elevated-button"
+                  variant="elevated"
                 >
                   Elevated
                 </Button>
-                <Button className="w-full" disabled variant="md-filled-button">
+                <Button className="w-full" disabled variant="filled">
                   Filled
                 </Button>
                 <Button
                   className="w-full"
                   disabled
-                  variant="md-filled-tonal-button"
+                  variant="filled-tonal"
                 >
                   Filled Tonal
                 </Button>
                 <Button
                   className="w-full"
                   disabled
-                  variant="md-outlined-button"
+                  variant="outlined"
                 >
                   Outlined
                 </Button>
-                <Button className="w-full" disabled variant="md-text-button">
+                <Button className="w-full" disabled variant="text">
                   Text
                 </Button>
               </div>
@@ -196,36 +196,36 @@ export default function Home() {
 
           <ComponentDemo title={"Icon buttons"}>
             <div className="flex flex-row gap-4 ">
-              <IconButton variant="md-icon-button">
+              <IconButton>
                 <Icon>Settings</Icon>
               </IconButton>
 
-              <IconButton variant="md-filled-icon-button">
+              <IconButton variant="filled">
                 <Icon>Settings</Icon>
               </IconButton>
 
-              <IconButton variant="md-filled-tonal-icon-button">
+              <IconButton variant="filled-tonal">
                 <Icon>Settings</Icon>
               </IconButton>
 
-              <IconButton variant="md-outlined-icon-button">
+              <IconButton variant="outlined-icon">
                 <Icon>Settings</Icon>
               </IconButton>
             </div>
             <div className="flex flex-row gap-4 ">
-              <IconButton disabled variant="md-icon-button">
+              <IconButton disabled>
                 <Icon>Settings</Icon>
               </IconButton>
 
-              <IconButton disabled variant="md-filled-icon-button">
+              <IconButton disabled variant="filled">
                 <Icon>Settings</Icon>
               </IconButton>
 
-              <IconButton disabled variant="md-filled-tonal-icon-button">
+              <IconButton disabled variant="filled-tonal">
                 <Icon>Settings</Icon>
               </IconButton>
 
-              <IconButton disabled variant="md-outlined-icon-button">
+              <IconButton disabled variant="outlined">
                 <Icon>Settings</Icon>
               </IconButton>
             </div>
@@ -281,7 +281,7 @@ export default function Home() {
                 value={isPlayingProgressIndicators ? undefined : 0.6}
               ></Progress>
               <Progress
-                variant="md-linear-progress"
+                variant="linear"
                 indeterminate={isPlayingProgressIndicators}
                 value={isPlayingProgressIndicators ? undefined : 0.6}
               ></Progress>
@@ -350,7 +350,7 @@ export default function Home() {
                 </div>
               </Card>
               <Card
-                variant="md-filled-card"
+                variant="filled"
                 className="p-2 aspect-square flex justify-between"
               >
                 <div className="flex flex-row justify-end items-center">
@@ -363,7 +363,7 @@ export default function Home() {
                 </div>
               </Card>
               <Card
-                variant="md-outlined-card"
+                variant="outlined"
                 className="p-2 aspect-square flex justify-between"
               >
                 <div className="flex flex-row justify-end items-center">
@@ -391,7 +391,7 @@ export default function Home() {
           <ComponentDemo title={"Dialog"}>
             <div className="w-full">
               <Button
-                variant="md-text-button"
+                variant="text"
                 onClick={() => setShowDialog((oldState) => !oldState)}
               >
                 {showDialog ? "Hide dialog" : "Show dialog"}
@@ -403,7 +403,7 @@ export default function Home() {
                 </form>
                 <div slot="actions">
                   <Button
-                    variant="md-text-button"
+                    variant="text"
                     onClick={() => setShowDialog(false)}
                   >
                     Ok
@@ -440,32 +440,32 @@ export default function Home() {
 
           <ComponentDemo title={"Chips"}>
             <ChipSet>
-              <Chip variant="md-assist-chip" label="Assist" checked>
+              <Chip variant="assist" label="Assist" checked>
                 <Icon slot="icon">event</Icon>
                 Assist
               </Chip>
-              <Chip variant="md-filter-chip" label="Filter" checked>
+              <Chip variant="filter" label="Filter" checked>
                 Filter
               </Chip>
-              <Chip variant="md-input-chip" label="Input">
+              <Chip variant="input" label="Input">
                 Input
               </Chip>
-              <Chip variant="md-suggestion-chip" label="Suggestion">
+              <Chip variant="suggestion" label="Suggestion">
                 Suggestion
               </Chip>
             </ChipSet>
             <ChipSet>
-              <Chip disabled variant="md-assist-chip" label="Assist">
+              <Chip disabled variant="assist" label="Assist">
                 <Icon slot="icon">event</Icon>
                 Assist
               </Chip>
-              <Chip disabled variant="md-filter-chip" label="Filter">
+              <Chip disabled variant="filter" label="Filter">
                 Filter
               </Chip>
-              <Chip disabled variant="md-input-chip" label="Input">
+              <Chip disabled variant="input" label="Input">
                 Input
               </Chip>
-              <Chip disabled variant="md-suggestion-chip" label="Suggestion">
+              <Chip disabled variant="suggestion" label="Suggestion">
                 Suggestion
               </Chip>
             </ChipSet>
@@ -528,7 +528,7 @@ export default function Home() {
           <ComponentDemo title="Menus">
             <Button
               id="usage-anchor"
-              variant="md-text-button"
+              variant="text"
               onClick={() => setShowMenu((oldState) => !oldState)}
             >
               {showMenu ? "Hide menu" : "Show menu"}
@@ -603,7 +603,7 @@ export default function Home() {
 
         <DemoSection title={"Text Inputs"}>
           <ComponentDemo title={"Text Fields"}>
-            <TextField variant="md-filled-text-field" placeholder="Filled">
+            <TextField variant="filled" placeholder="Filled">
               <Icon slot="leading-icon" className="ml-2">search</Icon>
               <IconButton slot="trailing-icon">
                 <Icon>close</Icon>
@@ -611,7 +611,7 @@ export default function Home() {
             </TextField>
             <TextField
               disabled
-              variant="md-filled-text-field"
+              variant="filled"
               placeholder="Filled"
             >
               <Icon slot="leading-icon" className="ml-2">search</Icon>
@@ -620,7 +620,7 @@ export default function Home() {
               </IconButton>
             </TextField>
 
-            <TextField variant="md-outlined-text-field" placeholder="Outlined">
+            <TextField variant="outlined" placeholder="Outlined">
               <Icon slot="leading-icon" className="ml-2">search</Icon>
               <IconButton slot="trailing-icon">
                 <Icon>close</Icon>
@@ -628,7 +628,7 @@ export default function Home() {
             </TextField>
             <TextField
               disabled
-              variant="md-outlined-text-field"
+              variant="outlined"
               placeholder="Outlined"
             >
               <Icon slot="leading-icon" className="ml-2">search</Icon>

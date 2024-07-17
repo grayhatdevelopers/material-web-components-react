@@ -4,6 +4,7 @@ import { MdFilledTextField } from '@material/web/textfield/filled-text-field';
 import { MdOutlinedTextField } from '@material/web/textfield/outlined-text-field';
 import React from 'react';
 import { createComponent } from '@lit/react';
+import { matchVariant } from '../utils';
 
 export type { MdFilledTextField } from '@material/web/textfield/filled-text-field.js';
 export type { MdOutlinedTextField } from '@material/web/textfield/outlined-text-field.js';
@@ -29,7 +30,7 @@ export const OutlinedTextField = createComponent({
 });
 
 const TextField = (props: any) => {
-  if (props.variant === 'md-filled-text-field')
+  if (matchVariant(props.variant, 'md-filled-text-field', 'text-field'))
     return <FilledTextField {...props}>{props.children}</FilledTextField>;
   return <OutlinedTextField {...props}>{props.children}</OutlinedTextField>;
 };

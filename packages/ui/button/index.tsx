@@ -7,6 +7,7 @@ import {MdOutlinedButton} from '@material/web/button/outlined-button';
 import {MdTextButton} from '@material/web/button/text-button';
 import React from 'react';
 import {createComponent} from '@lit/react';
+import { matchVariant } from '../utils';
 
 export type {MdElevatedButton} from '@material/web/button/elevated-button.js';
 export type {MdFilledButton} from '@material/web/button/filled-button.js';
@@ -40,10 +41,10 @@ export const TextButton = createComponent({
 });
 
 const Button = (props: any) => {
-    if (props.variant === 'md-filled-button') return <FilledButton {...props}>{props.children}</FilledButton>
-    if (props.variant === 'md-filled-tonal-button') return <FilledTonalButton {...props}>{props.children}</FilledTonalButton>
-    if (props.variant === 'md-outlined-button') return <OutlinedButton {...props}>{props.children}</OutlinedButton>
-    if (props.variant === 'md-text-button') return <TextButton {...props}>{props.children}</TextButton>
+    if (matchVariant(props.variant, 'md-filled-button')) return <FilledButton {...props}>{props.children}</FilledButton>
+    if (matchVariant(props.variant, 'md-filled-tonal-button')) return <FilledTonalButton {...props}>{props.children}</FilledTonalButton>
+    if (matchVariant(props.variant, 'md-outlined-button')) return <OutlinedButton {...props}>{props.children}</OutlinedButton>
+    if (matchVariant(props.variant, 'md-text-button')) return <TextButton {...props}>{props.children}</TextButton>
     return <ElevatedButton {...props}>{props.children}</ElevatedButton>
 }
 

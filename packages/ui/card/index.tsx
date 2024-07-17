@@ -5,11 +5,11 @@ import {MdFilledCard} from '@material/web/labs/card/filled-card';
 import {MdOutlinedCard} from '@material/web/labs/card/outlined-card';
 import React from 'react';
 import {createComponent} from '@lit/react';
+import { matchVariant } from '../utils';
 
-export type {MdElevatedButton} from '@material/web/button/elevated-button.js';
-export type {MdFilledButton} from '@material/web/button/filled-button.js';
-export type {MdFilledTonalButton} from '@material/web/button/filled-tonal-button.js';
-export type {MdTextButton} from '@material/web/button/text-button';
+export type {MdElevatedCard} from '@material/web/labs/card/elevated-card.js';
+export type {MdFilledCard} from '@material/web/labs/card/filled-card.js';
+export type {MdOutlinedCard} from '@material/web/labs/card/outlined-card.js';
 
 export const FilledCard = createComponent({
     tagName: 'md-filled-card',
@@ -28,8 +28,8 @@ export const OutlinedCard = createComponent({
 });
 
 const Card = (props: any) => {
-    if (props.variant === 'md-filled-card') return <FilledCard {...props}>{props.children}</FilledCard>
-    if (props.variant === 'md-outlined-card') return <OutlinedCard {...props}>{props.children}</OutlinedCard>
+    if (matchVariant(props.variant, 'md-filled-card')) return <FilledCard {...props}>{props.children}</FilledCard>
+    if (matchVariant(props.variant, 'md-outlined-card')) return <OutlinedCard {...props}>{props.children}</OutlinedCard>
     return <ElevatedCard {...props}>{props.children}</ElevatedCard>
 }
 

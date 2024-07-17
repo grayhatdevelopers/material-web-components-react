@@ -6,6 +6,7 @@ import { MdFilledTonalIconButton } from '@material/web/iconbutton/filled-tonal-i
 import { MdOutlinedIconButton } from '@material/web/iconbutton/outlined-icon-button';
 import React from 'react';
 import { createComponent } from '@lit/react';
+import { matchVariant } from '../utils';
 
 export type { MdIconButton } from '@material/web/iconbutton/icon-button.js';
 export type { MdFilledIconButton } from '@material/web/iconbutton/filled-icon-button.js';
@@ -46,9 +47,9 @@ export const OutlinedIconButton = createComponent({
 });
 
 const IconButton = (props: any) => {
-    if (props.variant === 'md-filled-icon-button') return <FilledIconButton {...props}>{props.children}</FilledIconButton>;
-    if (props.variant === 'md-filled-tonal-icon-button') return <FilledTonalIconButton {...props}>{props.children}</FilledTonalIconButton>;
-    if (props.variant === 'md-outlined-icon-button') return <OutlinedIconButton {...props}>{props.children}</OutlinedIconButton>;
+    if (matchVariant(props.variant, 'md-filled-icon-button', 'icon-button')) return <FilledIconButton {...props}>{props.children}</FilledIconButton>;
+    if (matchVariant(props.variant, 'md-filled-tonal-icon-button', 'icon-button')) return <FilledTonalIconButton {...props}>{props.children}</FilledTonalIconButton>;
+    if (matchVariant(props.variant, 'md-outlined-icon-button', 'icon-button')) return <OutlinedIconButton {...props}>{props.children}</OutlinedIconButton>;
     return <DefaultIconButton {...props}>{props.children}</DefaultIconButton>;
 };
 

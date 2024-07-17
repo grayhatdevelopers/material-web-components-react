@@ -11,6 +11,7 @@ import {
     MdSelectOption,
 } from '@material/web/select/select-option';
 import { createComponent } from '@lit/react';
+import { matchVariant } from '../utils';
 
 export type {
     MdFilledSelect,
@@ -47,7 +48,7 @@ export const OutlinedSelect = createComponent({
 });
 
 const Select = (props: any) => {
-    if (props.variant === 'md-filled-select') return <FilledSelect {...props}>{props.children}</FilledSelect>
+    if (matchVariant(props.variant, 'md-filled-select')) return <FilledSelect {...props}>{props.children}</FilledSelect>
     return <OutlinedSelect {...props}>{props.children}</OutlinedSelect>
 }
 

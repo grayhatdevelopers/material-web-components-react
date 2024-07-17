@@ -8,6 +8,7 @@ import {MdSuggestionChip} from '@material/web/chips/suggestion-chip'
 
 import React from 'react';
 import {createComponent} from '@lit/react';
+import { matchVariant } from '../utils';
 
 export type {FabSize, FabVariant} from '@material/web/fab/fab.js';
 
@@ -53,9 +54,9 @@ export const SuggestionChip = createComponent({
 });
 
 const Chip = (props: any) => {
-    if (props.variant === 'md-filter-chip') return <FilterChip {...props}>{props.children}</FilterChip>
-    if (props.variant === 'md-input-chip') return <InputChip {...props}>{props.children}</InputChip>
-    if (props.variant === 'md-suggestion-chip') return <SuggestionChip {...props}>{props.children}</SuggestionChip>
+    if (matchVariant(props.variant, 'md-filter-chip')) return <FilterChip {...props}>{props.children}</FilterChip>
+    if (matchVariant(props.variant, 'md-input-chip')) return <InputChip {...props}>{props.children}</InputChip>
+    if (matchVariant(props.variant, 'md-suggestion-chip')) return <SuggestionChip {...props}>{props.children}</SuggestionChip>
     return <AssistChip {...props}>{props.children}</AssistChip>
 }
 
