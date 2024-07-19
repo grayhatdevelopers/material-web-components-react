@@ -42,8 +42,8 @@ export default function RootLayout({
         id="titlebar"
         className="backdrop-blur-md z-10 w-full h-16 flex flex-row gap-3 items-center justify-center"
       >
-        <h1 className="font-bold text-xl">Material 3 for React</h1>
-        <GitHubButton href="https://github.com/grayhatdevelopers/material-web-react">
+        <h1 className="font-bold text-xl">Material Web Components for React</h1>
+        <GitHubButton href="https://github.com/grayhatdevelopers/material-web-components-react">
           Star us on GitHub
         </GitHubButton>
       </div>
