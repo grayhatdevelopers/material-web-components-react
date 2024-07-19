@@ -7,7 +7,7 @@ export default defineConfig([
       splitting: true,
       target: 'es5',
       format: 'cjs',
-      dts: true,
+      // dts: true,
       treeshake: true,
       bundle: true,
       outDir: "./dist"
