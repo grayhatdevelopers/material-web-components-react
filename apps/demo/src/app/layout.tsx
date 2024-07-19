@@ -1,7 +1,7 @@
 import 'material-symbols';
 import '@lit-labs/ssr-react/enable-lit-ssr.js';
 import GitHubButton from '../components/GitHubButton';
-import NavigationDrawer from "@packages/ui/dist/navigation-drawer"
+import NavigationDrawer from "@packages/ui/src/navigation-drawer"
 
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
