@@ -6,7 +6,7 @@ export default defineConfig([
       entry: await glob('./src/**/!(*.d|*.spec).tsx'),
       splitting: true,
       target: 'es5',
-      format: 'cjs',
+      format: 'esm',
       // dts: true,
       treeshake: true,
       bundle: true,
