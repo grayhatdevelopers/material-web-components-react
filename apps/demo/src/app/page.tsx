@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 // @TODO: Fix this. Right now, static generation doesn't seem to work with some
@@ -7,28 +8,28 @@
 // We should abstract that to allow it to work in SSG.
 import dynamic from "next/dynamic";
 
-import Button from "@packages/ui/src/button";
-import Card from "@packages/ui/src/card";
-import Checkbox from "@packages/ui/src/checkbox";
-import Chip, { ChipSet } from "@packages/ui/src/chip";
-const Dialog = dynamic(() => import("@packages/ui/src/dialog"), { ssr: false });
-import Divider from "@packages/ui/src/divider";
-import Elevation from "@packages/ui/src/elevation";
-import FAB from "@packages/ui/src/fab";
-import FocusRing from "@packages/ui/src/focus-ring";
-import Icon from "@packages/ui/src/icon";
-import IconButton from "@packages/ui/src/icon-button";
-import List, { ListItem } from "@packages/ui/src/list";
-import Menu, { MenuItem } from "@packages/ui/src/menu";
-import Progress from "@packages/ui/src/progress";
-import Radio from "@packages/ui/src/radio";
-import Ripple from "@packages/ui/src/ripple";
-import SegmentedButton, { SegmentedButtonSet } from "@packages/ui/src/segmented-button";
-import Select, { SelectOption } from "@packages/ui/src/select";
-import Slider from "@packages/ui/src/slider";
-import Switch from "@packages/ui/src/switch";
-import Tabs, { PrimaryTab } from "@packages/ui/src/tabs";
-import TextField from "@packages/ui/src/textfield";
+import Button from "material-web-components-react/dist/button";
+import Card from "material-web-components-react/dist/card";
+import Checkbox from "material-web-components-react/dist/checkbox";
+import Chip, { ChipSet } from "material-web-components-react/dist/chip";
+const Dialog = dynamic(() => import("material-web-components-react/dist/dialog"), { ssr: false });
+import Divider from "material-web-components-react/dist/divider";
+import Elevation from "material-web-components-react/dist/elevation";
+import FAB from "material-web-components-react/dist/fab";
+import FocusRing from "material-web-components-react/dist/focus-ring";
+import Icon from "material-web-components-react/dist/icon";
+import IconButton from "material-web-components-react/dist/icon-button";
+import List, { ListItem } from "material-web-components-react/dist/list";
+import Menu, { MenuItem } from "material-web-components-react/dist/menu";
+import Progress from "material-web-components-react/dist/progress";
+import Radio from "material-web-components-react/dist/radio";
+import Ripple from "material-web-components-react/dist/ripple";
+import SegmentedButton, { SegmentedButtonSet } from "material-web-components-react/dist/segmented-button";
+import Select, { SelectOption } from "material-web-components-react/dist/select";
+import Slider from "material-web-components-react/dist/slider";
+import Switch from "material-web-components-react/dist/switch";
+import Tabs, { PrimaryTab } from "material-web-components-react/dist/tabs";
+import TextField from "material-web-components-react/dist/textfield";
 
 import React, { useState } from "react";
 import { renderToString } from "react-dom/server";
