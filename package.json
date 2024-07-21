@@ -6,7 +6,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "publish-packages": "turbo run build lint && changeset version && changeset publish"
+    "publish-packages": "turbo run build lint --filter=material-web-components-react && changeset version && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
