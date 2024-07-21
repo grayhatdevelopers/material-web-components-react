@@ -12,7 +12,7 @@
   "dependencies": {
     "@lit-labs/nextjs": "^0.2.0",
     "@lit-labs/ssr-react": "^0.3.0",
-    "@repo/ui": "workspace:*",
+    "material-web-components-react": "workspace:*",
     "material-symbols": "^0.21.2",
     "next": "^14.2.4",
     "react": "^18",
