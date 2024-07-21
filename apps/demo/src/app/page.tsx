@@ -31,6 +31,8 @@ import Switch from "material-web-components-react/dist/switch";
 import Tabs, { PrimaryTab } from "material-web-components-react/dist/tabs";
 import TextField from "material-web-components-react/dist/textfield";
 
+import Stack from "material-web-components-react/dist/stack";
+
 import React, { useState } from "react";
 import { renderToString } from "react-dom/server";
 
@@ -106,80 +108,80 @@ export default function Home() {
       <Column id="column-a">
         <DemoSection title={"Actions"}>
           <ComponentDemo title={"Common buttons"}>
-            <div className="flex flex-row items-center justify-center gap-2">
-              <div className="flex flex-col items-center justify-center gap-3">
-                <Button className="w-full" variant="elevated">
+            <Stack direction="row" spacing={2}>
+              <Stack>
+                <Button variant="elevated" className="w-full">
                   Elevated
                 </Button>
-                <Button className="w-full" variant="filled">
+                <Button variant="filled" className="w-full">
                   Filled
                 </Button>
-                <Button className="w-full" variant="filled-tonal">
+                <Button variant="filled-tonal" className="w-full">
                   Filled Tonal
                 </Button>
-                <Button className="w-full" variant="outlined">
+                <Button variant="outlined" className="w-full">
                   Outlined
                 </Button>
-                <Button className="w-full" variant="text">
+                <Button variant="text" className="w-full">
                   Text
                 </Button>
-              </div>
-              <div className="flex flex-col gap-3 items-center justify-center">
-                <Button className="w-full" variant="elevated">
+              </Stack>
+              <Stack>
+                <Button variant="elevated" className="w-full">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
-                <Button className="w-full" variant="filled">
+                <Button variant="filled" className="w-full">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
-                <Button className="w-full" variant="filled-tonal">
+                <Button variant="filled-tonal" className="w-full">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
-                <Button className="w-full" variant="outlined">
+                <Button variant="outlined" className="w-full">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
-                <Button className="w-full" variant="text">
+                <Button variant="text" className="w-full">
                   Icon
                   <Icon slot="icon">add</Icon>
                 </Button>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-3">
+              </Stack>
+              <Stack>
                 <Button
-                  className="w-full"
                   disabled
                   variant="elevated"
+                  className="w-full"
                 >
                   Elevated
                 </Button>
-                <Button className="w-full" disabled variant="filled">
+                <Button disabled variant="filled" className="w-full">
                   Filled
                 </Button>
                 <Button
-                  className="w-full"
                   disabled
                   variant="filled-tonal"
+                  className="w-full"
                 >
                   Filled Tonal
                 </Button>
                 <Button
-                  className="w-full"
                   disabled
                   variant="outlined"
+                  className="w-full"
                 >
                   Outlined
                 </Button>
-                <Button className="w-full" disabled variant="text">
+                <Button disabled variant="text" className="w-full">
                   Text
                 </Button>
-              </div>
-            </div>
+              </Stack>
+            </Stack>
           </ComponentDemo>
 
           <ComponentDemo title={"Floating action buttons"}>
-            <div className="flex flex-row w-fit items-center justify-center gap-3">
+            <Stack direction="row">
               <FAB size="small">
                 <Icon slot="icon">add</Icon>
               </FAB>
@@ -192,11 +194,11 @@ export default function Home() {
               <FAB size="large">
                 <Icon slot="icon">add</Icon>
               </FAB>
-            </div>
+            </Stack>
           </ComponentDemo>
 
           <ComponentDemo title={"Icon buttons"}>
-            <div className="flex flex-row gap-4 ">
+            <Stack direction="row" spacing={4}>
               <IconButton>
                 <Icon>Settings</Icon>
               </IconButton>
@@ -212,8 +214,8 @@ export default function Home() {
               <IconButton variant="outlined-icon">
                 <Icon>Settings</Icon>
               </IconButton>
-            </div>
-            <div className="flex flex-row gap-4 ">
+            </Stack>
+            <Stack direction="row" spacing={4}>
               <IconButton disabled>
                 <Icon>Settings</Icon>
               </IconButton>
@@ -229,7 +231,7 @@ export default function Home() {
               <IconButton disabled variant="outlined">
                 <Icon>Settings</Icon>
               </IconButton>
-            </div>
+            </Stack>
           </ComponentDemo>
 
           <ComponentDemo title={"Segmented buttons"}>
@@ -263,7 +265,7 @@ export default function Home() {
 
         <DemoSection title="Communication">
           <ComponentDemo title={"Progress indicators"}>
-            <div className="flex flex-row gap-10 justify-center items-center">
+            <Stack spacing={10}>
               <IconButton
                 onClick={() =>
                   setIsPlayingProgressIndicators((oldState) => !oldState)
@@ -286,7 +288,7 @@ export default function Home() {
                 indeterminate={isPlayingProgressIndicators}
                 value={isPlayingProgressIndicators ? undefined : 0.6}
               ></Progress>
-            </div>
+            </Stack>
           </ComponentDemo>
           <ComponentDemo title={"Elevation"}>
             <div className="w-[320px] h-[120px] px-10 py-8 flex flex-row gap-3 items-center justify-center">

@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.2.5
+
+### Patch Changes
+
+- docs: add shields
+
 ## 0.2.4
 
 ### Patch Changes
