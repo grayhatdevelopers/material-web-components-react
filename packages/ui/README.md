@@ -1,6 +1,8 @@
 # Material Web Components for React
-
-> Warning: This is beta software. Use at your own discretion.
+[![npm version](https://badge.fury.io/js/material-web-components-react.svg)](https://www.npmjs.com/package/material-web-components-react)
+![release](https://img.shields.io/badge/release-beta-blue)
+[![docs](https://img.shields.io/badge/read%20the%20docs-8A2BE2)](https://material-web.dev)
+[![docs](https://img.shields.io/badge/live%20demo-FFA500)](https://material-web-components-react.grayhat.studio)
 
 A thin React wrapper over [@material/web](https://github.com/material-components/material-web/). Aims to be a locally-installable, accessible and customizable Material standard for React. Recommended to use with [MUI](https://mui.com/). Free. Open Source. **Looking for maintainers**.
 
