@@ -7,9 +7,10 @@
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
-    "build": "tsup && cp ../../*.md ./dist && cp ./*.md ./dist",
+    "build": "tsup",
+    "postbuild": "cp ../../*.md ./dist && cp ./*.md ./dist && cp package.json ./dist",
     "dev": "tsup --watch",
-    "release": "build && changeset publish"
+    "release": "build && cd dist && npx changeset publish"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
