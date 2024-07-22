@@ -1,5 +1,12 @@
 # material-web-react
 
+## 0.2.7
+
+### Patch Changes
+
+- 1b43630: add postbuild
+- f895d71: add publish directory
+
 ## 0.2.6
 
 ### Patch Changes
