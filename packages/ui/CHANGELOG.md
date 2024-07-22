@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.2.8
+
+### Patch Changes
+
+- add package json metadata
+
 ## 0.2.7
 
 ### Patch Changes
