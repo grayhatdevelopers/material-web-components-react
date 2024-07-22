@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.2.6
+
+### Patch Changes
+
+- 20b989b: feat: add minification in dist
+
 ## 0.2.5
 
 ### Patch Changes
