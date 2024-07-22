@@ -8,30 +8,30 @@
 // We should abstract that to allow it to work in SSG.
 import dynamic from "next/dynamic";
 
-import Button from "material-web-components-react/dist/button";
-import Card from "material-web-components-react/dist/card";
-import Checkbox from "material-web-components-react/dist/checkbox";
-import Chip, { ChipSet } from "material-web-components-react/dist/chip";
-const Dialog = dynamic(() => import("material-web-components-react/dist/dialog"), { ssr: false });
-import Divider from "material-web-components-react/dist/divider";
-import Elevation from "material-web-components-react/dist/elevation";
-import FAB from "material-web-components-react/dist/fab";
-import FocusRing from "material-web-components-react/dist/focus-ring";
-import Icon from "material-web-components-react/dist/icon";
-import IconButton from "material-web-components-react/dist/icon-button";
-import List, { ListItem } from "material-web-components-react/dist/list";
-import Menu, { MenuItem } from "material-web-components-react/dist/menu";
-import Progress from "material-web-components-react/dist/progress";
-import Radio from "material-web-components-react/dist/radio";
-import Ripple from "material-web-components-react/dist/ripple";
-import SegmentedButton, { SegmentedButtonSet } from "material-web-components-react/dist/segmented-button";
-import Select, { SelectOption } from "material-web-components-react/dist/select";
-import Slider from "material-web-components-react/dist/slider";
-import Switch from "material-web-components-react/dist/switch";
-import Tabs, { PrimaryTab } from "material-web-components-react/dist/tabs";
-import TextField from "material-web-components-react/dist/textfield";
+import Button from "material-web-components-react/button";
+import Card from "material-web-components-react/card";
+import Checkbox from "material-web-components-react/checkbox";
+import Chip, { ChipSet } from "material-web-components-react/chip";
+const Dialog = dynamic(() => import("material-web-components-react/dialog"), { ssr: false });
+import Divider from "material-web-components-react/divider";
+import Elevation from "material-web-components-react/elevation";
+import FAB from "material-web-components-react/fab";
+import FocusRing from "material-web-components-react/focus-ring";
+import Icon from "material-web-components-react/icon";
+import IconButton from "material-web-components-react/icon-button";
+import List, { ListItem } from "material-web-components-react/list";
+import Menu, { MenuItem } from "material-web-components-react/menu";
+import Progress from "material-web-components-react/progress";
+import Radio from "material-web-components-react/radio";
+import Ripple from "material-web-components-react/ripple";
+import SegmentedButton, { SegmentedButtonSet } from "material-web-components-react/segmented-button";
+import Select, { SelectOption } from "material-web-components-react/select";
+import Slider from "material-web-components-react/slider";
+import Switch from "material-web-components-react/switch";
+import Tabs, { PrimaryTab } from "material-web-components-react/tabs";
+import TextField from "material-web-components-react/textfield";
 
-import Stack from "material-web-components-react/dist/stack";
+import Stack from "material-web-components-react/stack";
 
 import React, { useState } from "react";
 import { renderToString } from "react-dom/server";

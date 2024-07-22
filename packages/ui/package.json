@@ -9,7 +9,7 @@
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "build": "tsup",
-    "postbuild": "cp ../../*.md ./dist && cp ./*.md ./dist && cp package.json ./dist",
+    "postbuild": "cp ../../*.md . && cp ./*.md ./dist && cp package.json ./dist",
     "dev": "tsup --watch",
     "release": "build && cd dist && npx changeset publish"
   },
