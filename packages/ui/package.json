@@ -2,7 +2,8 @@
   "name": "material-web-components-react",
   "version": "0.2.6",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "directory": "./dist"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
