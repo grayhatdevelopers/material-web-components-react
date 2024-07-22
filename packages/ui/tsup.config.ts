@@ -1,7 +1,9 @@
 import glob from 'tiny-glob'
 import { defineConfig } from 'tsup'
+import tailwind from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
-export default defineConfig([
+export default defineConfig(async (options) => (
     {
       entry: await glob('./src/**/!(*.d|*.spec).tsx'),
       splitting: true,
@@ -10,6 +12,8 @@ export default defineConfig([
       // dts: true,
       treeshake: true,
       bundle: true,
-      outDir: "./dist"
-    },
-  ]);
+      outDir: "./dist",
+      minify: !options.watch,
+      plugins: [tailwind(), autoprefixer()],
+    }
+));
