@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.3.0
+
+### Minor Changes
+
+- feat: add new components
+
 ## 0.2.8
 
 ### Patch Changes

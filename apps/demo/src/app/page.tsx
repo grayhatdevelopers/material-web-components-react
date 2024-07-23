@@ -8,6 +8,7 @@
 // We should abstract that to allow it to work in SSG.
 import dynamic from "next/dynamic";
 
+import Badge from "material-web-components-react/badge";
 import Button from "material-web-components-react/button";
 import Card from "material-web-components-react/card";
 import Checkbox from "material-web-components-react/checkbox";
@@ -19,8 +20,11 @@ import FAB from "material-web-components-react/fab";
 import FocusRing from "material-web-components-react/focus-ring";
 import Icon from "material-web-components-react/icon";
 import IconButton from "material-web-components-react/icon-button";
+import Item from "material-web-components-react/item";
 import List, { ListItem } from "material-web-components-react/list";
 import Menu, { MenuItem } from "material-web-components-react/menu";
+import NavigationBar from "material-web-components-react/navigation-bar";
+import NavigationTab from "material-web-components-react/navigation-tab";
 import Progress from "material-web-components-react/progress";
 import Radio from "material-web-components-react/radio";
 import Ripple from "material-web-components-react/ripple";
@@ -264,8 +268,33 @@ export default function Home() {
         </DemoSection>
 
         <DemoSection title="Communication">
+        <ComponentDemo title={"Badges"}>
+            <Stack direction="row" spacing={3}>
+              <IconButton>
+                <Icon
+                  style={{
+                    "fontVariationSettings": "'FILL' 1",
+                  }}
+                  >
+                  <Badge />
+                  notifications
+                </Icon>
+              </IconButton>
+              <IconButton>
+                <Icon
+                  style={{
+                    "fontVariationSettings": "'FILL' 1",
+                  }}
+                  >
+                  <Badge value={3} />
+                  mail
+                </Icon>
+              </IconButton>
+            </Stack>
+          </ComponentDemo>
+
           <ComponentDemo title={"Progress indicators"}>
-            <Stack spacing={10}>
+            <Stack direction="row" spacing={10}>
               <IconButton
                 onClick={() =>
                   setIsPlayingProgressIndicators((oldState) => !oldState)
@@ -572,6 +601,30 @@ export default function Home() {
             </Tabs>
           </ComponentDemo>
 
+          <ComponentDemo title={"Navigation bar"}>
+            <NavigationBar className="w-full flex flex-row items-center" index={0}>
+              <NavigationTab className="px-4" label="Explore" disabled>
+                {/* <Ripple disabled /> */}
+                <Icon slot="active-icon" style={{
+                    "fontVariationSettings": "'FILL' 1",
+                  }}>home</Icon>
+                <Icon slot="inactive-icon">home</Icon>
+              </NavigationTab>
+              <NavigationTab className="px-4" label="People" disabled>
+                <Icon slot="active-icon" style={{
+                    "fontVariationSettings": "'FILL' 1",
+                  }}>group</Icon>
+                  <Icon slot="inactive-icon">group</Icon>
+              </NavigationTab>
+              <NavigationTab className="px-4" label="Updates" disabled onClick={() => {alert("clicked!")}}>
+                <Icon slot="active-icon" style={{
+                    "fontVariationSettings": "'FILL' 1",
+                  }}>notifications</Icon>
+                  <Icon slot="inactive-icon">notifications</Icon>
+              </NavigationTab>
+            </NavigationBar>
+          </ComponentDemo>
+
           <ComponentDemo title={"List"}>
             <List
               style={{
@@ -601,6 +654,22 @@ export default function Home() {
                 <Icon slot="end">open_in_new</Icon>
               </ListItem>
             </List>
+          </ComponentDemo>
+
+          <ComponentDemo title={"Items"}>
+            <ul>
+              <Item>Fruits</Item>
+              <Divider></Divider>
+              <Item>Apple</Item>
+              <Item>Banana</Item>
+              <ListItem>
+                <div slot="headline">Cucumber</div>
+                <div slot="supporting-text">
+                  Cucumbers are long green fruits that are just as long as this
+                  multi-line description
+                </div>
+              </ListItem>
+            </ul>
           </ComponentDemo>
         </DemoSection>
 
