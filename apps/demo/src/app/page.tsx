@@ -13,7 +13,9 @@ import Button from "material-web-components-react/button";
 import Card from "material-web-components-react/card";
 import Checkbox from "material-web-components-react/checkbox";
 import Chip, { ChipSet } from "material-web-components-react/chip";
-const Dialog = dynamic(() => import("material-web-components-react/dialog"), { ssr: false });
+const Dialog = dynamic(() => import("material-web-components-react/dialog"), {
+  ssr: false,
+});
 import Divider from "material-web-components-react/divider";
 import Elevation from "material-web-components-react/elevation";
 import FAB from "material-web-components-react/fab";
@@ -24,6 +26,7 @@ import Item from "material-web-components-react/item";
 import List, { ListItem } from "material-web-components-react/list";
 import Menu, { MenuItem } from "material-web-components-react/menu";
 import NavigationBar from "material-web-components-react/navigation-bar";
+import NavigationDrawer, { NavigationDrawerModal } from "material-web-components-react/navigation-drawer";
 import NavigationTab from "material-web-components-react/navigation-tab";
 import Progress from "material-web-components-react/progress";
 import Radio from "material-web-components-react/radio";
@@ -33,12 +36,13 @@ import Select, { SelectOption } from "material-web-components-react/select";
 import Slider from "material-web-components-react/slider";
 import Switch from "material-web-components-react/switch";
 import Tabs, { PrimaryTab } from "material-web-components-react/tabs";
-import TextField from "material-web-components-react/textfield";
+import TextField from "material-web-components-react/text-field";
 
 import Stack from "material-web-components-react/stack";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { renderToString } from "react-dom/server";
+import Link from "next/link";
 
 const Column = ({ children, ...props }: { children: any; id: string }) => {
   return (
@@ -57,6 +61,87 @@ const DemoSection = ({ title, children }: { title: any; children: any }) => {
       <h2 className="flex justify-center text-xl">{title}</h2>
       {children}
     </div>
+  );
+};
+
+const NavigationContent = ({ showNavigationModal, setShowNavigationModal }) => {
+  return (
+    <>
+      <Link href={"/"}>
+        <Item
+          onClick={() => setShowNavigationModal?.(false)}
+          className="mt-4 rounded-r-full w-full flex flex-row justify-between pr-2 select-none"
+        >
+          <Ripple />
+          <div className="flex flex-row justify-start items-center gap-2">
+            <Icon>stacked_inbox</Icon>
+            All inboxes
+          </div>
+        </Item>
+        <Divider className="mt-2" />
+      </Link>
+      <Link href={"/"}>
+        <Item
+          onClick={() => setShowNavigationModal?.(false)}
+          className="mt-4 rounded-r-full w-full flex flex-row justify-between pr-2 select-none"
+        >
+          <Ripple />
+          <div className="flex flex-row justify-start items-center gap-2">
+            <Icon>inbox</Icon>
+            Primary
+          </div>
+        </Item>
+      </Link>
+      <Link href={"/"}>
+        <Item
+          onClick={() => setShowNavigationModal?.(false)}
+          className="mt-4 rounded-r-full w-full flex flex-row justify-between pr-2 select-none"
+        >
+          <Ripple />
+          <div className="flex flex-row justify-start items-center gap-2">
+            <Icon>group</Icon>
+            Social
+          </div>
+        </Item>
+      </Link>
+      <Link href={"/"}>
+        <Item
+          onClick={() => setShowNavigationModal?.(false)}
+          className="mt-4 rounded-r-full w-full flex flex-row justify-between pr-2 select-none"
+        >
+          <Ripple />
+          <div className="flex flex-row justify-start items-center gap-2">
+            <Icon>info</Icon>
+            Updates
+          </div>
+        </Item>
+      </Link>
+      <Link href={"/"}>
+        <Item
+          onClick={() => setShowNavigationModal?.(false)}
+          className="mt-4 rounded-r-full w-full flex flex-row justify-between pr-2 select-none"
+        >
+          <Ripple />
+          <div className="flex flex-row justify-start items-center gap-2">
+            <Icon>forum</Icon>
+            Forums
+          </div>
+        </Item>
+      </Link>
+      <div className="ml-4 mt-6 text-sm opacity-70">All labels</div>
+      <Link href={"/"}>
+        <Item
+          onClick={() => setShowNavigationModal?.(false)}
+          className="mt-4 rounded-r-full w-full flex flex-row justify-between pr-2 select-none"
+        >
+          <Ripple />
+          <div className="flex flex-row justify-start items-center gap-2">
+            <Icon>star</Icon>
+            Starred
+          </div>
+        </Item>
+      </Link>
+    </>
   );
 };
 
@@ -107,8 +192,64 @@ export default function Home() {
   const [isPlayingProgressIndicators, setIsPlayingProgressIndicators] =
     useState(false);
 
+  const [showNavigationModal, setShowNavigationModal] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (showNavigationModal) {
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${window.scrollY}px`;
+      } else {
+        const scrollY = document.body.style.top;
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.position = "";
+        document.body.style.top = "";
+        window.scrollTo(0, parseInt(scrollY || "0") * -1);
+      }
+    }
+  }, [showNavigationModal]);
+
   return (
     <>
+      <div
+        id="sidebar-modal"
+        className={
+          "fixed z-50 top-0 left-0 h-screen w-screen bg-black transition-all " +
+          (showNavigationModal
+            ? "bg-opacity-50"
+            : "pointer-events-none bg-opacity-0")
+        }
+      >
+        <NavigationDrawerModal
+          opened={showNavigationModal}
+          pivot={"start"}
+          onNavigationDrawerChanged={(value) => {
+            setShowNavigationModal(value?.detail?.opened);
+          }}
+          className={
+            "transition-transform " +
+            (showNavigationModal ? "-translate-x-0" : "-translate-x-50")
+          }
+        >
+          <NavigationContent
+            showNavigationModal={showNavigationModal}
+            setShowNavigationModal={setShowNavigationModal}
+          />
+        </NavigationDrawerModal>
+      </div>
+      <div
+        id="sidebar"
+        className={"hidden md:flex w-0 md:w-full z-10 top-0 left-0 h-screen"}
+      >
+        <NavigationDrawer
+          opened={true}
+          className="hidden lg:flex h-full"
+          pivot={"start"}
+        >
+          <NavigationContent />
+        </NavigationDrawer>
+      </div>
       <Column id="column-a">
         <DemoSection title={"Actions"}>
           <ComponentDemo title={"Common buttons"}>
@@ -153,28 +294,16 @@ export default function Home() {
                 </Button>
               </Stack>
               <Stack>
-                <Button
-                  disabled
-                  variant="elevated"
-                  className="w-full"
-                >
+                <Button disabled variant="elevated" className="w-full">
                   Elevated
                 </Button>
                 <Button disabled variant="filled" className="w-full">
                   Filled
                 </Button>
-                <Button
-                  disabled
-                  variant="filled-tonal"
-                  className="w-full"
-                >
+                <Button disabled variant="filled-tonal" className="w-full">
                   Filled Tonal
                 </Button>
-                <Button
-                  disabled
-                  variant="outlined"
-                  className="w-full"
-                >
+                <Button disabled variant="outlined" className="w-full">
                   Outlined
                 </Button>
                 <Button disabled variant="text" className="w-full">
@@ -268,14 +397,14 @@ export default function Home() {
         </DemoSection>
 
         <DemoSection title="Communication">
-        <ComponentDemo title={"Badges"}>
+          <ComponentDemo title={"Badges"}>
             <Stack direction="row" spacing={3}>
               <IconButton>
                 <Icon
                   style={{
-                    "fontVariationSettings": "'FILL' 1",
+                    fontVariationSettings: "'FILL' 1",
                   }}
-                  >
+                >
                   <Badge />
                   notifications
                 </Icon>
@@ -283,9 +412,9 @@ export default function Home() {
               <IconButton>
                 <Icon
                   style={{
-                    "fontVariationSettings": "'FILL' 1",
+                    fontVariationSettings: "'FILL' 1",
                   }}
-                  >
+                >
                   <Badge value={3} />
                   mail
                 </Icon>
@@ -302,7 +431,7 @@ export default function Home() {
               >
                 <Icon
                   style={{
-                    "fontVariationSettings": "'FILL' 1",
+                    fontVariationSettings: "'FILL' 1",
                   }}
                 >
                   {isPlayingProgressIndicators ? "pause" : "play_arrow"}
@@ -434,10 +563,7 @@ export default function Home() {
                   A simple dialog with free-form content.
                 </form>
                 <div slot="actions">
-                  <Button
-                    variant="text"
-                    onClick={() => setShowDialog(false)}
-                  >
+                  <Button variant="text" onClick={() => setShowDialog(false)}>
                     Ok
                   </Button>
                 </div>
@@ -602,25 +728,49 @@ export default function Home() {
           </ComponentDemo>
 
           <ComponentDemo title={"Navigation bar"}>
-            <NavigationBar className="w-full flex flex-row items-center" index={0}>
+            <NavigationBar
+              className="w-full flex flex-row items-center"
+              index={0}
+            >
               <NavigationTab className="px-4" label="Explore" disabled>
-                {/* <Ripple disabled /> */}
-                <Icon slot="active-icon" style={{
-                    "fontVariationSettings": "'FILL' 1",
-                  }}>home</Icon>
+                <Icon
+                  slot="active-icon"
+                  style={{
+                    fontVariationSettings: "'FILL' 1",
+                  }}
+                >
+                  home
+                </Icon>
                 <Icon slot="inactive-icon">home</Icon>
               </NavigationTab>
               <NavigationTab className="px-4" label="People" disabled>
-                <Icon slot="active-icon" style={{
-                    "fontVariationSettings": "'FILL' 1",
-                  }}>group</Icon>
-                  <Icon slot="inactive-icon">group</Icon>
+                <Icon
+                  slot="active-icon"
+                  style={{
+                    fontVariationSettings: "'FILL' 1",
+                  }}
+                >
+                  group
+                </Icon>
+                <Icon slot="inactive-icon">group</Icon>
               </NavigationTab>
-              <NavigationTab className="px-4" label="Updates" disabled onClick={() => {alert("clicked!")}}>
-                <Icon slot="active-icon" style={{
-                    "fontVariationSettings": "'FILL' 1",
-                  }}>notifications</Icon>
-                  <Icon slot="inactive-icon">notifications</Icon>
+              <NavigationTab
+                className="px-4"
+                label="Updates"
+                disabled
+                onClick={() => {
+                  alert("clicked!");
+                }}
+              >
+                <Icon
+                  slot="active-icon"
+                  style={{
+                    fontVariationSettings: "'FILL' 1",
+                  }}
+                >
+                  notifications
+                </Icon>
+                <Icon slot="inactive-icon">notifications</Icon>
               </NavigationTab>
             </NavigationBar>
           </ComponentDemo>
@@ -671,39 +821,50 @@ export default function Home() {
               </ListItem>
             </ul>
           </ComponentDemo>
+
+          <ComponentDemo title={"Navigation drawer"}>
+            <div className="w-full">
+              <Button
+                variant="text"
+                onClick={() => setShowNavigationModal((oldState) => !oldState)}
+              >
+                {showNavigationModal ? "Hide drawer" : "Show drawer"}
+              </Button>
+            </div>
+          </ComponentDemo>
         </DemoSection>
 
         <DemoSection title={"Text Inputs"}>
           <ComponentDemo title={"Text Fields"}>
             <TextField variant="filled" placeholder="Filled">
-              <Icon slot="leading-icon" className="ml-2">search</Icon>
+              <Icon slot="leading-icon" className="ml-2">
+                search
+              </Icon>
               <IconButton slot="trailing-icon">
                 <Icon>close</Icon>
               </IconButton>
             </TextField>
-            <TextField
-              disabled
-              variant="filled"
-              placeholder="Filled"
-            >
-              <Icon slot="leading-icon" className="ml-2">search</Icon>
+            <TextField disabled variant="filled" placeholder="Filled">
+              <Icon slot="leading-icon" className="ml-2">
+                search
+              </Icon>
               <IconButton slot="trailing-icon">
                 <Icon>close</Icon>
               </IconButton>
             </TextField>
 
             <TextField variant="outlined" placeholder="Outlined">
-              <Icon slot="leading-icon" className="ml-2">search</Icon>
+              <Icon slot="leading-icon" className="ml-2">
+                search
+              </Icon>
               <IconButton slot="trailing-icon">
                 <Icon>close</Icon>
               </IconButton>
             </TextField>
-            <TextField
-              disabled
-              variant="outlined"
-              placeholder="Outlined"
-            >
-              <Icon slot="leading-icon" className="ml-2">search</Icon>
+            <TextField disabled variant="outlined" placeholder="Outlined">
+              <Icon slot="leading-icon" className="ml-2">
+                search
+              </Icon>
               <IconButton slot="trailing-icon">
                 <Icon>close</Icon>
               </IconButton>

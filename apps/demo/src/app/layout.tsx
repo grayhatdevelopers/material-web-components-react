@@ -47,12 +47,7 @@ export default function RootLayout({
           Star us on GitHub
         </GitHubButton>
       </div>
-      <div className="flex flex-col justify-center items-center md:grid md:grid-cols-[5rem_1fr_1fr] gap-4 md:h-screen">
-        <div id="sidebar">
-          {/* <NavigationDrawer>
-            
-          </NavigationDrawer> */}
-        </div>
+      <div className="flex flex-col justify-center items-center md:grid md:grid-cols-[1fr_1fr] lg:grid-cols-[22.5rem_1fr_1fr] gap-4 md:h-screen">
         {children}
         </div>
         </main>
