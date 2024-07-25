@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.3.1
+
+### Patch Changes
+
+- add navigation drawer and an example of its usage
+
 ## 0.3.0
 
 ### Minor Changes
