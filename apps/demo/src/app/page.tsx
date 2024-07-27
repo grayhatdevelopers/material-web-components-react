@@ -8,6 +8,7 @@
 // We should abstract that to allow it to work in SSG.
 import dynamic from "next/dynamic";
 
+import AppBar from "material-web-components-react/app-bar";
 import Badge from "material-web-components-react/badge";
 import Button from "material-web-components-react/button";
 import Card from "material-web-components-react/card";
@@ -570,6 +571,53 @@ export default function Home() {
               </Dialog>
             </div>
           </ComponentDemo>
+
+          <ComponentDemo title={"List"}>
+            <List
+              style={{
+                maxWidth: "300px",
+              }}
+            >
+              <ListItem>Fruits</ListItem>
+              <Divider></Divider>
+              <ListItem>Apple</ListItem>
+              <ListItem>Banana</ListItem>
+              <ListItem>
+                <div slot="headline">Cucumber</div>
+                <div slot="supporting-text">
+                  Cucumbers are long green fruits that are just as long as this
+                  multi-line description
+                </div>
+              </ListItem>
+              <ListItem
+                type="link"
+                href="https://google.com/search?q=buy+kiwis&tbm=shop"
+                target="_blank"
+              >
+                <div slot="headline">Shop for Kiwis</div>
+                <div slot="supporting-text">
+                  This will link you out in a new tab
+                </div>
+                <Icon slot="end">open_in_new</Icon>
+              </ListItem>
+            </List>
+          </ComponentDemo>
+
+          <ComponentDemo title={"Items"}>
+            <ul>
+              <Item>Fruits</Item>
+              <Divider></Divider>
+              <Item>Apple</Item>
+              <Item>Banana</Item>
+              <ListItem>
+                <div slot="headline">Cucumber</div>
+                <div slot="supporting-text">
+                  Cucumbers are long green fruits that are just as long as this
+                  multi-line description
+                </div>
+              </ListItem>
+            </ul>
+          </ComponentDemo>
         </DemoSection>
       </Column>
 
@@ -775,53 +823,6 @@ export default function Home() {
             </NavigationBar>
           </ComponentDemo>
 
-          <ComponentDemo title={"List"}>
-            <List
-              style={{
-                maxWidth: "300px",
-              }}
-            >
-              <ListItem>Fruits</ListItem>
-              <Divider></Divider>
-              <ListItem>Apple</ListItem>
-              <ListItem>Banana</ListItem>
-              <ListItem>
-                <div slot="headline">Cucumber</div>
-                <div slot="supporting-text">
-                  Cucumbers are long green fruits that are just as long as this
-                  multi-line description
-                </div>
-              </ListItem>
-              <ListItem
-                type="link"
-                href="https://google.com/search?q=buy+kiwis&tbm=shop"
-                target="_blank"
-              >
-                <div slot="headline">Shop for Kiwis</div>
-                <div slot="supporting-text">
-                  This will link you out in a new tab
-                </div>
-                <Icon slot="end">open_in_new</Icon>
-              </ListItem>
-            </List>
-          </ComponentDemo>
-
-          <ComponentDemo title={"Items"}>
-            <ul>
-              <Item>Fruits</Item>
-              <Divider></Divider>
-              <Item>Apple</Item>
-              <Item>Banana</Item>
-              <ListItem>
-                <div slot="headline">Cucumber</div>
-                <div slot="supporting-text">
-                  Cucumbers are long green fruits that are just as long as this
-                  multi-line description
-                </div>
-              </ListItem>
-            </ul>
-          </ComponentDemo>
-
           <ComponentDemo title={"Navigation drawer"}>
             <div className="w-full">
               <Button
@@ -830,6 +831,99 @@ export default function Home() {
               >
                 {showNavigationModal ? "Hide drawer" : "Show drawer"}
               </Button>
+            </div>
+          </ComponentDemo>
+
+          <ComponentDemo title={"Top app bars"}>
+            <div className="relative w-[300px]">
+              <AppBar className={"sticky top-0"}>
+                <IconButton slot="leading">
+                  <Icon>arrow_back</Icon>
+                </IconButton>
+
+                <div slot="headline">
+                  Center-aligned
+                </div>
+
+                <IconButton slot="trailing">
+                  <Icon>more_vert</Icon>
+                </IconButton>
+              </AppBar>
+            </div>
+            <div className="relative w-[300px]">
+              <AppBar className={"sticky top-0"}>
+                <IconButton slot="leading">
+                  <Icon>arrow_back</Icon>
+                </IconButton>
+
+                <div slot="headline">
+                  Small
+                </div>
+
+                <IconButton slot="trailing">
+                  <Icon>attach_file</Icon>
+                </IconButton>
+                <IconButton slot="trailing">
+                  <Icon>calendar_today</Icon>
+                </IconButton>
+                <IconButton slot="trailing">
+                  <Icon>more_vert</Icon>
+                </IconButton>
+              </AppBar>
+            </div>
+            <div className="relative w-[300px] h-32 overflow-y-scroll">
+              <AppBar variant='medium' className={"sticky top-0 z-40"}>
+                <IconButton slot="leading">
+                  <Icon>arrow_back</Icon>
+                </IconButton>
+
+                <div slot="headline">
+                  Medium
+                </div>
+                <div slot="headline-expanded">
+                  Medium
+                </div>
+
+                <IconButton slot="trailing">
+                  <Icon>attach_file</Icon>
+                </IconButton>
+                <IconButton slot="trailing">
+                  <Icon>calendar_today</Icon>
+                </IconButton>
+                <IconButton slot="trailing">
+                  <Icon>more_vert</Icon>
+                </IconButton>
+              </AppBar>
+
+              <div id="body" className="h-40 w-full"></div>
+
+            </div>
+            <div className="relative w-[300px] h-32 overflow-y-scroll">
+              <AppBar variant='large' className={"sticky top-0 z-40"}>
+                <IconButton slot="leading">
+                  <Icon>arrow_back</Icon>
+                </IconButton>
+
+                <div slot="headline">
+                  Large
+                </div>
+                <div slot="headline-expanded">
+                  Large
+                </div>
+
+                <IconButton slot="trailing">
+                  <Icon>attach_file</Icon>
+                </IconButton>
+                <IconButton slot="trailing">
+                  <Icon>calendar_today</Icon>
+                </IconButton>
+                <IconButton slot="trailing">
+                  <Icon>more_vert</Icon>
+                </IconButton>
+              </AppBar>
+
+              <div id="body" className="h-40 w-full"></div>
+
             </div>
           </ComponentDemo>
         </DemoSection>
