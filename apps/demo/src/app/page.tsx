@@ -835,8 +835,8 @@ export default function Home() {
           </ComponentDemo>
 
           <ComponentDemo title={"Top app bars"}>
-            <div className="relative w-[300px]">
-              <AppBar className={"sticky top-0"}>
+            <div className="relative w-[300px] !bg-[#fef7fe]">
+              <AppBar className={"sticky top-0 !bg-[#fef7fe]"}>
                 <IconButton slot="leading">
                   <Icon>arrow_back</Icon>
                 </IconButton>
@@ -850,8 +850,8 @@ export default function Home() {
                 </IconButton>
               </AppBar>
             </div>
-            <div className="relative w-[300px]">
-              <AppBar className={"sticky top-0"}>
+            <div className="relative w-[300px] !bg-[#fef7fe]">
+              <AppBar className={"sticky top-0 !bg-[#fef7fe]"}>
                 <IconButton slot="leading">
                   <Icon>arrow_back</Icon>
                 </IconButton>
@@ -871,8 +871,8 @@ export default function Home() {
                 </IconButton>
               </AppBar>
             </div>
-            <div className="relative w-[300px] h-32 overflow-y-scroll">
-              <AppBar variant='medium' className={"sticky top-0 z-40"}>
+            <div className="relative w-[300px] h-32 overflow-y-scroll !bg-[#fef7fe]">
+              <AppBar variant='medium' className={"sticky top-0 z-40 !bg-[#fef7fe]"}>
                 <IconButton slot="leading">
                   <Icon>arrow_back</Icon>
                 </IconButton>
@@ -898,8 +898,8 @@ export default function Home() {
               <div id="body" className="h-40 w-full"></div>
 
             </div>
-            <div className="relative w-[300px] h-32 overflow-y-scroll">
-              <AppBar variant='large' className={"sticky top-0 z-40"}>
+            <div className="relative w-[300px] h-32 overflow-y-scroll !bg-[#fef7fe]">
+              <AppBar variant='large' className={"sticky top-0 z-40 !bg-[#fef7fe]"}>
                 <IconButton slot="leading">
                   <Icon>arrow_back</Icon>
                 </IconButton>
