@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.3.3
+
+### Patch Changes
+
+- Keep animations in tailwind classes only
+
 ## 0.3.2
 
 ### Patch Changes
