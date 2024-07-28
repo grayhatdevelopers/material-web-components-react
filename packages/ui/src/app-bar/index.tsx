@@ -139,11 +139,6 @@ const AppBar = ({
               ? "opacity-0"
               : "opacity-100"
           )}
-          style={{
-            opacity: showExpandedHeadline && isHeadlineExpandedVisible
-              ? "opacity-0"
-              : "opacity-100"
-          }}
         >
           {_headlineElement}
         </div>

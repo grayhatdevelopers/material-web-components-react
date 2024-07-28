@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.3.2
+
+### Patch Changes
+
+- b0c82e6: Add app bars implementation v1
+
 ## 0.3.1
 
 ### Patch Changes
