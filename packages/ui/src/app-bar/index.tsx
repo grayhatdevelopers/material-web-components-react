@@ -20,6 +20,7 @@ const AppBar = ({
   headlineExpandedElement?: any;
   trailingElements?: any;
   children?: React.ReactNode;
+  // eslint-disable-next-line no-unused-vars
   onExpansionChange?: (expanded: boolean) => void;
 }) => {
   const _leadingElements = leadingElements
