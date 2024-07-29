@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.3.4
+
+### Patch Changes
+
+- d84f889: add latest material/web, make SSG compatible
+
 ## 0.3.3
 
 ### Patch Changes
