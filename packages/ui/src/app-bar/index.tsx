@@ -1,38 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-
-function findSlotProp(
-  children: React.ReactNode,
-  slotName: string,
-  findAll = false
-) {
-  const foundElements: React.ReactNode[] = [];
-
-  // @ts-ignore
-  function searchChildren(childrenArray: React.ReactNode) {
-    for (let child of React.Children.toArray(childrenArray)) {
-      // @ts-ignore
-      if (child.props && child.props.slot === slotName) {
-        if (!findAll) {
-          return child; // Return the first found instance immediately
-        }
-        foundElements.push(child);
-      }
-      // @ts-ignore
-      if (child.props && child.props.children) {
-        // @ts-ignore
-        const found = searchChildren(child.props.children);
-        if (found && !findAll) {
-          return found; // Return immediately if the first instance is found
-        }
-      }
-    }
-    return null; // Return null if no instance is found
-  }
-
-  const result = searchChildren(children);
-  return findAll ? foundElements : result;
-}
+import { findSlotProp, removeSlotProps } from "../utils";
 
 const AppBar = ({
   className,
@@ -42,6 +10,8 @@ const AppBar = ({
   headlineExpandedElement,
   trailingElements,
   children,
+  onExpansionChange,
+  ...props
 }: {
   className?: string;
   variant?: null | "center-aligned" | "small" | "medium" | "large";
@@ -50,6 +20,7 @@ const AppBar = ({
   headlineExpandedElement?: any;
   trailingElements?: any;
   children?: React.ReactNode;
+  onExpansionChange?: (expanded: boolean) => void;
 }) => {
   const _leadingElements = leadingElements
     ? leadingElements
@@ -77,6 +48,13 @@ const AppBar = ({
     ? findSlotProp(children, "trailing", true)
     : null;
 
+  const remainingElements = removeSlotProps(children, [
+    "leading",
+    "headline",
+    "headline-expanded",
+    "trailing",
+  ])
+
   const _variant = variant
     ? variant
     : _trailingElements?.length > 1 || _leadingElements?.length === 0
@@ -92,15 +70,13 @@ const AppBar = ({
   const [isHeadlineExpandedVisible, setIsHeadlineExpandedVisible] =
     useState(showExpandedHeadline);
 
-  console.log("showExpandedHeadline && isHeadlineExpandedVisible", showExpandedHeadline && isHeadlineExpandedVisible);
-
   useEffect(() => {
     let observer: IntersectionObserver;
     if (headlineExpandedRef?.current) {
       observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           setIsHeadlineExpandedVisible(entry.isIntersecting);
-          console.log("entry.isIntersecting", entry.isIntersecting);
+          onExpansionChange?.(!entry.isIntersecting)
         });
       });
       observer.observe(headlineExpandedRef.current);
@@ -120,6 +96,7 @@ const AppBar = ({
             : "py-3",
           className
         )}
+        {...props}
       >
         <div
           id="leading-actions"
@@ -149,6 +126,9 @@ const AppBar = ({
         >
           {_trailingElements}
         </div>
+
+        {remainingElements}
+
       </div>
       {showExpandedHeadline && (
         <div

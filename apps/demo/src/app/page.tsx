@@ -1,22 +1,13 @@
 // @ts-nocheck
 "use client";
 
-// @TODO: Fix this. Right now, static generation doesn't seem to work with some
-// Material Web Components.
-// From my observation, it seems like the Dialog component relies on `document` even at its initialization.
-// Specially the TreeWalker code.
-// We should abstract that to allow it to work in SSG.
-import dynamic from "next/dynamic";
-
 import AppBar from "material-web-components-react/app-bar";
 import Badge from "material-web-components-react/badge";
 import Button from "material-web-components-react/button";
 import Card from "material-web-components-react/card";
 import Checkbox from "material-web-components-react/checkbox";
 import Chip, { ChipSet } from "material-web-components-react/chip";
-const Dialog = dynamic(() => import("material-web-components-react/dialog"), {
-  ssr: false,
-});
+import Dialog from "material-web-components-react/dialog";
 import Divider from "material-web-components-react/divider";
 import Elevation from "material-web-components-react/elevation";
 import FAB from "material-web-components-react/fab";
@@ -194,6 +185,8 @@ export default function Home() {
     useState(false);
 
   const [showNavigationModal, setShowNavigationModal] = useState(false);
+
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -872,16 +865,27 @@ export default function Home() {
               </AppBar>
             </div>
             <div className="relative w-[300px] h-32 overflow-y-scroll !bg-[#fef7fe]">
-              <AppBar variant='medium' className={"sticky top-0 z-40 !bg-[#fef7fe]"}>
+              <AppBar 
+                variant='medium' 
+                className={"sticky top-0 z-40 !bg-[#fef7fe]"}
+                onExpansionChange={(expanded) => setIsExpanded(expanded)}
+                style={{
+                  // @ts-ignore
+                  "--md-elevation-level": 1,
+                }}
+              >
+
+                {isExpanded && <Elevation />}
+
                 <IconButton slot="leading">
                   <Icon>arrow_back</Icon>
                 </IconButton>
 
-                <div slot="headline">
-                  Medium
+                <div slot="headline" className="line-clamp-1">
+                  Medium (with Elevation)
                 </div>
                 <div slot="headline-expanded">
-                  Medium
+                  Medium (with Elevation)
                 </div>
 
                 <IconButton slot="trailing">
