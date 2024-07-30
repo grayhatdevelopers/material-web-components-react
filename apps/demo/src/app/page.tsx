@@ -25,6 +25,7 @@ import Radio from "material-web-components-react/radio";
 import Ripple from "material-web-components-react/ripple";
 import SegmentedButton, { SegmentedButtonSet } from "material-web-components-react/segmented-button";
 import Select, { SelectOption } from "material-web-components-react/select";
+import { BottomSheet } from "material-web-components-react/sheet";
 import Slider from "material-web-components-react/slider";
 import Switch from "material-web-components-react/switch";
 import Tabs, { PrimaryTab } from "material-web-components-react/tabs";
@@ -180,6 +181,8 @@ const ComponentDemo = ({
 
 export default function Home() {
   const [showDialog, setShowDialog] = useState(false);
+  const [showBottomSheet, setShowBottomSheet] = useState(false);
+  const [showModalBottomSheet, setShowModalBottomSheet] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [isPlayingProgressIndicators, setIsPlayingProgressIndicators] =
     useState(false);
@@ -492,6 +495,135 @@ export default function Home() {
         </DemoSection>
 
         <DemoSection title="Containment">
+        <ComponentDemo title={"Bottom sheet"}>
+            <div className="w-full">
+              <Button
+                variant="text"
+                onClick={() => setShowBottomSheet((oldState) => !oldState)}
+              >
+                {showBottomSheet ? "Hide bottom sheet" : "Show bottom sheet"}
+              </Button>
+              <Button
+                variant="text"
+                onClick={() => setShowModalBottomSheet((oldState) => !oldState)}
+              >
+                {showModalBottomSheet ? "Hide modal bottom sheet" : "Show modal bottom sheet"}
+              </Button>
+              <BottomSheet
+                open={showBottomSheet}
+                onOpenChange={(open) => setShowBottomSheet(open)}
+                className="z-50"
+              >
+                <div slot="content" className='w-full h-full flex flex-row justify-evenly items-center pb-6 gap-2'>
+                  <div className="flex flex-col items-center justify-center">
+                    <IconButton>
+                      <Icon>
+                        share
+                      </Icon>
+                    </IconButton>
+                    <span className="text-sm">Share</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center">
+                    <IconButton>
+                      <Icon>
+                        add
+                      </Icon>
+                    </IconButton>
+                    <span className="text-sm">Add to</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center">
+                    <IconButton>
+                      <Icon>
+                        delete
+                      </Icon>
+                    </IconButton>
+                    <span className="text-sm">Trash</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center">
+                    <IconButton>
+                      <Icon>
+                        archive
+                      </Icon>
+                    </IconButton>
+                    <span className="text-sm">Archive</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center">
+                    <IconButton>
+                      <Icon>
+                        settings
+                      </Icon>
+                    </IconButton>
+                    <span className="text-sm">Settings</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center">
+                    <IconButton>
+                      <Icon>
+                        favorite
+                      </Icon>
+                    </IconButton>
+                    <span className="text-sm">Favorite</span>
+                  </div>
+                </div>
+              </BottomSheet>
+              <BottomSheet
+                variant="modal"
+                open={showModalBottomSheet}
+                onOpenChange={(open) => setShowModalBottomSheet(open)}
+                className="z-50"
+              >
+                <div slot="content" className='w-full h-full flex flex-row justify-evenly items-center pb-6 gap-2'>
+                  <div className="flex flex-col items-center justify-center">
+                    <IconButton>
+                      <Icon>
+                        share
+                      </Icon>
+                    </IconButton>
+                    <span className="text-sm">Share</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center">
+                    <IconButton>
+                      <Icon>
+                        add
+                      </Icon>
+                    </IconButton>
+                    <span className="text-sm">Add to</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center">
+                    <IconButton>
+                      <Icon>
+                        delete
+                      </Icon>
+                    </IconButton>
+                    <span className="text-sm">Trash</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center">
+                    <IconButton>
+                      <Icon>
+                        archive
+                      </Icon>
+                    </IconButton>
+                    <span className="text-sm">Archive</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center">
+                    <IconButton>
+                      <Icon>
+                        settings
+                      </Icon>
+                    </IconButton>
+                    <span className="text-sm">Settings</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center">
+                    <IconButton>
+                      <Icon>
+                        favorite
+                      </Icon>
+                    </IconButton>
+                    <span className="text-sm">Favorite</span>
+                  </div>
+                </div>
+              </BottomSheet>
+            </div>
+          </ComponentDemo>
           <ComponentDemo title={"Card"}>
             <div className="flex flex-row justify-center items-center gap-2">
               <Card className="p-2 aspect-square flex justify-between">

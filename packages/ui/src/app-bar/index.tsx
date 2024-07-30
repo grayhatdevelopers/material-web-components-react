@@ -137,7 +137,7 @@ const AppBar = ({
           // @ts-ignore
           ref={headlineExpandedRef}
           className={twMerge(
-            "flex flex-row text-left w-full px-4 pb-5 bg-red-200",
+            "flex flex-row text-left w-full px-4 pb-5",
             _variant === "medium" && "text-xl pt-1",
             _variant === "large" && "text-2xl pt-4"
           )}
