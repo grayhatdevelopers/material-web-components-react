@@ -495,7 +495,7 @@ export default function Home() {
         </DemoSection>
 
         <DemoSection title="Containment">
-        <ComponentDemo title={"Bottom sheet"}>
+        {/* <ComponentDemo title={"Bottom sheet"}>
             <div className="w-full">
               <Button
                 variant="text"
@@ -623,7 +623,7 @@ export default function Home() {
                 </div>
               </BottomSheet>
             </div>
-          </ComponentDemo>
+          </ComponentDemo> */}
           <ComponentDemo title={"Card"}>
             <div className="flex flex-row justify-center items-center gap-2">
               <Card className="p-2 aspect-square flex justify-between">

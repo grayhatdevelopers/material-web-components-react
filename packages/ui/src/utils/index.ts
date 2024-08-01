@@ -71,4 +71,4 @@ export function removeSlotProps(
   
     // Start filtering from the top-level children
     return filterChildren(children);
-  }
+}
