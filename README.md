@@ -42,5 +42,17 @@ We're looking for maintainers and contributors!
         - [x] Bottom App Bar
     - [x] Stack
     - [x] Box
+    - [x] Navigation Rail
     - [ ] Container
     - [ ] Typography
+
+### Credits
+Huge shout out to Elizabeth Mitchell ([asyncLiz](https://github.com/asyncliz/)) and the rest of the Material Design team for their awesome Web Components implementation.
+
+Thank you [Travis Reeder](https://github.com/treeder) for your Web Component implementation of Navigation Rail. I had to copy it to this project. I couldn't use yours directly because it would import `@material/web` again and bring conflicts.
+
+Thanks for improving the demo:
+- [TalhaHere12](https://github.com/TalhaHere12)
+
+Thanks for building BottomSheet:
+- [Aroonaongithhub](https://github.com/Aroonaongithhub/)

@@ -38,18 +38,7 @@ export default function RootLayout({
       </head>
       <body>
         <main className="bg-[#FDF7FF] max-h-screen w-full">
-          <div
-            id="titlebar"
-            className="backdrop-blur-md z-10 w-full h-16 flex flex-row gap-3 items-center justify-center"
-          >
-            <h1 className="font-bold text-xl">
-              Material Web Components for React
-            </h1>
-            <GitHubButton href="https://github.com/grayhatdevelopers/material-web-components-react">
-              Star us on GitHub
-            </GitHubButton>
-          </div>
-          <div className="flex flex-col justify-center items-center md:grid md:grid-cols-[1fr_1fr] lg:grid-cols-[22.5rem_1fr_1fr] gap-4 md:h-screen">
+          <div className="flex flex-col justify-center items-center md:grid md:grid-cols-[1fr_1fr] lg:grid-cols-[auto_1fr_1fr] md:h-screen">
             {children}
           </div>
         </main>

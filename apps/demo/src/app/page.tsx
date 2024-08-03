@@ -18,14 +18,15 @@ import Item from "material-web-components-react/item";
 import List, { ListItem } from "material-web-components-react/list";
 import Menu, { MenuItem } from "material-web-components-react/menu";
 import NavigationBar from "material-web-components-react/navigation-bar";
-import NavigationDrawer, { NavigationDrawerModal } from "material-web-components-react/navigation-drawer";
+import { NavigationDrawerModal } from "material-web-components-react/navigation-drawer";
 import NavigationTab from "material-web-components-react/navigation-tab";
+import NavigationRail from "material-web-components-react/navigation-rail";
 import Progress from "material-web-components-react/progress";
 import Radio from "material-web-components-react/radio";
 import Ripple from "material-web-components-react/ripple";
 import SegmentedButton, { SegmentedButtonSet } from "material-web-components-react/segmented-button";
 import Select, { SelectOption } from "material-web-components-react/select";
-import { BottomSheet } from "material-web-components-react/sheet";
+// import { BottomSheet } from "material-web-components-react/sheet";
 import Slider from "material-web-components-react/slider";
 import Switch from "material-web-components-react/switch";
 import Tabs, { PrimaryTab } from "material-web-components-react/tabs";
@@ -40,7 +41,7 @@ import Link from "next/link";
 const Column = ({ children, ...props }: { children: any; id: string }) => {
   return (
     <div
-      className="w-full h-fit md:h-screen overflow-y-scroll flex-col gap-4 pt-4"
+      className="w-full h-fit md:h-screen overflow-y-scroll flex-col gap-4 pt-4 pr-2"
       {...props}
     >
       {children}
@@ -239,13 +240,42 @@ export default function Home() {
         id="sidebar"
         className={"hidden md:flex w-0 md:w-full z-10 top-0 left-0 h-screen"}
       >
-        <NavigationDrawer
-          opened={true}
-          className="hidden lg:flex h-full"
-          pivot={"start"}
-        >
-          <NavigationContent />
-        </NavigationDrawer>
+        <div className="flex sticky top-0 overflow-y-auto h-screen">
+        <div className="" id="nav-rail-container">
+          <NavigationRail active-index="1">
+
+            <IconButton slot="menu" id="rail-menu-button" onClick={() => setShowNavigationModal(true)}>
+              <Icon>menu</Icon>
+            </IconButton>
+            <FAB slot="fab" variant="primary" href="/" lowered>
+              <Icon slot="icon">search</Icon>
+            </FAB>
+
+            <NavigationTab disabled label="Home" active>
+              <Icon slot="active-icon">home</Icon>
+              <Icon slot="inactive-icon">home</Icon>
+            </NavigationTab>
+            <Link href="https://github.com/grayhatdevelopers/material-web-components-react" target="_blank">
+              <NavigationTab disabled label="GitHub">
+                <Icon slot="active-icon">code</Icon>
+                <Icon slot="inactive-icon">code</Icon>
+              </NavigationTab>
+            </Link>
+            <Link href="https://www.npmjs.com/package/material-web-components-react" target="_blank">
+              <NavigationTab disabled label="NPM">
+                <Icon slot="active-icon">deployed_code</Icon>
+                <Icon slot="inactive-icon">deployed_code</Icon>
+              </NavigationTab>
+            </Link>
+            <Link href="https://material-web.dev/" target="_blank">
+              <NavigationTab disabled label="Docs" badgeValue="3" showBadge>
+                <Icon slot="active-icon">book</Icon>
+                <Icon slot="inactive-icon">book</Icon>
+              </NavigationTab>
+            </Link>
+          </NavigationRail>
+        </div>
+        </div>
       </div>
       <Column id="column-a">
         <DemoSection title={"Actions"}>
@@ -495,7 +525,7 @@ export default function Home() {
         </DemoSection>
 
         <DemoSection title="Containment">
-        {/* <ComponentDemo title={"Bottom sheet"}>
+          {/* <ComponentDemo title={"Bottom sheet"}>
             <div className="w-full">
               <Button
                 variant="text"
@@ -509,119 +539,6 @@ export default function Home() {
               >
                 {showModalBottomSheet ? "Hide modal bottom sheet" : "Show modal bottom sheet"}
               </Button>
-              <BottomSheet
-                open={showBottomSheet}
-                onOpenChange={(open) => setShowBottomSheet(open)}
-                className="z-50"
-              >
-                <div slot="content" className='w-full h-full flex flex-row justify-evenly items-center pb-6 gap-2'>
-                  <div className="flex flex-col items-center justify-center">
-                    <IconButton>
-                      <Icon>
-                        share
-                      </Icon>
-                    </IconButton>
-                    <span className="text-sm">Share</span>
-                  </div>
-                  <div className="flex flex-col items-center justify-center">
-                    <IconButton>
-                      <Icon>
-                        add
-                      </Icon>
-                    </IconButton>
-                    <span className="text-sm">Add to</span>
-                  </div>
-                  <div className="flex flex-col items-center justify-center">
-                    <IconButton>
-                      <Icon>
-                        delete
-                      </Icon>
-                    </IconButton>
-                    <span className="text-sm">Trash</span>
-                  </div>
-                  <div className="flex flex-col items-center justify-center">
-                    <IconButton>
-                      <Icon>
-                        archive
-                      </Icon>
-                    </IconButton>
-                    <span className="text-sm">Archive</span>
-                  </div>
-                  <div className="flex flex-col items-center justify-center">
-                    <IconButton>
-                      <Icon>
-                        settings
-                      </Icon>
-                    </IconButton>
-                    <span className="text-sm">Settings</span>
-                  </div>
-                  <div className="flex flex-col items-center justify-center">
-                    <IconButton>
-                      <Icon>
-                        favorite
-                      </Icon>
-                    </IconButton>
-                    <span className="text-sm">Favorite</span>
-                  </div>
-                </div>
-              </BottomSheet>
-              <BottomSheet
-                variant="modal"
-                open={showModalBottomSheet}
-                onOpenChange={(open) => setShowModalBottomSheet(open)}
-                className="z-50"
-              >
-                <div slot="content" className='w-full h-full flex flex-row justify-evenly items-center pb-6 gap-2'>
-                  <div className="flex flex-col items-center justify-center">
-                    <IconButton>
-                      <Icon>
-                        share
-                      </Icon>
-                    </IconButton>
-                    <span className="text-sm">Share</span>
-                  </div>
-                  <div className="flex flex-col items-center justify-center">
-                    <IconButton>
-                      <Icon>
-                        add
-                      </Icon>
-                    </IconButton>
-                    <span className="text-sm">Add to</span>
-                  </div>
-                  <div className="flex flex-col items-center justify-center">
-                    <IconButton>
-                      <Icon>
-                        delete
-                      </Icon>
-                    </IconButton>
-                    <span className="text-sm">Trash</span>
-                  </div>
-                  <div className="flex flex-col items-center justify-center">
-                    <IconButton>
-                      <Icon>
-                        archive
-                      </Icon>
-                    </IconButton>
-                    <span className="text-sm">Archive</span>
-                  </div>
-                  <div className="flex flex-col items-center justify-center">
-                    <IconButton>
-                      <Icon>
-                        settings
-                      </Icon>
-                    </IconButton>
-                    <span className="text-sm">Settings</span>
-                  </div>
-                  <div className="flex flex-col items-center justify-center">
-                    <IconButton>
-                      <Icon>
-                        favorite
-                      </Icon>
-                    </IconButton>
-                    <span className="text-sm">Favorite</span>
-                  </div>
-                </div>
-              </BottomSheet>
             </div>
           </ComponentDemo> */}
           <ComponentDemo title={"Card"}>
@@ -966,9 +883,7 @@ export default function Home() {
                   <Icon>arrow_back</Icon>
                 </IconButton>
 
-                <div slot="headline">
-                  Center-aligned
-                </div>
+                <div slot="headline">Center-aligned</div>
 
                 <IconButton slot="trailing">
                   <Icon>more_vert</Icon>
@@ -981,9 +896,7 @@ export default function Home() {
                   <Icon>arrow_back</Icon>
                 </IconButton>
 
-                <div slot="headline">
-                  Small
-                </div>
+                <div slot="headline">Small</div>
 
                 <IconButton slot="trailing">
                   <Icon>attach_file</Icon>
@@ -997,8 +910,8 @@ export default function Home() {
               </AppBar>
             </div>
             <div className="relative w-[300px] h-32 overflow-y-scroll !bg-[#fef7fe]">
-              <AppBar 
-                variant='medium' 
+              <AppBar
+                variant="medium"
                 className={"sticky top-0 z-40 !bg-[#fef7fe]"}
                 onExpansionChange={(expanded) => setIsExpanded(expanded)}
                 style={{
@@ -1006,7 +919,6 @@ export default function Home() {
                   "--md-elevation-level": 1,
                 }}
               >
-
                 {isExpanded && <Elevation />}
 
                 <IconButton slot="leading">
@@ -1016,9 +928,7 @@ export default function Home() {
                 <div slot="headline" className="line-clamp-1">
                   Medium (with Elevation)
                 </div>
-                <div slot="headline-expanded">
-                  Medium (with Elevation)
-                </div>
+                <div slot="headline-expanded">Medium (with Elevation)</div>
 
                 <IconButton slot="trailing">
                   <Icon>attach_file</Icon>
@@ -1032,20 +942,18 @@ export default function Home() {
               </AppBar>
 
               <div id="body" className="h-40 w-full"></div>
-
             </div>
             <div className="relative w-[300px] h-32 overflow-y-scroll !bg-[#fef7fe]">
-              <AppBar variant='large' className={"sticky top-0 z-40 !bg-[#fef7fe]"}>
+              <AppBar
+                variant="large"
+                className={"sticky top-0 z-40 !bg-[#fef7fe]"}
+              >
                 <IconButton slot="leading">
                   <Icon>arrow_back</Icon>
                 </IconButton>
 
-                <div slot="headline">
-                  Large
-                </div>
-                <div slot="headline-expanded">
-                  Large
-                </div>
+                <div slot="headline">Large</div>
+                <div slot="headline-expanded">Large</div>
 
                 <IconButton slot="trailing">
                   <Icon>attach_file</Icon>
@@ -1059,7 +967,6 @@ export default function Home() {
               </AppBar>
 
               <div id="body" className="h-40 w-full"></div>
-
             </div>
           </ComponentDemo>
         </DemoSection>
@@ -1102,6 +1009,127 @@ export default function Home() {
           </ComponentDemo>
         </DemoSection>
       </Column>
+      {/* 
+      <BottomSheet
+        open={showBottomSheet}
+        onOpenChange={(open) => setShowBottomSheet(open)}
+        className="z-50"
+      >
+        <div slot="title">
+          Actions
+        </div>
+        <div slot="content" className='w-full h-full flex flex-row justify-evenly items-center pb-6 gap-2'>
+          <div className="flex flex-col items-center justify-center">
+            <IconButton>
+              <Icon>
+                share
+              </Icon>
+            </IconButton>
+            <span className="text-sm">Share</span>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <IconButton>
+              <Icon>
+                add
+              </Icon>
+            </IconButton>
+            <span className="text-sm">Add to</span>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <IconButton>
+              <Icon>
+                delete
+              </Icon>
+            </IconButton>
+            <span className="text-sm">Trash</span>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <IconButton>
+              <Icon>
+                archive
+              </Icon>
+            </IconButton>
+            <span className="text-sm">Archive</span>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <IconButton>
+              <Icon>
+                settings
+              </Icon>
+            </IconButton>
+            <span className="text-sm">Settings</span>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <IconButton>
+              <Icon>
+                favorite
+              </Icon>
+            </IconButton>
+            <span className="text-sm">Favorite</span>
+          </div>
+        </div>
+      </BottomSheet>
+      <BottomSheet
+        variant="modal"
+        open={showModalBottomSheet}
+        onOpenChange={(open) => setShowModalBottomSheet(open)}
+        className="z-50"
+      >
+        <div slot="title">
+          Actions
+        </div>
+        <div slot="content" className='w-full h-full flex flex-row justify-evenly items-center pb-6 gap-2'>
+          <div className="flex flex-col items-center justify-center">
+            <IconButton>
+              <Icon>
+                share
+              </Icon>
+            </IconButton>
+            <span className="text-sm">Share</span>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <IconButton>
+              <Icon>
+                add
+              </Icon>
+            </IconButton>
+            <span className="text-sm">Add to</span>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <IconButton>
+              <Icon>
+                delete
+              </Icon>
+            </IconButton>
+            <span className="text-sm">Trash</span>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <IconButton>
+              <Icon>
+                archive
+              </Icon>
+            </IconButton>
+            <span className="text-sm">Archive</span>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <IconButton>
+              <Icon>
+                settings
+              </Icon>
+            </IconButton>
+            <span className="text-sm">Settings</span>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <IconButton>
+              <Icon>
+                favorite
+              </Icon>
+            </IconButton>
+            <span className="text-sm">Favorite</span>
+          </div>
+        </div>
+      </BottomSheet> 
+*/}
     </>
   );
 }
