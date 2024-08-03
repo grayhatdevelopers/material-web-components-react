@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 import { __decorate } from "tslib"
-import { html, LitElement, nothing } from 'lit'
+import { html, nothing } from 'lit'
 import { property, queryAssignedElements } from 'lit/decorators.js'
 import { requestUpdateOnAriaChange } from '../../../internal/aria/delegate.js'
 import { isRtl } from '../../../internal/controller/is-rtl.js'

@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.3.6
+
+### Patch Changes
+
+- add navigation rail
+
 ## 0.3.5
 
 ### Patch Changes
