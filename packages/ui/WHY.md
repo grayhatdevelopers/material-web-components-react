@@ -17,8 +17,6 @@ These are libraries which implement Material 3, the latest specification (so far
 
 - beercss (insane work, totally framework independent. I should consider using this): https://www.beercss.com/
 - actifyjs (currently looks like the best React-only implementation!): https://actifyjs.com/
-- material-web-components-react (Official): https://github.com/material-components/material-components-web-react
-- react-mdc: https://react-mdc.github.io/#/
 
 I'd love to add more. Send in a Pull Request if you'd like to contribute more.
 
