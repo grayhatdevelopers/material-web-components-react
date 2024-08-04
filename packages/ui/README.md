@@ -47,14 +47,18 @@ We're looking for maintainers and contributors!
   - [x] Stack
   - [x] Box
   - [x] Navigation Rail
-  - [ ] Container
-  - [ ] Typography
+  - [x] Container
+  - [x] Typography
 
 ### Credits
 
 Huge shout out to Elizabeth Mitchell ([asyncLiz](https://github.com/asyncliz/)) and the rest of the Material Design team for their awesome Web Components implementation.
 
 Thank you [Travis Reeder](https://github.com/treeder) for your Web Component implementation of Navigation Rail. I had to copy it to this project. I couldn't use yours directly because it would import `@material/web` again and bring conflicts.
+
+Thanks for making the crappy, brain-dead wrapper components:
+
+- [ChatGPT](https://chatgpt.com/share/574a9601-8927-4992-884e-16c58f24a982)
 
 Thanks for improving the demo:
 

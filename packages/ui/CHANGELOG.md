@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.3.7
+
+### Patch Changes
+
+- Add two new components for MUI junkies; Container and Typography
+
 ## 0.3.6
 
 ### Patch Changes
