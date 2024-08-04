@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import React from 'react';
+import React from "react";
 
-import {MdDialog} from '@material/web/dialog/dialog.js';
-import {createComponent} from '@lit/react';
+import { MdDialog } from "@material/web/dialog/dialog.js";
+import { createComponent } from "@lit/react";
 
-export type { MdDialog as MdDialogType } from '@material/web/dialog/dialog';
+export type { MdDialog as MdDialogType } from "@material/web/dialog/dialog";
 
 const events = {
-  'onOpen': 'open',
-  'onOpened': 'opened',
-  'onClose': 'close',
-  'onClosed': 'closed',
-  'onCancel': 'cancel',
-}
+  onOpen: "open",
+  onOpened: "opened",
+  onClose: "close",
+  onClosed: "closed",
+  onCancel: "cancel",
+};
 
 export const Dialog = createComponent({
-  tagName: 'md-dialog',
+  tagName: "md-dialog",
   elementClass: MdDialog,
   react: React,
   events: events,

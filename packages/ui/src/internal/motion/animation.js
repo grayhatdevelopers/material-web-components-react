@@ -11,12 +11,12 @@
  * TODO(b/241113345): replace with tokens
  */
 export const EASING = {
-    STANDARD: 'cubic-bezier(0.2, 0, 0, 1)',
-    STANDARD_ACCELERATE: 'cubic-bezier(.3,0,1,1)',
-    STANDARD_DECELERATE: 'cubic-bezier(0,0,0,1)',
-    EMPHASIZED: 'cubic-bezier(.3,0,0,1)',
-    EMPHASIZED_ACCELERATE: 'cubic-bezier(.3,0,.8,.15)',
-    EMPHASIZED_DECELERATE: 'cubic-bezier(.05,.7,.1,1)',
+  STANDARD: "cubic-bezier(0.2, 0, 0, 1)",
+  STANDARD_ACCELERATE: "cubic-bezier(.3,0,1,1)",
+  STANDARD_DECELERATE: "cubic-bezier(0,0,0,1)",
+  EMPHASIZED: "cubic-bezier(.3,0,0,1)",
+  EMPHASIZED_ACCELERATE: "cubic-bezier(.3,0,.8,.15)",
+  EMPHASIZED_DECELERATE: "cubic-bezier(.05,.7,.1,1)",
 };
 /**
  * Creates an `AnimationSignal` that can be used to cancel a previous task.
@@ -52,22 +52,22 @@ export const EASING = {
  * @return An `AnimationSignal`.
  */
 export function createAnimationSignal() {
-    // The current animation's AbortController
-    let animationAbortController = null;
-    return {
-        start() {
-            // Tell the previous animation to cancel.
-            animationAbortController?.abort();
-            // Set up a new AbortController for the current animation.
-            animationAbortController = new AbortController();
-            // Provide the AbortSignal so that the caller can check aborted status
-            // and add listeners.
-            return animationAbortController.signal;
-        },
-        finish() {
-            animationAbortController = null;
-        },
-    };
+  // The current animation's AbortController
+  let animationAbortController = null;
+  return {
+    start() {
+      // Tell the previous animation to cancel.
+      animationAbortController?.abort();
+      // Set up a new AbortController for the current animation.
+      animationAbortController = new AbortController();
+      // Provide the AbortSignal so that the caller can check aborted status
+      // and add listeners.
+      return animationAbortController.signal;
+    },
+    finish() {
+      animationAbortController = null;
+    },
+  };
 }
 /**
  * Returns a function which can be used to throttle function calls
@@ -75,27 +75,31 @@ export function createAnimationSignal() {
  * determines the throttle amount (defaults to requestAnimationFrame).
  */
 export function createThrottle() {
-    const stack = new Set();
-    return async (key = '', cb, timeout = async () => {
-        await new Promise(requestAnimationFrame);
-    }) => {
-        if (!stack.has(key)) {
-            stack.add(key);
-            await timeout();
-            if (stack.has(key)) {
-                stack.delete(key);
-                cb();
-            }
-        }
-    };
+  const stack = new Set();
+  return async (
+    key = "",
+    cb,
+    timeout = async () => {
+      await new Promise(requestAnimationFrame);
+    },
+  ) => {
+    if (!stack.has(key)) {
+      stack.add(key);
+      await timeout();
+      if (stack.has(key)) {
+        stack.delete(key);
+        cb();
+      }
+    }
+  };
 }
 /**
  * Parses an number in milliseconds from a css time value
  */
 export function msFromTimeCSSValue(value) {
-    const match = value.trim().match(/([\d.]+)(\s*s$)?/);
-    const time = match?.[1];
-    const seconds = match?.[2];
-    return Number(time ?? 0) * (seconds ? 1000 : 1);
+  const match = value.trim().match(/([\d.]+)(\s*s$)?/);
+  const time = match?.[1];
+  const seconds = match?.[2];
+  return Number(time ?? 0) * (seconds ? 1000 : 1);
 }
 //# sourceMappingURL=animation.js.map

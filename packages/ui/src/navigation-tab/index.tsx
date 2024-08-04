@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import React from 'react';
+import React from "react";
 
-import {MdNavigationTab} from '@material/web/labs/navigationtab/navigation-tab';
-import {createComponent} from '@lit/react';
+import { MdNavigationTab } from "@material/web/labs/navigationtab/navigation-tab";
+import { createComponent } from "@lit/react";
 
-export type { MdNavigationTab as MdNavigationTabType } from '@material/web/labs/navigationtab/navigation-tab';
+export type { MdNavigationTab as MdNavigationTabType } from "@material/web/labs/navigationtab/navigation-tab";
 
 // const events = {
 //   'onOpen': 'open',
@@ -16,7 +16,7 @@ export type { MdNavigationTab as MdNavigationTabType } from '@material/web/labs/
 // }
 
 export const NavigationTab = createComponent({
-  tagName: 'md-navigation-tab',
+  tagName: "md-navigation-tab",
   elementClass: MdNavigationTab,
   react: React,
   // events: events,

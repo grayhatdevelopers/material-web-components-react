@@ -1,23 +1,23 @@
 // File: MaterialList.tsx
 "use client";
 
-import { MdList } from '@material/web/list/list';
-import { MdListItem } from '@material/web/list/list-item';
+import { MdList } from "@material/web/list/list";
+import { MdListItem } from "@material/web/list/list-item";
 
-import React from 'react';
-import { createComponent } from '@lit/react';
+import React from "react";
+import { createComponent } from "@lit/react";
 
 const events = {
-  'onRequestActivation': 'request-activation'
-}
+  onRequestActivation: "request-activation",
+};
 export const List = createComponent({
-  tagName: 'md-list',
+  tagName: "md-list",
   elementClass: MdList,
   react: React,
 });
 
 export const ListItem = createComponent({
-  tagName: 'md-list-item',
+  tagName: "md-list-item",
   elementClass: MdListItem,
   react: React,
   events,

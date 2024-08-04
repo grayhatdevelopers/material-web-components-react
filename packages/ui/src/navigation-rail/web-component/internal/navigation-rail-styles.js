@@ -4,37 +4,36 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 // Generated stylesheet for ./labs/navigationbar/internal/navigation-bar-styles.css.
-import { css } from 'lit'
+import { css } from "lit";
 export const styles = css`
-
-.md3-navigation-rail {
+  .md3-navigation-rail {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: 80px;
-    position: sticky; 
+    position: sticky;
     top: 0;
     /* height: 100%; */
-}
+  }
 
-.md3-navigation-rail__tabs-slot-container {
+  .md3-navigation-rail__tabs-slot-container {
     display: flex;
     flex-direction: column;
     /* height: 100vh; */
     gap: 32px;
     /* justify-content: space-between; */
     align-items: center;
-}
+  }
 
-.md3-navigation-rail-top {
+  .md3-navigation-rail-top {
     padding-top: 24px;
     display: flex;
     flex-direction: column;
     gap: 12px;
     align-items: center;
-}
+  }
 
-.md3-navigation-rail-middle {
+  .md3-navigation-rail-middle {
     /*
     display: flex;
     flex-direction: column;
@@ -45,6 +44,6 @@ export const styles = css`
     width: inherit;
     justify-content: space-between;
     align-items: center;
-}
-`
+  }
+`;
 //# sourceMappingURL=navigation-bar-styles.js.map

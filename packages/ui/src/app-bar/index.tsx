@@ -26,43 +26,43 @@ const AppBar = ({
   const _leadingElements = leadingElements
     ? leadingElements
     : children
-    ? findSlotProp(children, "leading", true)
-    : null;
+      ? findSlotProp(children, "leading", true)
+      : null;
   const _headlineElement = headlineElement
     ? headlineElement
     : children
-    ? findSlotProp(children, "headline")
-    : null;
+      ? findSlotProp(children, "headline")
+      : null;
 
   const hasHeadlineExpandedElement = findSlotProp(
     children,
-    "headline-expanded"
+    "headline-expanded",
   );
   const _headlineExpandedElement = headlineExpandedElement
     ? headlineExpandedElement
     : children
-    ? hasHeadlineExpandedElement
-    : _headlineElement;
+      ? hasHeadlineExpandedElement
+      : _headlineElement;
   const _trailingElements = trailingElements
     ? trailingElements
     : children
-    ? findSlotProp(children, "trailing", true)
-    : null;
+      ? findSlotProp(children, "trailing", true)
+      : null;
 
   const remainingElements = removeSlotProps(children, [
     "leading",
     "headline",
     "headline-expanded",
     "trailing",
-  ])
+  ]);
 
   const _variant = variant
     ? variant
     : _trailingElements?.length > 1 || _leadingElements?.length === 0
-    ? hasHeadlineExpandedElement
-      ? "medium"
-      : "small"
-    : "center-aligned";
+      ? hasHeadlineExpandedElement
+        ? "medium"
+        : "small"
+      : "center-aligned";
 
   const showExpandedHeadline = _variant === "medium" || _variant === "large";
 
@@ -77,7 +77,7 @@ const AppBar = ({
       observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           setIsHeadlineExpandedVisible(entry.isIntersecting);
-          onExpansionChange?.(!entry.isIntersecting)
+          onExpansionChange?.(!entry.isIntersecting);
         });
       });
       observer.observe(headlineExpandedRef.current);
@@ -95,7 +95,7 @@ const AppBar = ({
           showExpandedHeadline && isHeadlineExpandedVisible
             ? "pt-3 pb-0"
             : "py-3",
-          className
+          className,
         )}
         {...props}
       >
@@ -115,7 +115,7 @@ const AppBar = ({
               "justify-start text-left",
             showExpandedHeadline && isHeadlineExpandedVisible
               ? "opacity-0"
-              : "opacity-100"
+              : "opacity-100",
           )}
         >
           {_headlineElement}
@@ -129,7 +129,6 @@ const AppBar = ({
         </div>
 
         {remainingElements}
-
       </div>
       {showExpandedHeadline && (
         <div
@@ -139,7 +138,7 @@ const AppBar = ({
           className={twMerge(
             "flex flex-row text-left w-full px-4 pb-5",
             _variant === "medium" && "text-xl pt-1",
-            _variant === "large" && "text-2xl pt-4"
+            _variant === "large" && "text-2xl pt-4",
           )}
         >
           {_headlineExpandedElement}

@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import React from 'react';
+import React from "react";
 
-import {MdNavigationRail} from './web-component/navigation-rail';
+import { MdNavigationRail } from "./web-component/navigation-rail";
 
-import {createComponent} from '@lit/react';
+import { createComponent } from "@lit/react";
 
 const events = {
-  'onOpen': 'open',
-  'onOpened': 'opened',
-  'onClose': 'close',
-  'onClosed': 'closed',
-  'onCancel': 'cancel',
+  onOpen: "open",
+  onOpened: "opened",
+  onClose: "close",
+  onClosed: "closed",
+  onCancel: "cancel",
   // 'onNavigationDrawerChanged': 'navigation-drawer-changed'
-}
+};
 
 export const NavigationRail = createComponent({
-  tagName: 'md-navigation-rail',
+  tagName: "md-navigation-rail",
   elementClass: MdNavigationRail,
   react: React,
   events: events,

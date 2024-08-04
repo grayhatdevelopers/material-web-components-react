@@ -7,15 +7,15 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   safelist: [
-      {
-        pattern: /opacity-(.)/,
-      },
-      {
-        pattern: /text-(xs|sm|md|lg|xl|2xl|3xl)/,
-      },
-      {
-        pattern: /p(y|t|x|b)-(0|2|3)/,
-      }
+    {
+      pattern: /opacity-(.)/,
+    },
+    {
+      pattern: /text-(xs|sm|md|lg|xl|2xl|3xl)/,
+    },
+    {
+      pattern: /p(y|t|x|b)-(0|2|3)/,
+    },
   ],
   theme: {
     extend: {

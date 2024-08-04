@@ -6,7 +6,7 @@ import { findSlotProp, removeSlotProps } from "../utils";
 type BottomSheetProps = {
   open: boolean;
   // eslint-disable-next-line no-unused-vars
-  onOpenChange: (open:boolean) => void;
+  onOpenChange: (open: boolean) => void;
   showHandle?: boolean;
   variant?: "standard" | "modal";
   children: React.ReactNode;
@@ -22,11 +22,11 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
   const _contentElements = findSlotProp(children, "content", true);
   const remainingElements = removeSlotProps(children, ["title", "content"]);
 
-  const _showHandle = showHandle 
-                    ? showHandle
-                    : variant === "modal"
-                    ? true
-                    : false
+  const _showHandle = showHandle
+    ? showHandle
+    : variant === "modal"
+      ? true
+      : false;
 
   return (
     <Drawer.Root {...props}>
@@ -43,10 +43,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
             <div className="w-12 h-1.5 rounded-full bg-zinc-300 cursor-grab active:cursor-grabbing flex flex-col items-center justify-center mx-auto mt-6 mb-2" />
           )}
           {_contentElements?.length || _titleElement ? (
-            <div className={twMerge(
-              "p-4 flex-1",
-              !_showHandle && "pt-8"
-            )}>
+            <div className={twMerge("p-4 flex-1", !_showHandle && "pt-8")}>
               <div className="max-w-md mx-auto">
                 {_titleElement && <Drawer.Title>{_titleElement}</Drawer.Title>}
                 {_contentElements}

@@ -6,7 +6,7 @@
 /**
  * A symbol used to access dispatch hooks on an event.
  */
-const dispatchHooks = Symbol('dispatchHooks');
+const dispatchHooks = Symbol("dispatchHooks");
 /**
  * Add a hook for an event that is called after the event is dispatched and
  * propagates to other event listeners.
@@ -63,11 +63,11 @@ const dispatchHooks = Symbol('dispatchHooks');
  * @param callback A hook that is called after the event finishes dispatching.
  */
 export function afterDispatch(event, callback) {
-    const hooks = event[dispatchHooks];
-    if (!hooks) {
-        throw new Error(`'${event.type}' event needs setupDispatchHooks().`);
-    }
-    hooks.addEventListener('after', callback);
+  const hooks = event[dispatchHooks];
+  if (!hooks) {
+    throw new Error(`'${event.type}' event needs setupDispatchHooks().`);
+  }
+  hooks.addEventListener("after", callback);
 }
 /**
  * A lookup map of elements and event types that have a dispatch hook listener
@@ -99,53 +99,57 @@ const ELEMENT_DISPATCH_HOOK_TYPES = new WeakMap();
  * @param eventTypes The event types to add dispatch hooks to.
  */
 export function setupDispatchHooks(element, ...eventTypes) {
-    let typesAlreadySetUp = ELEMENT_DISPATCH_HOOK_TYPES.get(element);
-    if (!typesAlreadySetUp) {
-        typesAlreadySetUp = new Set();
-        ELEMENT_DISPATCH_HOOK_TYPES.set(element, typesAlreadySetUp);
+  let typesAlreadySetUp = ELEMENT_DISPATCH_HOOK_TYPES.get(element);
+  if (!typesAlreadySetUp) {
+    typesAlreadySetUp = new Set();
+    ELEMENT_DISPATCH_HOOK_TYPES.set(element, typesAlreadySetUp);
+  }
+  for (const eventType of eventTypes) {
+    // Don't register multiple dispatch hook listeners. A second registration
+    // would lead to the second listener re-dispatching a re-dispatched event,
+    // which can cause an infinite loop inside the other one.
+    if (typesAlreadySetUp.has(eventType)) {
+      continue;
     }
-    for (const eventType of eventTypes) {
-        // Don't register multiple dispatch hook listeners. A second registration
-        // would lead to the second listener re-dispatching a re-dispatched event,
-        // which can cause an infinite loop inside the other one.
-        if (typesAlreadySetUp.has(eventType)) {
-            continue;
+    // When we re-dispatch the event, it's going to immediately trigger this
+    // listener again. Use a flag to ignore it.
+    let isRedispatching = false;
+    element.addEventListener(
+      eventType,
+      (event) => {
+        if (isRedispatching) {
+          return;
         }
-        // When we re-dispatch the event, it's going to immediately trigger this
-        // listener again. Use a flag to ignore it.
-        let isRedispatching = false;
-        element.addEventListener(eventType, (event) => {
-            if (isRedispatching) {
-                return;
-            }
-            // Do not let the event propagate to any other listener (not just
-            // bubbling listeners with `stopPropagation()`).
-            event.stopImmediatePropagation();
-            // Make a copy.
-            const eventCopy = Reflect.construct(event.constructor, [
-                event.type,
-                event,
-            ]);
-            // Add hooks onto the event.
-            const hooks = new EventTarget();
-            eventCopy[dispatchHooks] = hooks;
-            // Re-dispatch the event. We can't reuse `redispatchEvent()` since we
-            // need to add the hooks to the copy before it's dispatched.
-            isRedispatching = true;
-            const dispatched = element.dispatchEvent(eventCopy);
-            isRedispatching = false;
-            if (!dispatched) {
-                event.preventDefault();
-            }
-            // Synchronously call afterDispatch() hooks.
-            hooks.dispatchEvent(new Event('after'));
-        }, {
-            // Ensure this listener runs before other listeners.
-            // `setupDispatchHooks()` should be called in constructors to also
-            // ensure they run before any other externally-added capture listeners.
-            capture: true,
-        });
-        typesAlreadySetUp.add(eventType);
-    }
+        // Do not let the event propagate to any other listener (not just
+        // bubbling listeners with `stopPropagation()`).
+        event.stopImmediatePropagation();
+        // Make a copy.
+        const eventCopy = Reflect.construct(event.constructor, [
+          event.type,
+          event,
+        ]);
+        // Add hooks onto the event.
+        const hooks = new EventTarget();
+        eventCopy[dispatchHooks] = hooks;
+        // Re-dispatch the event. We can't reuse `redispatchEvent()` since we
+        // need to add the hooks to the copy before it's dispatched.
+        isRedispatching = true;
+        const dispatched = element.dispatchEvent(eventCopy);
+        isRedispatching = false;
+        if (!dispatched) {
+          event.preventDefault();
+        }
+        // Synchronously call afterDispatch() hooks.
+        hooks.dispatchEvent(new Event("after"));
+      },
+      {
+        // Ensure this listener runs before other listeners.
+        // `setupDispatchHooks()` should be called in constructors to also
+        // ensure they run before any other externally-added capture listeners.
+        capture: true,
+      },
+    );
+    typesAlreadySetUp.add(eventType);
+  }
 }
 //# sourceMappingURL=dispatch-hooks.js.map

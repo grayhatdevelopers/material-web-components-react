@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import React from 'react';
+import React from "react";
 
-import {MdBadge} from '@material/web/labs/badge/badge';
-import {createComponent} from '@lit/react';
+import { MdBadge } from "@material/web/labs/badge/badge";
+import { createComponent } from "@lit/react";
 
-export type { MdBadge as MdBadgeType } from '@material/web/labs/badge/badge';
+export type { MdBadge as MdBadgeType } from "@material/web/labs/badge/badge";
 
 // const events = {
 //   'onOpen': 'open',
@@ -16,7 +16,7 @@ export type { MdBadge as MdBadgeType } from '@material/web/labs/badge/badge';
 // }
 
 export const Badge = createComponent({
-  tagName: 'md-badge',
+  tagName: "md-badge",
   elementClass: MdBadge,
   react: React,
   // events: events,

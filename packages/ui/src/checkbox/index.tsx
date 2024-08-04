@@ -1,19 +1,19 @@
-"use client"
+"use client";
 // file: Checkbox.react.tsx
-import { MdCheckbox } from '@material/web/checkbox/checkbox';
-import React from 'react';
-import { createComponent } from '@lit/react';
+import { MdCheckbox } from "@material/web/checkbox/checkbox";
+import React from "react";
+import { createComponent } from "@lit/react";
 
-export type { MdCheckbox } from '@material/web/checkbox/checkbox.js';
+export type { MdCheckbox } from "@material/web/checkbox/checkbox.js";
 
 const events = {
-    'onChange': 'change',
-    'onInput': 'input'
-}
+  onChange: "change",
+  onInput: "input",
+};
 
 export default createComponent({
-    tagName: 'md-checkbox',
-    elementClass: MdCheckbox,
-    react: React,
-    events
+  tagName: "md-checkbox",
+  elementClass: MdCheckbox,
+  react: React,
+  events,
 });

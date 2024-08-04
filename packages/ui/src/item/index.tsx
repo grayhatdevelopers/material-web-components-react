@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import React from 'react';
+import React from "react";
 
-import {MdItem} from '@material/web/labs/item/item';
-import {createComponent} from '@lit/react';
+import { MdItem } from "@material/web/labs/item/item";
+import { createComponent } from "@lit/react";
 
-export type { MdItem as MdItemType } from '@material/web/labs/item/item';
+export type { MdItem as MdItemType } from "@material/web/labs/item/item";
 
 // const events = {
 //   'onOpen': 'open',
@@ -16,7 +16,7 @@ export type { MdItem as MdItemType } from '@material/web/labs/item/item';
 // }
 
 export const Item = createComponent({
-  tagName: 'md-Item',
+  tagName: "md-Item",
   elementClass: MdItem,
   react: React,
   // events: events,

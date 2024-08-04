@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import React from 'react';
+import React from "react";
 
-import {MdNavigationBar} from '@material/web/labs/navigationbar/navigation-bar';
-import {createComponent} from '@lit/react';
+import { MdNavigationBar } from "@material/web/labs/navigationbar/navigation-bar";
+import { createComponent } from "@lit/react";
 
-export type { MdNavigationBar as MdNavigationBarType } from '@material/web/labs/navigationbar/navigation-bar';
+export type { MdNavigationBar as MdNavigationBarType } from "@material/web/labs/navigationbar/navigation-bar";
 
 // const events = {
 //   'onOpen': 'open',
@@ -16,7 +16,7 @@ export type { MdNavigationBar as MdNavigationBarType } from '@material/web/labs/
 // }
 
 export const NavigationBar = createComponent({
-  tagName: 'md-navigation-bar',
+  tagName: "md-navigation-bar",
   elementClass: MdNavigationBar,
   react: React,
   // events: events,
