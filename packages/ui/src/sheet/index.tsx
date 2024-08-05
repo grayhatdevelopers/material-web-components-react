@@ -37,7 +37,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
           }`}
         />
         <Drawer.Content
-          className={`bg-zinc-100 flex flex-col overflow-hidden !rounded-t-[2rem] mt-24 fixed bottom-0 m-auto left-0 right-0 sm:max-w-[640px] w-full sm:px-14 px-6`}
+          className={`fixed inset-x-0 bottom-0 m-auto mt-24 flex w-full flex-col overflow-hidden !rounded-t-[2rem] bg-zinc-100 px-6 sm:max-w-screen-sm sm:px-14`}
         >
           {_showHandle && (
             <div className="w-12 h-1.5 rounded-full bg-zinc-300 cursor-grab active:cursor-grabbing flex flex-col items-center justify-center mx-auto mt-6 mb-2" />

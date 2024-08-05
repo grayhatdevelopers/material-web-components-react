@@ -2,6 +2,7 @@
   "name": "material-web-components-react",
   "version": "0.3.7",
   "author": "Grayhat Team",
+  "type": "module",
   "keywords": [
     "react",
     "react-component",
