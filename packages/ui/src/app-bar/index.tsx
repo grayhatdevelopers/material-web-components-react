@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { findSlotProp, removeSlotProps } from "../utils";
+import { findSlotProp, removeSlotProps } from "../utils/index.js";
 
 const AppBar = ({
   className,
