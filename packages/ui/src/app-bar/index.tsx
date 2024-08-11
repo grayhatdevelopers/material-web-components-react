@@ -36,7 +36,7 @@ const AppBar = ({
 
   const hasHeadlineExpandedElement = findSlotProp(
     children,
-    "headline-expanded",
+    "headline-expanded"
   );
   const _headlineExpandedElement = headlineExpandedElement
     ? headlineExpandedElement
@@ -79,7 +79,12 @@ const AppBar = ({
           setIsHeadlineExpandedVisible(entry.isIntersecting);
           onExpansionChange?.(!entry.isIntersecting);
         });
-      });
+      },
+      {
+        rootMargin: "-20px 0px",
+        threshold: 0,
+      }
+    );
       observer.observe(headlineExpandedRef.current);
     }
     return () => {
@@ -91,17 +96,20 @@ const AppBar = ({
     <>
       <div
         className={twMerge(
-          "w-full px-2 flex flex-row justify-between items-center gap-2 left-0 bg-background transition-all",
+          "w-full px-2 flex flex-row justify-between items-center gap-2 left-0 bg-background transition-all relative", // Added 'relative' here
           showExpandedHeadline && isHeadlineExpandedVisible
             ? "pt-3 pb-0"
             : "py-3",
-          className,
+          className
         )}
         {...props}
       >
         <div
           id="leading-actions"
-          className="flex flex-row justify-center items-center gap-2"
+          className={twMerge(
+            "flex flex-row justify-center items-center gap-2",
+            _variant === "center-aligned" && "flex-1 justify-start"
+          )}
         >
           {_leadingElements}
         </div>
@@ -109,13 +117,15 @@ const AppBar = ({
         <div
           id="headline"
           className={twMerge(
-            "flex flex-row flex-1 w-full h-full items-center gap-2 text-lg transition-all",
-            _variant === "center-aligned" && "justify-center text-center",
-            (_variant === "small" || _variant === "medium") &&
-              "justify-start text-left",
+            "absolute left-1/2 transform -translate-x-1/2 flex items-center gap-2 text-lg transition-all", // Changed this line
+            _variant === "center-aligned" && "text-center",
+            (_variant === "small" ||
+              _variant === "medium" ||
+              _variant === "large") &&
+              "justify-start text-left w-full",
             showExpandedHeadline && isHeadlineExpandedVisible
               ? "opacity-0"
-              : "opacity-100",
+              : "opacity-100"
           )}
         >
           {_headlineElement}
@@ -123,7 +133,10 @@ const AppBar = ({
 
         <div
           id="trailing-actions"
-          className="flex flex-row justify-center items-center gap-2"
+          className={twMerge(
+            "flex flex-row justify-center items-center gap-2",
+            _variant === "center-aligned" && "flex-1 justify-end"
+          )}
         >
           {_trailingElements}
         </div>
@@ -137,8 +150,8 @@ const AppBar = ({
           ref={headlineExpandedRef}
           className={twMerge(
             "flex flex-row text-left w-full px-4 pb-5",
-            _variant === "medium" && "text-xl pt-1",
-            _variant === "large" && "text-2xl pt-4",
+            _variant === "medium" && "text-xl pt-2",
+            _variant === "large" && "text-2xl pt-4"
           )}
         >
           {_headlineExpandedElement}

@@ -16,6 +16,9 @@ const config: Config = {
     {
       pattern: /p(y|t|x|b)-(0|2|3)/,
     },
+    {
+      pattern: /flex-(.)/,
+    },
   ],
   theme: {
     extend: {
