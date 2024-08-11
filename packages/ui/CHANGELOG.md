@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.3.9
+
+### Patch Changes
+
+- chore: clean typescript
+
 ## 0.3.8
 
 ### Patch Changes
