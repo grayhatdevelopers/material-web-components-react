@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.3.8
+
+### Patch Changes
+
+- fix: appbar center-aligned balancing
+
 ## 0.3.7
 
 ### Patch Changes
