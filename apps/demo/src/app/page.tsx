@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client";
 
 import AppBar from "material-web-components-react/app-bar";
@@ -36,6 +35,7 @@ import TextField from "material-web-components-react/text-field";
 
 import Stack from "material-web-components-react/stack";
 
+// @ts-expect-error
 import pkgJson from "material-web-components-react/package.json?module=json";
 
 import React, { useEffect, useState } from "react";
@@ -62,7 +62,7 @@ const DemoSection = ({ title, children }: { title: any; children: any }) => {
   );
 };
 
-const NavigationContent = ({ showNavigationModal, setShowNavigationModal }) => {
+const NavigationContent = ({ setShowNavigationModal }: {setShowNavigationModal: (value: boolean) => void}) => {
   return (
     <>
       <Link href={"/"}>
@@ -227,6 +227,7 @@ export default function Home() {
           opened={showNavigationModal}
           pivot={"start"}
           onNavigationDrawerChanged={(value) => {
+            // @ts-expect-error
             setShowNavigationModal(value?.detail?.opened);
           }}
           className={
@@ -235,7 +236,6 @@ export default function Home() {
           }
         >
           <NavigationContent
-            showNavigationModal={showNavigationModal}
             setShowNavigationModal={setShowNavigationModal}
           />
         </NavigationDrawerModal>
@@ -317,8 +317,10 @@ export default function Home() {
       <Column id="column-a">
         <DemoSection title={"Actions"}>
           <ComponentDemo title={"Common buttons"}>
-            <Stack direction="row" spacing={2}>
-              <Stack>
+             {/* @ts-ignore */}
+<Stack direction="row" spacing={2}>
+               {/* @ts-ignore */}
+<Stack>
                 <Button variant="elevated" className="w-full">
                   Elevated
                 </Button>
@@ -335,7 +337,8 @@ export default function Home() {
                   Text
                 </Button>
               </Stack>
-              <Stack>
+               {/* @ts-ignore */}
+<Stack>
                 <Button variant="elevated" className="w-full">
                   Icon
                   <Icon slot="icon">add</Icon>
@@ -357,7 +360,8 @@ export default function Home() {
                   <Icon slot="icon">add</Icon>
                 </Button>
               </Stack>
-              <Stack>
+               {/* @ts-ignore */}
+<Stack>
                 <Button disabled variant="elevated" className="w-full">
                   Elevated
                 </Button>
@@ -378,7 +382,8 @@ export default function Home() {
           </ComponentDemo>
 
           <ComponentDemo title={"Floating action buttons"}>
-            <Stack direction="row">
+             {/* @ts-ignore */}
+<Stack direction="row">
               <FAB size="small">
                 <Icon slot="icon">add</Icon>
               </FAB>
@@ -395,7 +400,8 @@ export default function Home() {
           </ComponentDemo>
 
           <ComponentDemo title={"Icon buttons"}>
-            <Stack direction="row" spacing={4}>
+             {/* @ts-ignore */}
+<Stack direction="row" spacing={4}>
               <IconButton>
                 <Icon>Settings</Icon>
               </IconButton>
@@ -412,7 +418,8 @@ export default function Home() {
                 <Icon>Settings</Icon>
               </IconButton>
             </Stack>
-            <Stack direction="row" spacing={4}>
+             {/* @ts-ignore */}
+<Stack direction="row" spacing={4}>
               <IconButton disabled>
                 <Icon>Settings</Icon>
               </IconButton>
@@ -462,7 +469,8 @@ export default function Home() {
 
         <DemoSection title="Communication">
           <ComponentDemo title={"Badges"}>
-            <Stack direction="row" spacing={3}>
+             {/* @ts-ignore */}
+<Stack direction="row" spacing={3}>
               <IconButton>
                 <Icon
                   style={{
@@ -479,7 +487,7 @@ export default function Home() {
                     fontVariationSettings: "'FILL' 1",
                   }}
                 >
-                  <Badge value={3} />
+                  <Badge value={"3"} />
                   mail
                 </Icon>
               </IconButton>
@@ -487,7 +495,8 @@ export default function Home() {
           </ComponentDemo>
 
           <ComponentDemo title={"Progress indicators"}>
-            <Stack direction="row" spacing={10}>
+             {/* @ts-ignore */}
+<Stack direction="row" spacing={10}>
               <IconButton
                 onClick={() =>
                   setIsPlayingProgressIndicators((oldState) => !oldState)
@@ -857,7 +866,6 @@ export default function Home() {
           <ComponentDemo title={"Navigation bar"}>
             <NavigationBar
               className="w-full flex flex-row items-center"
-              index={0}
             >
               <NavigationTab className="px-4" label="Explore" disabled>
                 <Icon
@@ -950,7 +958,7 @@ export default function Home() {
               <AppBar
                 variant="medium"
                 className={"sticky top-0 z-40 !bg-[#fef7fe]"}
-                onExpansionChange={(expanded) => setIsExpanded(expanded)}
+                onExpansionChange={(expanded: boolean) => setIsExpanded(expanded)}
                 style={{
                   // @ts-ignore
                   "--md-elevation-level": 1,
