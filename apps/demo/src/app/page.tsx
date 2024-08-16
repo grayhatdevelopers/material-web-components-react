@@ -62,7 +62,11 @@ const DemoSection = ({ title, children }: { title: any; children: any }) => {
   );
 };
 
-const NavigationContent = ({ setShowNavigationModal }: {setShowNavigationModal: (value: boolean) => void}) => {
+const NavigationContent = ({
+  setShowNavigationModal,
+}: {
+  setShowNavigationModal: (value: boolean) => void;
+}) => {
   return (
     <>
       <Link href={"/"}>
@@ -193,6 +197,7 @@ export default function Home() {
     useState(false);
 
   const [showNavigationModal, setShowNavigationModal] = useState(false);
+  const [extendRail, setExtendRail] = useState(false);
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -235,9 +240,7 @@ export default function Home() {
             (showNavigationModal ? "-translate-x-0" : "-translate-x-50")
           }
         >
-          <NavigationContent
-            setShowNavigationModal={setShowNavigationModal}
-          />
+          <NavigationContent setShowNavigationModal={setShowNavigationModal} />
         </NavigationDrawerModal>
       </div>
       <div
@@ -246,11 +249,12 @@ export default function Home() {
       >
         <div className="flex sticky top-0 overflow-y-auto h-screen">
           <div className="" id="nav-rail-container">
-            <NavigationRail active-index="1">
+            {/* @ts-expect-error */}
+            <NavigationRail extended={extendRail}>
               <IconButton
                 slot="menu"
                 id="rail-menu-button"
-                onClick={() => setShowNavigationModal(true)}
+                onClick={() => setExtendRail(oldState => !oldState)}
               >
                 <Icon>menu</Icon>
               </IconButton>
@@ -317,10 +321,10 @@ export default function Home() {
       <Column id="column-a">
         <DemoSection title={"Actions"}>
           <ComponentDemo title={"Common buttons"}>
-             {/* @ts-ignore */}
-<Stack direction="row" spacing={2}>
-               {/* @ts-ignore */}
-<Stack>
+            {/* @ts-ignore */}
+            <Stack direction="row" spacing={2}>
+              {/* @ts-ignore */}
+              <Stack>
                 <Button variant="elevated" className="w-full">
                   Elevated
                 </Button>
@@ -337,8 +341,8 @@ export default function Home() {
                   Text
                 </Button>
               </Stack>
-               {/* @ts-ignore */}
-<Stack>
+              {/* @ts-ignore */}
+              <Stack>
                 <Button variant="elevated" className="w-full">
                   Icon
                   <Icon slot="icon">add</Icon>
@@ -360,8 +364,8 @@ export default function Home() {
                   <Icon slot="icon">add</Icon>
                 </Button>
               </Stack>
-               {/* @ts-ignore */}
-<Stack>
+              {/* @ts-ignore */}
+              <Stack>
                 <Button disabled variant="elevated" className="w-full">
                   Elevated
                 </Button>
@@ -382,8 +386,8 @@ export default function Home() {
           </ComponentDemo>
 
           <ComponentDemo title={"Floating action buttons"}>
-             {/* @ts-ignore */}
-<Stack direction="row">
+            {/* @ts-ignore */}
+            <Stack direction="row">
               <FAB size="small">
                 <Icon slot="icon">add</Icon>
               </FAB>
@@ -400,8 +404,8 @@ export default function Home() {
           </ComponentDemo>
 
           <ComponentDemo title={"Icon buttons"}>
-             {/* @ts-ignore */}
-<Stack direction="row" spacing={4}>
+            {/* @ts-ignore */}
+            <Stack direction="row" spacing={4}>
               <IconButton>
                 <Icon>Settings</Icon>
               </IconButton>
@@ -418,8 +422,8 @@ export default function Home() {
                 <Icon>Settings</Icon>
               </IconButton>
             </Stack>
-             {/* @ts-ignore */}
-<Stack direction="row" spacing={4}>
+            {/* @ts-ignore */}
+            <Stack direction="row" spacing={4}>
               <IconButton disabled>
                 <Icon>Settings</Icon>
               </IconButton>
@@ -469,8 +473,8 @@ export default function Home() {
 
         <DemoSection title="Communication">
           <ComponentDemo title={"Badges"}>
-             {/* @ts-ignore */}
-<Stack direction="row" spacing={3}>
+            {/* @ts-ignore */}
+            <Stack direction="row" spacing={3}>
               <IconButton>
                 <Icon
                   style={{
@@ -495,8 +499,8 @@ export default function Home() {
           </ComponentDemo>
 
           <ComponentDemo title={"Progress indicators"}>
-             {/* @ts-ignore */}
-<Stack direction="row" spacing={10}>
+            {/* @ts-ignore */}
+            <Stack direction="row" spacing={10}>
               <IconButton
                 onClick={() =>
                   setIsPlayingProgressIndicators((oldState) => !oldState)
@@ -864,9 +868,7 @@ export default function Home() {
           </ComponentDemo>
 
           <ComponentDemo title={"Navigation bar"}>
-            <NavigationBar
-              className="w-full flex flex-row items-center"
-            >
+            <NavigationBar className="w-full flex flex-row items-center">
               <NavigationTab className="px-4" label="Explore" disabled>
                 <Icon
                   slot="active-icon"
@@ -928,7 +930,9 @@ export default function Home() {
                   <Icon>arrow_back</Icon>
                 </IconButton>
 
-                <div slot="headline" className="line-clamp-1">Center-aligned</div>
+                <div slot="headline" className="line-clamp-1">
+                  Center-aligned
+                </div>
 
                 <IconButton slot="trailing">
                   <Icon>more_vert</Icon>
@@ -958,7 +962,9 @@ export default function Home() {
               <AppBar
                 variant="medium"
                 className={"sticky top-0 z-40 !bg-[#fef7fe]"}
-                onExpansionChange={(expanded: boolean) => setIsExpanded(expanded)}
+                onExpansionChange={(expanded: boolean) =>
+                  setIsExpanded(expanded)
+                }
                 style={{
                   // @ts-ignore
                   "--md-elevation-level": 1,

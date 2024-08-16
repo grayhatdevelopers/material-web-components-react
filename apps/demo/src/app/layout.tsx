@@ -1,5 +1,5 @@
 import "material-symbols";
-import "@lit-labs/ssr-react/enable-lit-ssr.js";
+// import "@lit-labs/ssr-react/enable-lit-ssr.js";
 import GitHubButton from "../components/GitHubButton";
 
 import type { Metadata } from "next";
