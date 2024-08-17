@@ -1,4 +1,3 @@
-"use client";
 // file: IconButton.react.tsx
 import { MdIconButton } from "@material/web/iconbutton/icon-button";
 import { MdFilledIconButton } from "@material/web/iconbutton/filled-icon-button";

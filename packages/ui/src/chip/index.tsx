@@ -1,4 +1,3 @@
-"use client";
 // file: Icon.react.tsx
 import { MdChipSet } from "@material/web/chips/chip-set";
 import { MdAssistChip } from "@material/web/chips/assist-chip";

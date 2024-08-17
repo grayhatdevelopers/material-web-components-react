@@ -21,9 +21,9 @@ export class NavigationRail extends NavigationBar {
   }
   render() {
     // Needed for closure conformance
-    const { ariaLabel } = this;
+    const { ariaLabel, extended } = this;
     return html`<div
-      class="md3-navigation-bar md3-navigation-rail"
+      class="md3-navigation-bar md3-navigation-rail ${extended ? "extended" : ""}"
       role="tablist"
       aria-label=${ariaLabel || nothing}
       @keydown="${this.handleKeydown}"
@@ -33,7 +33,7 @@ export class NavigationRail extends NavigationBar {
       <div
         class="md3-navigation-bar__tabs-slot-container md3-navigation-rail__tabs-slot-container"
       >
-        <div class="md3-navigation-rail-top">
+        <div class="md3-navigation-rail-top ${extended ? "extended" : ""}">
           <slot name="menu"></slot>
           <slot name="fab"></slot>
         </div>
@@ -153,6 +153,12 @@ __decorate(
   [property({ type: Boolean, attribute: "hide-inactive-labels" })],
   NavigationBar.prototype,
   "hideInactiveLabels",
+  void 0,
+);
+__decorate(
+  [property({ type: Boolean, attribute: "extended" })],
+  NavigationBar.prototype,
+  "extended",
   void 0,
 );
 __decorate(

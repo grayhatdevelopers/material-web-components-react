@@ -1,4 +1,3 @@
-"use client";
 // file: Checkbox.react.tsx
 import { MdCheckbox } from "@material/web/checkbox/checkbox";
 import React from "react";

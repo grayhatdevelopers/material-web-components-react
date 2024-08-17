@@ -1,4 +1,3 @@
-"use client";
 // file: Icon.react.tsx
 import { MdOutlinedSegmentedButtonSet } from "@material/web/labs/segmentedbuttonset/outlined-segmented-button-set";
 import { MdOutlinedSegmentedButton } from "@material/web/labs/segmentedbutton/outlined-segmented-button";

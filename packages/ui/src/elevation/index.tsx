@@ -1,4 +1,3 @@
-"use client";
 // file: Elevation.react.tsx
 import { MdElevation } from "@material/web/elevation/elevation";
 import React from "react";

@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 
 import { MdNavigationDrawer } from "@material/web/labs/navigationdrawer/navigation-drawer";

@@ -1,4 +1,3 @@
-"use client";
 // file: TextField.react.tsx
 import { MdFilledTextField } from "@material/web/textfield/filled-text-field";
 import { MdOutlinedTextField } from "@material/web/textfield/outlined-text-field";

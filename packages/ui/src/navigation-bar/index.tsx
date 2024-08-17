@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 
 import { MdNavigationBar } from "@material/web/labs/navigationbar/navigation-bar";

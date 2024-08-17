@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 
 import { MdItem } from "@material/web/labs/item/item";

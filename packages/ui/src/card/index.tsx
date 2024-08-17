@@ -1,4 +1,3 @@
-"use client";
 // file: Fab.react.tsx
 import { MdElevatedCard } from "@material/web/labs/card/elevated-card";
 import { MdFilledCard } from "@material/web/labs/card/filled-card";

@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 
 import { MdNavigationRail } from "./web-component/navigation-rail";

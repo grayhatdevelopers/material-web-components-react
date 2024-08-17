@@ -1,4 +1,3 @@
-"use client";
 // file: Icon.react.tsx
 import { MdSwitch } from "@material/web/switch/switch";
 import React from "react";

@@ -1,4 +1,3 @@
-"use client";
 // file: FocusRing.react.tsx
 import { MdFocusRing } from "@material/web/focus/md-focus-ring";
 import React from "react";

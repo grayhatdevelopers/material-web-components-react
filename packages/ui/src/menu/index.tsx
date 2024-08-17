@@ -1,5 +1,4 @@
 // File: MaterialMenu.tsx
-"use client";
 
 import { MdMenu } from "@material/web/menu/menu";
 import { MdMenuItem } from "@material/web/menu/menu-item";

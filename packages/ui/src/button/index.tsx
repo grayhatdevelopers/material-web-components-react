@@ -1,4 +1,3 @@
-"use client";
 // file: Fab.react.tsx
 import { MdElevatedButton } from "@material/web/button/elevated-button";
 import { MdFilledButton } from "@material/web/button/filled-button";

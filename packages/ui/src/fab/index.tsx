@@ -1,4 +1,3 @@
-"use client";
 // file: Fab.react.tsx
 import { MdFab } from "@material/web/fab/fab.js";
 import { MdBrandedFab } from "@material/web/fab/branded-fab";

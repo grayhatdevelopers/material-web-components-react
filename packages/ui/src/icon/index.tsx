@@ -1,4 +1,3 @@
-"use client";
 // file: Icon.react.tsx
 import { MdIcon } from "@material/web/icon/icon.js";
 import React from "react";

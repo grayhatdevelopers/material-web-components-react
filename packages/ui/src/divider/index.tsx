@@ -1,4 +1,3 @@
-"use client";
 // file: Divider.react.tsx
 import { MdDivider } from "@material/web/divider/divider";
 import React from "react";

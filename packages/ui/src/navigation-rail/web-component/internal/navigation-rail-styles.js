@@ -11,9 +11,17 @@ export const styles = css`
     justify-content: space-between;
     align-items: center;
     width: 80px;
+    min-width: 80px;
     position: sticky;
     top: 0;
+    padding-left: 10px;
+    padding-right: 10px;
     /* height: 100%; */
+  }
+
+  .md3-navigation-rail.extended {
+    width: fit-content;
+    align-items: flex-start;
   }
 
   .md3-navigation-rail__tabs-slot-container {
@@ -31,6 +39,11 @@ export const styles = css`
     flex-direction: column;
     gap: 12px;
     align-items: center;
+    width: 100%;
+  }
+
+  .md3-navigation-rail-top.extended {
+    align-items: flex-start;
   }
 
   .md3-navigation-rail-middle {

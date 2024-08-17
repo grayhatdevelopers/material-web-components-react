@@ -1,5 +1,4 @@
 // File: MaterialList.tsx
-"use client";
 
 import { MdList } from "@material/web/list/list";
 import { MdListItem } from "@material/web/list/list-item";
