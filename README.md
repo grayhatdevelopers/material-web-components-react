@@ -81,6 +81,6 @@ Thanks for improving the demo:
 
 - [TalhaHere12](https://github.com/TalhaHere12)
 
-Thanks for building BottomSheet:
+Thanks for building BottomSheet and Snackbar:
 
 - [Aroonaongithhub](https://github.com/Aroonaongithhub/)
