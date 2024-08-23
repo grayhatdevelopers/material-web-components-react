@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.3.11
+
+### Patch Changes
+
+- add snackbar component
+
 ## 0.3.10
 
 ### Patch Changes
