@@ -1,5 +1,12 @@
 # index
 
+## 0.1.17
+
+### Patch Changes
+
+- Updated dependencies
+  - material-web-components-react@0.3.12
+
 ## 0.1.16
 
 ### Patch Changes

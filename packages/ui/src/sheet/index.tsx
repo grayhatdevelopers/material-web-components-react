@@ -32,9 +32,10 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
     <Drawer.Root {...props}>
       <Drawer.Portal>
         <Drawer.Overlay
-          className={`${
-            variant === "modal" ? "fixed inset-0 bg-black/40" : ""
-          }`}
+          className={twMerge(
+            variant === "modal" ? "fixed inset-0 bg-black/40" : "",
+            "!z-[999999]"
+          )}
         />
         <Drawer.Content
           className={`fixed inset-x-0 bottom-0 m-auto mt-24 flex w-full flex-col overflow-hidden !rounded-t-[2rem] bg-zinc-100 px-6 sm:max-w-screen-sm sm:px-14`}

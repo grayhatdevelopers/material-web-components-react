@@ -27,7 +27,7 @@ import SegmentedButton, {
   SegmentedButtonSet,
 } from "material-web-components-react/segmented-button";
 import Select, { SelectOption } from "material-web-components-react/select";
-// import { BottomSheet } from "material-web-components-react/sheet";
+import { BottomSheet } from "material-web-components-react/sheet";
 import Slider from "material-web-components-react/slider";
 import Switch from "material-web-components-react/switch";
 import Tabs, { PrimaryTab } from "material-web-components-react/tabs";
@@ -583,7 +583,7 @@ export default function Home() {
         </DemoSection>
 
         <DemoSection title="Containment">
-          {/* <ComponentDemo title={"Bottom sheet"}>
+          <ComponentDemo title={"Bottom sheet"}>
             <div className="w-full">
               <Button
                 variant="text"
@@ -598,7 +598,7 @@ export default function Home() {
                 {showModalBottomSheet ? "Hide modal bottom sheet" : "Show modal bottom sheet"}
               </Button>
             </div>
-          </ComponentDemo> */}
+          </ComponentDemo>
           <ComponentDemo title={"Card"}>
             <div className="flex flex-row justify-center items-center gap-2">
               <Card className="p-2 aspect-square flex justify-between">
@@ -1068,7 +1068,7 @@ export default function Home() {
           </ComponentDemo>
         </DemoSection>
       </Column>
-      {/* 
+      
       <BottomSheet
         open={showBottomSheet}
         onOpenChange={(open) => setShowBottomSheet(open)}
@@ -1188,7 +1188,7 @@ export default function Home() {
           </div>
         </div>
       </BottomSheet> 
-*/}
+
     </>
   );
 }

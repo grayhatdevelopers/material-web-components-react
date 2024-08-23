@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.3.12
+
+### Patch Changes
+
+- Make bottom sheet take highest precedence
+
 ## 0.3.11
 
 ### Patch Changes

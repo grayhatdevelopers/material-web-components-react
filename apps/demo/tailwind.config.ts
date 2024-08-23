@@ -37,6 +37,9 @@ const config: Config = {
     {
       pattern: /max-(w|h)-(.)/,
     },
+    {
+      pattern: /([a-zA-Z]+)-./,
+    },
   ],
   theme: {
     extend: {
