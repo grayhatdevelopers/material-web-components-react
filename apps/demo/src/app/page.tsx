@@ -32,6 +32,7 @@ import Slider from "material-web-components-react/slider";
 import Switch from "material-web-components-react/switch";
 import Tabs, { PrimaryTab } from "material-web-components-react/tabs";
 import TextField from "material-web-components-react/text-field";
+import {snackbar} from "material-web-components-react/snackbar";
 
 import Stack from "material-web-components-react/stack";
 
@@ -558,8 +559,15 @@ export default function Home() {
           </ComponentDemo>
           <ComponentDemo title={"Ripple"}>
             <div className="w-[320px] h-[120px] px-10 py-8 flex flex-row gap-3 items-center justify-center">
-              <div className="relative rounded-lg flex flex-row gap-10 justify-center items-center w-[200px] h-[100px]">
-                Tap me for effect
+              <div className="relative rounded-lg flex flex-row gap-10 justify-center items-center w-[200px] h-[100px]" onClick={() => {
+                // @ts-expect-error
+                const snackbarId = snackbar.show("Tapped on an element.", {
+                  actionText: "Close me",
+                  onAction: () => snackbar.dismiss(snackbarId),
+                  className: 'bg-[#313033] text-[#F4EFF4]'
+                })
+              }}>
+                Tap me for ripple effect (also for a snackbar!)
                 <Ripple></Ripple>
               </div>
             </div>

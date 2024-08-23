@@ -14,10 +14,28 @@ const config: Config = {
       pattern: /text-(xs|sm|md|lg|xl|2xl|3xl)/,
     },
     {
-      pattern: /p(y|t|x|b)-(0|2|3)/,
+      pattern: /rounded-(xs|sm|md|lg|xl|2xl|3xl)/,
+    },
+    {
+      pattern: /p(y|t|x|b|l|r)-(.)/,
+    },
+    {
+      pattern: /gap-(y|t|x|b)-(.)/,
     },
     {
       pattern: /flex-(.)/,
+    },
+    {
+      pattern: /bg-(.)/,
+    },
+    {
+      pattern: /bg-[#313033]/,
+    },
+    {
+      pattern: /min-(w|h)-(.)/,
+    },
+    {
+      pattern: /max-(w|h)-(.)/,
     },
   ],
   theme: {

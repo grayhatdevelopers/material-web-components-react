@@ -17,7 +17,24 @@ To use Material Web Components for React as a **library** in your project, run:
 npm install material-web-components-react
 ```
 
-## Documentation
+## Usage
+
+Here's a general example of how the components can be used:
+
+```tsx
+import React from 'react';
+import Button from 'material-web-components-react/button';
+
+function Example() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  );
+}
+```
+
+For a detailed reference on usage, you might want to check out the source code of the [NextJS demo](./apps/demo/src/app/page.tsx). It's simple!
 
 Under the hood, this library simply uses the official [@material/web](https://github.com/material-components/material-web/) components. Visit [the official Material Web Components docs](https://github.com/material-components/material-web/blob/main/docs/intro.md) to learn how to use those components. The props remain the same!
 

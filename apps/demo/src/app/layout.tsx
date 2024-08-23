@@ -1,10 +1,9 @@
 import "material-symbols";
-// import "@lit-labs/ssr-react/enable-lit-ssr.js";
-import GitHubButton from "../components/GitHubButton";
 
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import SnackbarClientProvider from "./providers";
 
 // @TODO: Get static fonts to work somehow, to prevent FOUC
 const roboto = Roboto({
@@ -38,6 +37,7 @@ export default function RootLayout({
       </head>
       <body>
         <main className="bg-[#FDF7FF] max-h-screen w-full">
+          <SnackbarClientProvider />
           <div className="flex flex-col justify-center items-center md:grid md:grid-cols-[1fr_1fr] lg:grid-cols-[auto_1fr_1fr] md:h-screen">
             {children}
           </div>
