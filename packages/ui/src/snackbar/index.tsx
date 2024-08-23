@@ -167,9 +167,12 @@ const showSnackbar = (
   return toastId;
 };
 
+// @ts-expect-error
 const snackbar: typeof toast & {
   show: (
+    // eslint-disable-next-line no-unused-vars
     message: string | ReactNode,
+    // eslint-disable-next-line no-unused-vars
     options?: ToastOptions & Partial<SnackbarProps>
   ) => void;
 } = toast;
