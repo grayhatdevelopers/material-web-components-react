@@ -117,7 +117,7 @@ const AppBar = ({
         <div
           id="headline"
           className={twMerge(
-            "absolute left-1/2 transform -translate-x-1/2 flex items-center gap-2 text-lg transition-all", // Changed this line
+            "flex items-center gap-2 text-lg transition-all", // Changed this line
             _variant === "center-aligned" && "text-center",
             (_variant === "small" ||
               _variant === "medium" ||

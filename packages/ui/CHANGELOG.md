@@ -1,5 +1,11 @@
 # material-web-react
 
+## 0.3.14
+
+### Patch Changes
+
+- fix: appbar
+
 ## 0.3.13
 
 ### Patch Changes

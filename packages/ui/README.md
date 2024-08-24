@@ -34,7 +34,7 @@ function Example() {
 }
 ```
 
-For a detailed reference on usage, you might want to check out the source code of the [NextJS demo](./apps/demo/src/app/page.tsx). It's simple!
+For a detailed reference on usage, you might want to check out the source code of the [NextJS demo](https://github.com/grayhatdevelopers/material-web-components-react/blob/main/apps/demo/src/app/page.tsx). It's simple!
 
 Under the hood, this library simply uses the official [@material/web](https://github.com/material-components/material-web/) components. Visit [the official Material Web Components docs](https://github.com/material-components/material-web/blob/main/docs/intro.md) to learn how to use those components. The props remain the same!
 
@@ -81,6 +81,6 @@ Thanks for improving the demo:
 
 - [TalhaHere12](https://github.com/TalhaHere12)
 
-Thanks for building BottomSheet:
+Thanks for building BottomSheet and Snackbar:
 
 - [Aroonaongithhub](https://github.com/Aroonaongithhub/)
