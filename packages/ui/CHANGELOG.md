@@ -1,5 +1,17 @@
 # material-web-react
 
+## 0.3.16
+
+### Patch Changes
+
+- use latest material version
+
+## 0.3.15
+
+### Patch Changes
+
+- add custom classname option to snackbar
+
 ## 0.3.14
 
 ### Patch Changes

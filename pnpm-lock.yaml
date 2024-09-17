@@ -108,8 +108,8 @@ importers:
         specifier: ^1.0.5
         version: 1.0.5(@types/react@18.2.61)
       '@material/web':
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^2.1.0
+        version: 2.1.0
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.31)
@@ -606,8 +606,8 @@ packages:
   '@manypkg/get-packages@1.1.3':
     resolution: {integrity: sha512-fo+QhuU3qE/2TQMQmbVMqaQ6EWbMhi4ABWP+O4AM1NqPBuy0OrApV5LO6BrrgnhtAHS2NH6RrVk9OL181tTi8A==}
 
-  '@material/web@2.0.0':
-    resolution: {integrity: sha512-4gukRERrAP4L0m3iLmLW/b7qKvf+26Ey46i2hMjLJCU+kTl6RLiKtI7njDcD8DaziR78IddWJ4Utz9fieuXB6Q==}
+  '@material/web@2.1.0':
+    resolution: {integrity: sha512-xzRB6GSspfhscWJvu7Ct8T+2Ybiasnk8OCe3PlWDE/LDEPZFyJJE7K0D6cANscJKQ/GIGIeLVkq5FEQRi+KUew==}
 
   '@microsoft/tsdoc-config@0.16.2':
     resolution: {integrity: sha512-OGiIzzoBLgWWR0UdRJX98oYO+XKGf7tiK4Zk6tQ/E4IJqGCe7dvkTvgDZV5cFJUzLGDOjeAXrnZoA6QkVySuxw==}
@@ -2700,9 +2700,6 @@ packages:
   lit-html@3.2.0:
     resolution: {integrity: sha512-pwT/HwoxqI9FggTrYVarkBKFN9MlTUpLrDHubTmW4SrkL3kkqW5gxwbxMMUnbbRHBC0WTZnYHcjDSCM559VyfA==}
 
-  lit@3.1.4:
-    resolution: {integrity: sha512-q6qKnKXHy2g1kjBaNfcoLlgbI3+aSOZ9Q4tiGa9bGYXq5RBXxkVTqTIVmP2VWMp29L4GyvCFm8ZQ2o56eUAMyA==}
-
   lit@3.2.0:
     resolution: {integrity: sha512-s6tI33Lf6VpDu7u4YqsSX78D28bYQulM+VAzsGch4fx2H0eLZnJsUBsPWmGYSGoKDNbjtRv02rio1o+UdPVwvw==}
 
@@ -4524,7 +4521,7 @@ snapshots:
   '@lit-labs/ssr-client@1.1.7':
     dependencies:
       '@lit/reactive-element': 2.0.4
-      lit: 3.1.4
+      lit: 3.2.0
       lit-html: 3.1.4
 
   '@lit-labs/ssr-dom-shim@1.2.0': {}
@@ -4544,7 +4541,7 @@ snapshots:
       '@parse5/tools': 0.3.0
       '@types/node': 16.18.101
       enhanced-resolve: 5.17.0
-      lit: 3.1.4
+      lit: 3.2.0
       lit-element: 4.0.6
       lit-html: 3.1.4
       node-fetch: 3.3.2
@@ -4574,7 +4571,7 @@ snapshots:
       globby: 11.1.0
       read-yaml-file: 1.1.0
 
-  '@material/web@2.0.0':
+  '@material/web@2.1.0':
     dependencies:
       lit: 3.2.0
       tslib: 2.6.3
@@ -6994,12 +6991,6 @@ snapshots:
   lit-html@3.2.0:
     dependencies:
       '@types/trusted-types': 2.0.7
-
-  lit@3.1.4:
-    dependencies:
-      '@lit/reactive-element': 2.0.4
-      lit-element: 4.0.6
-      lit-html: 3.1.4
 
   lit@3.2.0:
     dependencies:

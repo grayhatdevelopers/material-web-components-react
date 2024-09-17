@@ -29,6 +29,7 @@ export type SnackbarProps = {
   onAction?: () => void;
   onClose?: () => void;
   actionText?: string;
+  className?: string;
 };
 
 export const Snackbar = ({
@@ -39,6 +40,7 @@ export const Snackbar = ({
   onAction,
   onClose,
   actionText,
+  className,
 }: SnackbarProps) => {
   const [translateX, setTranslateX] = useState(0);
   const [isSwiped, setIsSwiped] = useState(false);
@@ -89,9 +91,10 @@ export const Snackbar = ({
             : "transform 0.02s linear, opacity 0.1s linear",
       }}
       className={twMerge(
-        "relative font-regular flex items-start gap-x-5 justify-evenly rounded-md bg-[#313033] py-4 pl-5 pr-3 text-[#F4EFF4] shadow-lg text-sm min-w-80 sm:min-w-96 max-w-96 w-screen transition-all",
+        "relative font-regular flex items-start gap-x-5 justify-evenly rounded-md !bg-[#313033] py-4 pl-5 pr-3 text-[#F4EFF4] shadow-lg text-sm min-w-80 sm:min-w-96 max-w-96 w-screen transition-all",
         useLongerAction ? "flex-col" : "flex-row",
-        isSwiped ? "opacity-0" : "opacity-100"
+        isSwiped ? "opacity-0" : "opacity-100",
+        className
       )}
     >
       {icon && <span className="text-white">{icon}</span>}
