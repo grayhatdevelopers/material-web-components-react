@@ -1071,7 +1071,7 @@ export default function Home() {
       
       <BottomSheet
         open={showBottomSheet}
-        onOpenChange={(open) => setShowBottomSheet(open)}
+        onOpenChange={(open: boolean) => setShowBottomSheet(open)}
         className="z-50"
       >
         <div slot="title">
