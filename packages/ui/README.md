@@ -40,33 +40,7 @@ Under the hood, this library simply uses the official [@material/web](https://gi
 
 ## Contributing
 
-### Local Development Setup 💻
-
-1. Fork this repository
-
-2. Clone your forked copy of the project
-
-3. Change to the project directory
-
-4. To install all project dependencies, run the following command:
-
-```
-pnpm i
-```
-
-5. To build the project, run the following command (this needs to be done only once):
-
-```
-pnpm build
-```
-
-6. To run the code locally, run the following code:
-
-```
-pnpm dev
-```
-
-This will run the demo app, and whenever you update the library, the app should rebuild
+We're looking for maintainers and contributors!
 
 ### Roadmap 🚀
 
