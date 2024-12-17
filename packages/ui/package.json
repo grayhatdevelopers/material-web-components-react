@@ -44,7 +44,6 @@
     "@types/react-dom": "^18.2.19",
     "eslint": "^8.57.0",
     "postcss": "^8",
-    "tiny-glob": "^0.2.9",
     "tsup": "^8.2.0",
     "typescript": "^5.3.3"
   },
@@ -52,6 +51,7 @@
     "@lit/react": "^1.0.5",
     "@material/web": "^2.2.0",
     "autoprefixer": "^10.4.19",
+    "fast-glob": "^3.3.2",
     "lit": "^3.2.0",
     "react": "^18.2.0",
     "react-hot-toast": "^2.4.1",
