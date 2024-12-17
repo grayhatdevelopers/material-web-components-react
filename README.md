@@ -48,25 +48,41 @@ Under the hood, this library simply uses the official [@material/web](https://gi
 
 3. Change to the project directory
 
-4. To install all project dependencies, run the following command:
+4. To get started, ensure you have pnpm installed globally, run the following command:
+
+```
+npm install -g pnpm
+```
+
+5. To install all project dependencies, run the following command:
 
 ```
 pnpm i
 ```
 
-5. To build the project, run the following command (this needs to be done only once):
+6. To build the project, run the following commands (these needs to be done only once):
+
+```
+cd packages/ui
+```
 
 ```
 pnpm build
 ```
 
-6. To run the code locally, run the following code:
+7. Return to the monorepo root:
+
+```
+cd ../../
+```
+
+8. To run the code locally, run the following code:
 
 ```
 pnpm dev
 ```
 
-This will run the demo app, and whenever you update the library, the app should rebuild
+This will run the demo app on http://localhost:3000, and whenever you update the library, the app should rebuild
 
 ### Roadmap 🚀
 
